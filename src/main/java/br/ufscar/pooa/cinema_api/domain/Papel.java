@@ -1,4 +1,4 @@
-package domain;
+package br.ufscar.pooa.cinema_api.domain;
 
 public enum Papel {
 
