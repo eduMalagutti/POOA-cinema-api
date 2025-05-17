@@ -14,12 +14,12 @@ public class Filme {
 	private Integer duracaoEmSegundos;
 	private Cinema cinema;
 	private List<Sessao> sessoes;
-	private List<Genero> generos;
+	private List<GeneroFilme> generoFilmes;
 	private ClassificacaoIndicativa classificacaoIndicativa;
 
-	public Filme(ClassificacaoIndicativa classificacaoIndicativa, List<Genero> generos, Cinema cinema, List<Sessao> sessoes, Integer duracaoEmSegundos, String trailerUrl, String capaUrl, String sinopse, String titulo) {
+	public Filme(ClassificacaoIndicativa classificacaoIndicativa, List<GeneroFilme> generoFilmes, Cinema cinema, List<Sessao> sessoes, Integer duracaoEmSegundos, String trailerUrl, String capaUrl, String sinopse, String titulo) {
 		this.classificacaoIndicativa = classificacaoIndicativa;
-		this.generos = generos;
+		this.generoFilmes = generoFilmes;
 		this.cinema = cinema;
 		this.sessoes = sessoes;
 		this.duracaoEmSegundos = duracaoEmSegundos;
@@ -97,12 +97,12 @@ public class Filme {
 		this.cinema = cinema;
 	}
 
-	public List<Genero> getGeneros() {
-		return generos;
+	public List<GeneroFilme> getGeneros() {
+		return generoFilmes;
 	}
 
-	public void setGeneros(List<Genero> generos) {
-		this.generos = generos;
+	public void setGeneros(List<GeneroFilme> generoFilmes) {
+		this.generoFilmes = generoFilmes;
 	}
 
 	public ClassificacaoIndicativa getClassificacaoIndicativa() {

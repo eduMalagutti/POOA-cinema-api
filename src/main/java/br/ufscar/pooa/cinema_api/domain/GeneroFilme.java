@@ -3,12 +3,12 @@ package br.ufscar.pooa.cinema_api.domain;
 import java.util.List;
 import java.util.Objects;
 
-public class Genero {
+public class GeneroFilme {
 	private Integer id;
 	private String name;
 	private List<Filme> filmes;
 
-	public Genero(Integer id, String name, List<Filme> filmes) {
+	public GeneroFilme(Integer id, String name, List<Filme> filmes) {
 		this.id = id;
 		this.name = name;
 		this.filmes = filmes;
@@ -41,8 +41,8 @@ public class Genero {
 	@Override
 	public boolean equals(Object o) {
 		if (o == null || getClass() != o.getClass()) return false;
-		Genero genero = (Genero) o;
-		return Objects.equals(id, genero.id) && Objects.equals(name, genero.name) && Objects.equals(filmes, genero.filmes);
+		GeneroFilme generoFilme = (GeneroFilme) o;
+		return Objects.equals(id, generoFilme.id) && Objects.equals(name, generoFilme.name) && Objects.equals(filmes, generoFilme.filmes);
 	}
 
 	@Override

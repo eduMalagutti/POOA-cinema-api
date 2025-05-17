@@ -1,6 +1,7 @@
 package br.ufscar.pooa.cinema_api.domain;
 
 import br.ufscar.pooa.cinema_api.domain.enums.Papel;
+import br.ufscar.pooa.cinema_api.domain.enums.Genero;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.Set;
 
 public class Cliente extends Usuario {
     private String cpf;
-    private Integer genero;
+    private Genero genero;
     private LocalDateTime dataNascimento;
     private List<Ingresso> ingressos;
 
@@ -18,7 +19,7 @@ public class Cliente extends Usuario {
                    String senha,
                    Cinema cinema,
                    String cpf,
-                   Integer genero,
+                   Genero genero,
                    LocalDateTime dataNascimento,
                    List<Ingresso> ingressos,
                    Set<Papel> papeis) {
@@ -37,11 +38,11 @@ public class Cliente extends Usuario {
         this.cpf = cpf;
     }
 
-    public Integer getGenero() {
+    public Genero getGenero() {
         return genero;
     }
 
-    public void setGenero(Integer genero) {
+    public void setGenero(Genero genero) {
         this.genero = genero;
     }
 
