@@ -1,10 +1,20 @@
 package br.ufscar.pooa.cinema_api.domain;
 
-import java.util.Collection;
+import br.ufscar.pooa.cinema_api.domain.enums.MetodoPagamento;
+
+import java.util.List;
 import java.util.Objects;
 
 public class Ingresso {
-	public Ingresso(Integer dataPagamento, Integer precoEmCentavos, Sessao sessao, Cliente cliente, Assento assento, Collection<MetodoPagamento> metodoPagamentos) {
+	private Long id;
+	private Integer dataPagamento;
+	private Integer precoEmCentavos;
+	private Sessao sessao;
+	private Cliente cliente;
+	private Assento assento;
+	private List<MetodoPagamento> metodoPagamentos;
+
+	public Ingresso(Integer dataPagamento, Integer precoEmCentavos, Sessao sessao, Cliente cliente, Assento assento, List<MetodoPagamento> metodoPagamentos) {
 		this.dataPagamento = dataPagamento;
 		this.precoEmCentavos = precoEmCentavos;
 		this.sessao = sessao;
@@ -13,17 +23,13 @@ public class Ingresso {
 		this.metodoPagamentos = metodoPagamentos;
 	}
 
-	private Integer dataPagamento;
+	public Long getId() {
+		return id;
+	}
 
-	private Integer precoEmCentavos;
-
-	private Sessao sessao;
-
-	private Cliente cliente;
-
-	private Assento assento;
-
-	private Collection<MetodoPagamento> metodoPagamentos;
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public Integer getDataPagamento() {
 		return dataPagamento;
@@ -65,11 +71,11 @@ public class Ingresso {
 		this.assento = assento;
 	}
 
-	public Collection<MetodoPagamento> getMetodoPagamentos() {
+	public List<MetodoPagamento> getMetodoPagamentos() {
 		return metodoPagamentos;
 	}
 
-	public void setMetodoPagamentos(Collection<MetodoPagamento> metodoPagamentos) {
+	public void setMetodoPagamentos(List<MetodoPagamento> metodoPagamentos) {
 		this.metodoPagamentos = metodoPagamentos;
 	}
 

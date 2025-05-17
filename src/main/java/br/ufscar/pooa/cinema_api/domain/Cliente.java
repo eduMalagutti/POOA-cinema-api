@@ -1,74 +1,75 @@
-	package br.ufscar.pooa.cinema_api.domain;
+package br.ufscar.pooa.cinema_api.domain;
 
-	import java.util.Collection;
-	import java.time.LocalDateTime;
-	import java.util.Objects;
+import br.ufscar.pooa.cinema_api.domain.enums.Papel;
 
-	public class Cliente extends Usuario {
-		public Cliente(String nome,
-					   String email,
-					   String senha,
-					   Cinema cinema,
-					   String cpf,
-					   Integer genero,
-					   LocalDateTime dataNascimento,
-					   Collection<Ingresso> ingressos) {
-            super(nome, email, senha, cinema);
-            this.cpf = cpf;
-			this.genero = genero;
-			this.dataNascimento = dataNascimento;
-			this.ingressos = ingressos;
-		}
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
-		private String cpf;
+public class Cliente extends Usuario {
+    private String cpf;
+    private Integer genero;
+    private LocalDateTime dataNascimento;
+    private List<Ingresso> ingressos;
 
-		private Integer genero;
+    public Cliente(String nome,
+                   String email,
+                   String senha,
+                   Cinema cinema,
+                   String cpf,
+                   Integer genero,
+                   LocalDateTime dataNascimento,
+                   List<Ingresso> ingressos,
+                   Set<Papel> papeis) {
+        super(nome, email, senha, cinema, papeis);
+        this.cpf = cpf;
+        this.genero = genero;
+        this.dataNascimento = dataNascimento;
+        this.ingressos = ingressos;
+    }
 
-		private LocalDateTime dataNascimento;
+    public String getCpf() {
+        return cpf;
+    }
 
-		private Collection<Ingresso> ingressos;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
-		public String getCpf() {
-			return cpf;
-		}
+    public Integer getGenero() {
+        return genero;
+    }
 
-		public void setCpf(String cpf) {
-			this.cpf = cpf;
-		}
+    public void setGenero(Integer genero) {
+        this.genero = genero;
+    }
 
-		public Integer getGenero() {
-			return genero;
-		}
+    public LocalDateTime getDataNascimento() {
+        return dataNascimento;
+    }
 
-		public void setGenero(Integer genero) {
-			this.genero = genero;
-		}
+    public void setDataNascimento(LocalDateTime dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
 
-		public LocalDateTime getDataNascimento() {
-			return dataNascimento;
-		}
+    public List<Ingresso> getIngressos() {
+        return ingressos;
+    }
 
-		public void setDataNascimento(LocalDateTime dataNascimento) {
-			this.dataNascimento = dataNascimento;
-		}
+    public void setIngressos(List<Ingresso> ingressos) {
+        this.ingressos = ingressos;
+    }
 
-		public Collection<Ingresso> getIngressos() {
-			return ingressos;
-		}
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Cliente cliente = (Cliente) o;
+        return Objects.equals(cpf, cliente.cpf) && Objects.equals(genero, cliente.genero) && Objects.equals(dataNascimento, cliente.dataNascimento) && Objects.equals(ingressos, cliente.ingressos);
+    }
 
-		public void setIngressos(Collection<Ingresso> ingressos) {
-			this.ingressos = ingressos;
-		}
-
-		@Override
-		public boolean equals(Object o) {
-			if (o == null || getClass() != o.getClass()) return false;
-			Cliente cliente = (Cliente) o;
-			return Objects.equals(cpf, cliente.cpf) && Objects.equals(genero, cliente.genero) && Objects.equals(dataNascimento, cliente.dataNascimento) && Objects.equals(ingressos, cliente.ingressos);
-		}
-
-		@Override
-		public int hashCode() {
-			return Objects.hash(cpf, genero, dataNascimento, ingressos);
-		}
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(cpf, genero, dataNascimento, ingressos);
+    }
+}

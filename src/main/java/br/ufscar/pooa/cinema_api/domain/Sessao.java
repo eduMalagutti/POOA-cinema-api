@@ -1,9 +1,21 @@
 package br.ufscar.pooa.cinema_api.domain;
 
+import br.ufscar.pooa.cinema_api.domain.enums.Formato;
+import br.ufscar.pooa.cinema_api.domain.enums.Legenda;
+
 import java.util.Collection;
 import java.util.Objects;
 
 public class Sessao {
+	private Long id;
+	private Formato formato;
+	private Integer data;
+	private Legenda legenda;
+	private Integer precoEmCentavos;
+	private Sala sala;
+	private Filme filme;
+	private Collection<Ingresso> ingressos;
+
 	public Sessao(Formato formato, Integer data, Legenda legenda, Integer precoEmCentavos, Sala sala, Filme filme, Collection<Ingresso> ingressos) {
 		this.formato = formato;
 		this.data = data;
@@ -14,22 +26,12 @@ public class Sessao {
 		this.ingressos = ingressos;
 	}
 
-	private Formato formato;
+	public Long getId() {
+		return id;
+	}
 
-	private Integer data;
-
-	private Legenda legenda;
-
-	private Integer precoEmCentavos;
-
-	private Sala sala;
-
-	private Filme filme;
-
-	private Collection<Ingresso> ingressos;
-
-	public Assento[] montarMapaDeAssentos() {
-		return null;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Assento[] getAssentosDisponiveis() {

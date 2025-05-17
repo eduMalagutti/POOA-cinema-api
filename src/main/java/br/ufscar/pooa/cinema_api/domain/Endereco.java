@@ -3,6 +3,15 @@ package br.ufscar.pooa.cinema_api.domain;
 import java.util.Objects;
 
 public class Endereco {
+	private String pais;
+	private String estado;
+	private String cidade;
+	private String cep;
+	private String bairro;
+	private String rua;
+	private String numero;
+	private String complemento;
+
 	public Endereco(String pais, String estado, String cidade, String cep, String bairro, String rua, String numero, String complemento) {
 		this.pais = pais;
 		this.estado = estado;
@@ -13,22 +22,6 @@ public class Endereco {
 		this.numero = numero;
 		this.complemento = complemento;
 	}
-
-	private String pais;
-
-	private String estado;
-
-	private String cidade;
-
-	private String cep;
-
-	private String bairro;
-
-	private String rua;
-
-	private String numero;
-
-	private String complemento;
 
 	public String getPais() {
 		return pais;

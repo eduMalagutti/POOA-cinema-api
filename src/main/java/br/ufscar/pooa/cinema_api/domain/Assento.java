@@ -1,65 +1,64 @@
 package br.ufscar.pooa.cinema_api.domain;
 
-import java.util.Collection;
+import br.ufscar.pooa.cinema_api.domain.enums.TipoAssento;
+
+import java.util.List;
 import java.util.Objects;
 
 public class Assento {
-	public Assento(Character numero, Fileira fileira, Collection<Ingresso> ingressos, TipoAssento tipoAssento) {
-		this.numero = numero;
-		this.fileira = fileira;
-		this.ingressos = ingressos;
-		this.tipoAssento = tipoAssento;
-	}
+    private Character numero;
+    private TipoAssento tipoAssento;
+    private Fileira fileira;
+    private List<Ingresso> ingressos;
 
-	private Character numero;
+    public Assento(Character numero, Fileira fileira, List<Ingresso> ingressos, TipoAssento tipoAssento) {
+        this.numero = numero;
+        this.fileira = fileira;
+        this.ingressos = ingressos;
+        this.tipoAssento = tipoAssento;
+    }
 
-	private Fileira fileira;
+    public Character getNumero() {
+        return numero;
+    }
 
-	private Collection<Ingresso> ingressos;
+    public void setNumero(Character numero) {
+        this.numero = numero;
+    }
 
-	private TipoAssento tipoAssento;
+    public Fileira getFileira() {
+        return fileira;
+    }
 
-	public Character getNumero() {
-		return numero;
-	}
+    public void setFileira(Fileira fileira) {
+        this.fileira = fileira;
+    }
 
-	public void setNumero(Character numero) {
-		this.numero = numero;
-	}
+    public List<Ingresso> getIngressos() {
+        return ingressos;
+    }
 
-	public Fileira getFileira() {
-		return fileira;
-	}
+    public void setIngressos(List<Ingresso> ingressos) {
+        this.ingressos = ingressos;
+    }
 
-	public void setFileira(Fileira fileira) {
-		this.fileira = fileira;
-	}
+    public TipoAssento getTipoAssento() {
+        return tipoAssento;
+    }
 
-	public Collection<Ingresso> getIngressos() {
-		return ingressos;
-	}
+    public void setTipoAssento(TipoAssento tipoAssento) {
+        this.tipoAssento = tipoAssento;
+    }
 
-	public void setIngressos(Collection<Ingresso> ingressos) {
-		this.ingressos = ingressos;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Assento assento = (Assento) o;
+        return Objects.equals(numero, assento.numero) && Objects.equals(fileira, assento.fileira) && Objects.equals(ingressos, assento.ingressos) && tipoAssento == assento.tipoAssento;
+    }
 
-	public TipoAssento getTipoAssento() {
-		return tipoAssento;
-	}
-
-	public void setTipoAssento(TipoAssento tipoAssento) {
-		this.tipoAssento = tipoAssento;
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (o == null || getClass() != o.getClass()) return false;
-		Assento assento = (Assento) o;
-		return Objects.equals(numero, assento.numero) && Objects.equals(fileira, assento.fileira) && Objects.equals(ingressos, assento.ingressos) && tipoAssento == assento.tipoAssento;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(numero, fileira, ingressos, tipoAssento);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(numero, fileira, ingressos, tipoAssento);
+    }
 }

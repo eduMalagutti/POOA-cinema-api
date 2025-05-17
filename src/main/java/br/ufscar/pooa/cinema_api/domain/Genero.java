@@ -1,20 +1,18 @@
 package br.ufscar.pooa.cinema_api.domain;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 public class Genero {
-	public Genero(Integer id, String name, Collection<Filme> filmes) {
+	private Integer id;
+	private String name;
+	private List<Filme> filmes;
+
+	public Genero(Integer id, String name, List<Filme> filmes) {
 		this.id = id;
 		this.name = name;
 		this.filmes = filmes;
 	}
-
-	private Integer id;
-
-	private String name;
-
-	private Collection<Filme> filmes;
 
 	public Integer getId() {
 		return id;
@@ -32,11 +30,11 @@ public class Genero {
 		this.name = name;
 	}
 
-	public Collection<Filme> getFilmes() {
+	public List<Filme> getFilmes() {
 		return filmes;
 	}
 
-	public void setFilmes(Collection<Filme> filmes) {
+	public void setFilmes(List<Filme> filmes) {
 		this.filmes = filmes;
 	}
 

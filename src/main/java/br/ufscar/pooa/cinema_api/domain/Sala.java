@@ -1,76 +1,74 @@
 package br.ufscar.pooa.cinema_api.domain;
 
-import java.util.Collection;
+import br.ufscar.pooa.cinema_api.domain.enums.TipoSala;
+
+import java.util.List;
 import java.util.Objects;
 
 public class Sala {
-	public Sala(Collection<Sessao> sessoes, Collection<Fileira> fileiras, TipoSala tipoSala, Cinema cinema, String nome) {
-		this.sessoes = sessoes;
-		this.fileiras = fileiras;
-		this.tipoSala = tipoSala;
-		this.cinema = cinema;
-		this.nome = nome;
-	}
+    private String nome;
+    private TipoSala tipoSala;
+    private Cinema cinema;
+    private List<Fileira> fileiras;
+    private List<Sessao> sessoes;
 
-	private String nome;
+    public Sala(List<Sessao> sessoes, List<Fileira> fileiras, TipoSala tipoSala, Cinema cinema, String nome) {
+        this.sessoes = sessoes;
+        this.fileiras = fileiras;
+        this.tipoSala = tipoSala;
+        this.cinema = cinema;
+        this.nome = nome;
+    }
 
-	private Cinema cinema;
+    public Sessao[] getSessoes() {
+        return null;
+    }
 
-	private TipoSala tipoSala;
+    public String getNome() {
+        return nome;
+    }
 
-	private Collection<Fileira> fileiras;
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	private Collection<Sessao> sessoes;
+    public Cinema getCinema() {
+        return cinema;
+    }
 
-	public Sessao[] getSessoes() {
-		return null;
-	}
+    public void setCinema(Cinema cinema) {
+        this.cinema = cinema;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public TipoSala getTipoSala() {
+        return tipoSala;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public void setTipoSala(TipoSala tipoSala) {
+        this.tipoSala = tipoSala;
+    }
 
-	public Cinema getCinema() {
-		return cinema;
-	}
+    public List<Fileira> getFileiras() {
+        return fileiras;
+    }
 
-	public void setCinema(Cinema cinema) {
-		this.cinema = cinema;
-	}
+    public void setFileiras(List<Fileira> fileiras) {
+        this.fileiras = fileiras;
+    }
 
-	public TipoSala getTipoSala() {
-		return tipoSala;
-	}
+    public void setSessoes(List<Sessao> sessoes) {
+        this.sessoes = sessoes;
+    }
 
-	public void setTipoSala(TipoSala tipoSala) {
-		this.tipoSala = tipoSala;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Sala sala = (Sala) o;
+        return Objects.equals(nome, sala.nome) && Objects.equals(cinema, sala.cinema) && tipoSala == sala.tipoSala && Objects.equals(fileiras, sala.fileiras) && Objects.equals(sessoes, sala.sessoes);
+    }
 
-	public Collection<Fileira> getFileiras() {
-		return fileiras;
-	}
-
-	public void setFileiras(Collection<Fileira> fileiras) {
-		this.fileiras = fileiras;
-	}
-
-	public void setSessoes(Collection<Sessao> sessoes) {
-		this.sessoes = sessoes;
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (o == null || getClass() != o.getClass()) return false;
-		Sala sala = (Sala) o;
-		return Objects.equals(nome, sala.nome) && Objects.equals(cinema, sala.cinema) && tipoSala == sala.tipoSala && Objects.equals(fileiras, sala.fileiras) && Objects.equals(sessoes, sala.sessoes);
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(nome, cinema, tipoSala, fileiras, sessoes);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome, cinema, tipoSala, fileiras, sessoes);
+    }
 }

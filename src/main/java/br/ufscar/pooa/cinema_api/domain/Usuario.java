@@ -1,22 +1,33 @@
 package br.ufscar.pooa.cinema_api.domain;
 
+import br.ufscar.pooa.cinema_api.domain.enums.Papel;
+
 import java.util.Objects;
+import java.util.Set;
 
 public class Usuario {
-	public Usuario(String nome, String email, String senha, Cinema cinema) {
+	private Long id;
+	private String nome;
+	private String email;
+	private String senha;
+	private Cinema cinema;
+	private Set<Papel> papeis;
+
+	public Usuario(String nome, String email, String senha, Cinema cinema, Set<Papel> papeis) {
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
 		this.cinema = cinema;
+		this.papeis = papeis;
 	}
 
-	private String nome;
+	public Long getId() {
+		return id;
+	}
 
-	private String email;
-
-	private String senha;
-
-	private Cinema cinema;
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getNome() {
 		return nome;
@@ -50,15 +61,24 @@ public class Usuario {
 		this.cinema = cinema;
 	}
 
+	public Set<Papel> getPapeis() {
+		return papeis;
+	}
+
+	public void setPapeis(Set<Papel> papeis) {
+		this.papeis = papeis;
+	}
+
 	@Override
 	public boolean equals(Object o) {
+		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		Usuario usuario = (Usuario) o;
-		return Objects.equals(nome, usuario.nome) && Objects.equals(email, usuario.email) && Objects.equals(senha, usuario.senha) && Objects.equals(cinema, usuario.cinema);
+		return Objects.equals(getId(), usuario.getId()) && Objects.equals(getNome(), usuario.getNome()) && Objects.equals(getEmail(), usuario.getEmail()) && Objects.equals(getSenha(), usuario.getSenha()) && Objects.equals(getCinema(), usuario.getCinema()) && Objects.equals(getPapeis(), usuario.getPapeis());
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(nome, email, senha, cinema);
+		return Objects.hash(getId(), getNome(), getEmail(), getSenha(), getCinema(), getPapeis());
 	}
 }
