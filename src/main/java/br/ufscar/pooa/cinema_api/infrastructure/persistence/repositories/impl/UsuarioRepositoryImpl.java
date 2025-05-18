@@ -2,8 +2,8 @@ package br.ufscar.pooa.cinema_api.infrastructure.persistence.repositories.impl;
 
 import br.ufscar.pooa.cinema_api.application.port.out.UsuarioRepository;
 import br.ufscar.pooa.cinema_api.domain.model.Usuario;
-import br.ufscar.pooa.cinema_api.infrastructure.mapper.UsuarioMapper;
 import br.ufscar.pooa.cinema_api.infrastructure.persistence.entities.UsuarioEntity;
+import br.ufscar.pooa.cinema_api.infrastructure.persistence.mapper.UsuarioEntityMapper;
 import br.ufscar.pooa.cinema_api.infrastructure.persistence.repositories.jpa.JpaUsuarioRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,9 +12,9 @@ import java.util.Optional;
 @Repository
 public class UsuarioRepositoryImpl implements UsuarioRepository {
     private final JpaUsuarioRepository jpaUsuarioRepository;
-    private final UsuarioMapper mapper;
+    private final UsuarioEntityMapper mapper;
 
-    public UsuarioRepositoryImpl(JpaUsuarioRepository jpaUsuarioRepository, UsuarioMapper mapper) {
+    public UsuarioRepositoryImpl(JpaUsuarioRepository jpaUsuarioRepository, UsuarioEntityMapper mapper) {
         this.jpaUsuarioRepository = jpaUsuarioRepository;
         this.mapper = mapper;
     }
