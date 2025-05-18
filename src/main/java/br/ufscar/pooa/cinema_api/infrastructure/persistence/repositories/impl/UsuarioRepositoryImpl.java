@@ -4,25 +4,35 @@ import br.ufscar.pooa.cinema_api.application.port.out.UsuarioRepository;
 import br.ufscar.pooa.cinema_api.domain.model.Usuario;
 import br.ufscar.pooa.cinema_api.infrastructure.mapper.UsuarioMapper;
 import br.ufscar.pooa.cinema_api.infrastructure.persistence.entities.UsuarioEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
+import br.ufscar.pooa.cinema_api.infrastructure.persistence.repositories.jpa.JpaUsuarioRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
 public class UsuarioRepositoryImpl implements UsuarioRepository {
-    private final JpaRepository<UsuarioEntity, Long> jpaRepository;
+    private final JpaUsuarioRepository jpaUsuarioRepository;
     private final UsuarioMapper mapper;
 
-    public UsuarioRepositoryImpl(JpaRepository<UsuarioEntity, Long> jpaRepository, UsuarioMapper mapper) {
-        this.jpaRepository = jpaRepository;
+    public UsuarioRepositoryImpl(JpaUsuarioRepository jpaUsuarioRepository, UsuarioMapper mapper) {
+        this.jpaUsuarioRepository = jpaUsuarioRepository;
         this.mapper = mapper;
     }
 
     @Override
-    public Usuario findById(Long id) {
-        Optional<UsuarioEntity> entity = jpaRepository.findById(id);
-        return entity.map(mapper::toDomain).orElse(null);
+    public Optional<Usuario> findById(Long id) {
+        if (id == null) return Optional.empty();
+
+        Optional<UsuarioEntity> entity = jpaUsuarioRepository.findById(id);
+        return entity.map(mapper::toDomain);
+    }
+
+    @Override
+    public Optional<Usuario> findByEmail(String email) {
+        if (email == null) return Optional.empty();
+
+        Optional<UsuarioEntity> entity = jpaUsuarioRepository.findByEmail(email);
+        return entity.map(mapper::toDomain);
     }
 
     @Override
@@ -31,11 +41,11 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
         System.out.println(entity.toString());
 
-        return mapper.toDomain(jpaRepository.save(entity));
+        return mapper.toDomain(jpaUsuarioRepository.save(entity));
     }
 
     @Override
     public void delete(Usuario usuario) {
-        jpaRepository.delete(mapper.toEntity(usuario));
+        jpaUsuarioRepository.delete(mapper.toEntity(usuario));
     }
 }
