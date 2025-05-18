@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.presentation.dtos.request;
+package br.ufscar.pooa.cinema_api.application.dtos.request;
 
 import jakarta.validation.constraints.NotNull;
 

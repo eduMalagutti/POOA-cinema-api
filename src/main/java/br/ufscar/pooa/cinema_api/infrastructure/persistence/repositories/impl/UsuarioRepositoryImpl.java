@@ -1,6 +1,6 @@
 package br.ufscar.pooa.cinema_api.infrastructure.persistence.repositories.impl;
 
-import br.ufscar.pooa.cinema_api.application.port.out.UsuarioRepository;
+import br.ufscar.pooa.cinema_api.domain.interfaces.repositories.UsuarioRepository;
 import br.ufscar.pooa.cinema_api.domain.model.Usuario;
 import br.ufscar.pooa.cinema_api.infrastructure.persistence.entities.UsuarioEntity;
 import br.ufscar.pooa.cinema_api.infrastructure.persistence.mapper.UsuarioEntityMapper;

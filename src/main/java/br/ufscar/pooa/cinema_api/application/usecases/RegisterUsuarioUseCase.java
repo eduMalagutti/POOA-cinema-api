@@ -1,7 +1,10 @@
 package br.ufscar.pooa.cinema_api.application.usecases;
 
+import br.ufscar.pooa.cinema_api.application.dtos.request.RegisterUsuarioRequestDTO;
+import br.ufscar.pooa.cinema_api.application.dtos.response.UsuarioResponseDTO;
 import br.ufscar.pooa.cinema_api.application.exceptions.ResourceAlreadyExistsException;
-import br.ufscar.pooa.cinema_api.application.port.out.UsuarioRepository;
+import br.ufscar.pooa.cinema_api.application.mapper.UsuarioDtoMapper;
+import br.ufscar.pooa.cinema_api.domain.interfaces.repositories.UsuarioRepository;
 import br.ufscar.pooa.cinema_api.domain.model.Usuario;
 import org.springframework.stereotype.Service;
 
@@ -10,18 +13,27 @@ import java.util.Optional;
 @Service
 public class RegisterUsuarioUseCase {
     private final UsuarioRepository usuarioRepository;
+    private final UsuarioDtoMapper mapper;
 
-    public RegisterUsuarioUseCase(UsuarioRepository usuarioRepository) {
+    public RegisterUsuarioUseCase(UsuarioRepository usuarioRepository, UsuarioDtoMapper mapper) {
         this.usuarioRepository = usuarioRepository;
+        this.mapper = mapper;
     }
 
-    public Usuario execute(Usuario usuario) {
-        Optional<Usuario> usuarioEncontrado = usuarioRepository.findByEmail(usuario.getEmail());
+    public UsuarioResponseDTO execute(RegisterUsuarioRequestDTO requestDTO) {
+        Optional<Usuario> usuarioEncontrado = usuarioRepository.findByEmail(requestDTO.email());
 
         if (usuarioEncontrado.isPresent()) {
-            throw new ResourceAlreadyExistsException("Usuario", "email", usuario.getEmail());
+            throw new ResourceAlreadyExistsException("Usuario", "email", requestDTO.email());
         }
 
-        return usuarioRepository.save(usuario);
+        Usuario usuario = new Usuario();
+        usuario.setNome(requestDTO.nome());
+        usuario.setEmail(requestDTO.email());
+        usuario.setSenha(requestDTO.senha());
+
+        Usuario response = usuarioRepository.save(usuario);
+
+        return mapper.toResponseDTO(response);
     }
 }

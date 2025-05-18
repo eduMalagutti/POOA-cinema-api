@@ -6,91 +6,94 @@ import java.util.Objects;
 import java.util.Set;
 
 public class Usuario {
-	private Long id;
-	private String nome;
-	private String email;
-	private String senha;
-	private Cinema cinema;
-	private Set<Papel> papeis;
+    private Long id;
+    private String nome;
+    private String email;
+    private String senha;
+    private Cinema cinema;
+    private Set<Papel> papeis;
 
-	public Usuario(String nome, String email, String senha, Cinema cinema, Set<Papel> papeis) {
-		this.nome = nome;
-		this.email = email;
-		this.senha = senha;
-		this.cinema = cinema;
-		this.papeis = papeis;
-	}
+    public Usuario() {
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Usuario(String nome, String email, String senha, Cinema cinema, Set<Papel> papeis) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.cinema = cinema;
+        this.papeis = papeis;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public String getSenha() {
-		return senha;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+    public String getSenha() {
+        return senha;
+    }
 
-	public Cinema getCinema() {
-		return cinema;
-	}
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
-	public void setCinema(Cinema cinema) {
-		this.cinema = cinema;
-	}
+    public Cinema getCinema() {
+        return cinema;
+    }
 
-	public Set<Papel> getPapeis() {
-		return papeis;
-	}
+    public void setCinema(Cinema cinema) {
+        this.cinema = cinema;
+    }
 
-	public void setPapeis(Set<Papel> papeis) {
-		this.papeis = papeis;
-	}
+    public Set<Papel> getPapeis() {
+        return papeis;
+    }
 
-	@Override
-	public String toString() {
-		return "Usuario{" +
-				"id=" + id +
-				", nome='" + nome + '\'' +
-				", email='" + email + '\'' +
-				", senha='" + senha + '\'' +
-				", cinema=" + cinema +
-				", papeis=" + papeis +
-				'}';
-	}
+    public void setPapeis(Set<Papel> papeis) {
+        this.papeis = papeis;
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		Usuario usuario = (Usuario) o;
-		return Objects.equals(getId(), usuario.getId()) && Objects.equals(getNome(), usuario.getNome()) && Objects.equals(getEmail(), usuario.getEmail()) && Objects.equals(getSenha(), usuario.getSenha()) && Objects.equals(getCinema(), usuario.getCinema()) && Objects.equals(getPapeis(), usuario.getPapeis());
-	}
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                ", cinema=" + cinema +
+                ", papeis=" + papeis +
+                '}';
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(getId(), getNome(), getEmail(), getSenha(), getCinema(), getPapeis());
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Usuario usuario = (Usuario) o;
+        return Objects.equals(getId(), usuario.getId()) && Objects.equals(getNome(), usuario.getNome()) && Objects.equals(getEmail(), usuario.getEmail()) && Objects.equals(getSenha(), usuario.getSenha()) && Objects.equals(getCinema(), usuario.getCinema()) && Objects.equals(getPapeis(), usuario.getPapeis());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getNome(), getEmail(), getSenha(), getCinema(), getPapeis());
+    }
 }
