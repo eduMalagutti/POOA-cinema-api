@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.domain;
+package br.ufscar.pooa.cinema_api.domain.model;
 
 import br.ufscar.pooa.cinema_api.domain.enums.Papel;
 
@@ -67,6 +67,18 @@ public class Usuario {
 
 	public void setPapeis(Set<Papel> papeis) {
 		this.papeis = papeis;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario{" +
+				"id=" + id +
+				", nome='" + nome + '\'' +
+				", email='" + email + '\'' +
+				", senha='" + senha + '\'' +
+				", cinema=" + cinema +
+				", papeis=" + papeis +
+				'}';
 	}
 
 	@Override

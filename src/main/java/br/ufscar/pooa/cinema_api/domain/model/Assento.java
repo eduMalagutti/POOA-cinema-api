@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.domain;
+package br.ufscar.pooa.cinema_api.domain.model;
 
 import br.ufscar.pooa.cinema_api.domain.enums.TipoAssento;
 
