@@ -3,7 +3,7 @@ package br.ufscar.pooa.cinema_api.application.usecases;
 import br.ufscar.pooa.cinema_api.application.dtos.request.RegisterUsuarioRequestDTO;
 import br.ufscar.pooa.cinema_api.application.dtos.response.UsuarioResponseDTO;
 import br.ufscar.pooa.cinema_api.application.exceptions.ResourceAlreadyExistsException;
-import br.ufscar.pooa.cinema_api.application.mapper.UsuarioDtoMapper;
+import br.ufscar.pooa.cinema_api.application.mapper.ObjectMapper;
 import br.ufscar.pooa.cinema_api.domain.interfaces.repositories.UsuarioRepository;
 import br.ufscar.pooa.cinema_api.domain.model.Usuario;
 import org.springframework.stereotype.Service;
@@ -13,11 +13,9 @@ import java.util.Optional;
 @Service
 public class RegisterUsuarioUseCase {
     private final UsuarioRepository usuarioRepository;
-    private final UsuarioDtoMapper mapper;
 
-    public RegisterUsuarioUseCase(UsuarioRepository usuarioRepository, UsuarioDtoMapper mapper) {
+    public RegisterUsuarioUseCase(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
-        this.mapper = mapper;
     }
 
     public UsuarioResponseDTO execute(RegisterUsuarioRequestDTO requestDTO) {
@@ -34,6 +32,6 @@ public class RegisterUsuarioUseCase {
 
         Usuario response = usuarioRepository.save(usuario);
 
-        return mapper.toResponseDTO(response);
+        return ObjectMapper.parseObject(response, UsuarioResponseDTO.class);
     }
 }
