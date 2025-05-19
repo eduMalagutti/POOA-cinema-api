@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.adapters.presentation.controllers;
+package br.ufscar.pooa.cinema_api.adapters.in.presentation.controllers;
 
 import br.ufscar.pooa.cinema_api.application.dtos.request.RegisterUsuarioRequestDTO;
 import br.ufscar.pooa.cinema_api.application.dtos.response.UsuarioResponseDTO;

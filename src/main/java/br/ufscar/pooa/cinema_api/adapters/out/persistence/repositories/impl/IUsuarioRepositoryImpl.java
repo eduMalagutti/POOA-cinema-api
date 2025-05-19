@@ -1,8 +1,8 @@
-package br.ufscar.pooa.cinema_api.adapters.persistence.repositories.impl;
+package br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.impl;
 
-import br.ufscar.pooa.cinema_api.adapters.persistence.entities.UsuarioEntity;
-import br.ufscar.pooa.cinema_api.adapters.persistence.repositories.jpa.JpaUsuarioRepository;
-import br.ufscar.pooa.cinema_api.application.gateways.UsuarioRepository;
+import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.UsuarioEntity;
+import br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jpa.JpaUsuarioRepository;
+import br.ufscar.pooa.cinema_api.application.ports.out.IUsuarioRepository;
 import br.ufscar.pooa.cinema_api.domain.model.Usuario;
 import br.ufscar.pooa.cinema_api.application.mapper.ObjectMapper;
 import org.springframework.stereotype.Repository;
@@ -10,10 +10,10 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public class UsuarioRepositoryImpl implements UsuarioRepository {
+public class IUsuarioRepositoryImpl implements IUsuarioRepository {
     private final JpaUsuarioRepository jpaUsuarioRepository;
 
-    public UsuarioRepositoryImpl(JpaUsuarioRepository jpaUsuarioRepository) {
+    public IUsuarioRepositoryImpl(JpaUsuarioRepository jpaUsuarioRepository) {
         this.jpaUsuarioRepository = jpaUsuarioRepository;
     }
 

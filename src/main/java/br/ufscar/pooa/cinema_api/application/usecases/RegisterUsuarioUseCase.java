@@ -4,22 +4,23 @@ import br.ufscar.pooa.cinema_api.application.dtos.request.RegisterUsuarioRequest
 import br.ufscar.pooa.cinema_api.application.dtos.response.UsuarioResponseDTO;
 import br.ufscar.pooa.cinema_api.application.exceptions.ResourceAlreadyExistsException;
 import br.ufscar.pooa.cinema_api.application.mapper.ObjectMapper;
-import br.ufscar.pooa.cinema_api.application.gateways.UsuarioRepository;
+import br.ufscar.pooa.cinema_api.application.ports.in.IRegisterUsuarioUseCase;
+import br.ufscar.pooa.cinema_api.application.ports.out.IUsuarioRepository;
 import br.ufscar.pooa.cinema_api.domain.model.Usuario;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class RegisterUsuarioUseCase {
-    private final UsuarioRepository usuarioRepository;
+public class RegisterUsuarioUseCase implements IRegisterUsuarioUseCase {
+    private final IUsuarioRepository IUsuarioRepository;
 
-    public RegisterUsuarioUseCase(UsuarioRepository usuarioRepository) {
-        this.usuarioRepository = usuarioRepository;
+    public RegisterUsuarioUseCase(IUsuarioRepository IUsuarioRepository) {
+        this.IUsuarioRepository = IUsuarioRepository;
     }
 
     public UsuarioResponseDTO execute(RegisterUsuarioRequestDTO requestDTO) {
-        Optional<Usuario> usuarioEncontrado = usuarioRepository.findByEmail(requestDTO.email());
+        Optional<Usuario> usuarioEncontrado = IUsuarioRepository.findByEmail(requestDTO.email());
 
         if (usuarioEncontrado.isPresent()) {
             throw new ResourceAlreadyExistsException("Usuario", "email", requestDTO.email());
@@ -30,7 +31,7 @@ public class RegisterUsuarioUseCase {
         usuario.setEmail(requestDTO.email());
         usuario.setSenha(requestDTO.senha());
 
-        Usuario response = usuarioRepository.save(usuario);
+        Usuario response = IUsuarioRepository.save(usuario);
 
         return ObjectMapper.parseObject(response, UsuarioResponseDTO.class);
     }

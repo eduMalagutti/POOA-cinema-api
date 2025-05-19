@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.adapters.persistence.entities;
+package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
 import jakarta.persistence.*;
 
