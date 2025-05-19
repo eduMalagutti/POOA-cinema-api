@@ -4,7 +4,7 @@ import br.ufscar.pooa.cinema_api.application.dtos.request.RegisterUsuarioRequest
 import br.ufscar.pooa.cinema_api.application.dtos.response.UsuarioResponseDTO;
 import br.ufscar.pooa.cinema_api.application.exceptions.ResourceAlreadyExistsException;
 import br.ufscar.pooa.cinema_api.application.mapper.ObjectMapper;
-import br.ufscar.pooa.cinema_api.domain.interfaces.repositories.UsuarioRepository;
+import br.ufscar.pooa.cinema_api.application.gateways.UsuarioRepository;
 import br.ufscar.pooa.cinema_api.domain.model.Usuario;
 import org.springframework.stereotype.Service;
 

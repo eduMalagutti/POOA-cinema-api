@@ -1,10 +1,10 @@
-package br.ufscar.pooa.cinema_api.infrastructure.persistence.repositories.impl;
+package br.ufscar.pooa.cinema_api.adapters.persistence.repositories.impl;
 
-import br.ufscar.pooa.cinema_api.domain.interfaces.repositories.UsuarioRepository;
+import br.ufscar.pooa.cinema_api.adapters.persistence.entities.UsuarioEntity;
+import br.ufscar.pooa.cinema_api.adapters.persistence.repositories.jpa.JpaUsuarioRepository;
+import br.ufscar.pooa.cinema_api.application.gateways.UsuarioRepository;
 import br.ufscar.pooa.cinema_api.domain.model.Usuario;
-import br.ufscar.pooa.cinema_api.infrastructure.persistence.entities.UsuarioEntity;
 import br.ufscar.pooa.cinema_api.application.mapper.ObjectMapper;
-import br.ufscar.pooa.cinema_api.infrastructure.persistence.repositories.jpa.JpaUsuarioRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.domain.interfaces.repositories;
+package br.ufscar.pooa.cinema_api.application.gateways;
 
 import br.ufscar.pooa.cinema_api.domain.model.Usuario;
 

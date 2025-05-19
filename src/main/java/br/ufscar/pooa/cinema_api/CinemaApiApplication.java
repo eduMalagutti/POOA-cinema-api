@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 				"br.ufscar.pooa.cinema_api",
 				"br.ufscar.pooa.cinema_api.infrastructure",
 				"br.ufscar.pooa.cinema_api.application",
-				"br.ufscar.pooa.cinema_api.presentation"
+				"br.ufscar.pooa.cinema_api.adapters"
 		}
 )
 public class CinemaApiApplication {

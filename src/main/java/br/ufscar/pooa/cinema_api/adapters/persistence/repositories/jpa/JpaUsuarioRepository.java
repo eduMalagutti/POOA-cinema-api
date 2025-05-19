@@ -1,6 +1,6 @@
-package br.ufscar.pooa.cinema_api.infrastructure.persistence.repositories.jpa;
+package br.ufscar.pooa.cinema_api.adapters.persistence.repositories.jpa;
 
-import br.ufscar.pooa.cinema_api.infrastructure.persistence.entities.UsuarioEntity;
+import br.ufscar.pooa.cinema_api.adapters.persistence.entities.UsuarioEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
