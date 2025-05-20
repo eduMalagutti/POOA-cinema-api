@@ -79,7 +79,7 @@ API REST para gerenciamento de compra de ingressos em cinemas, desenvolvida com 
 
 ## 🧪 Testes
 
-Para executar os testes automatizados:([GitHub][5])
+Para executar os testes automatizados:
 
 ```bash
 mvn test
