@@ -10,14 +10,14 @@ API REST para gerenciamento de compra de ingressos em cinemas, desenvolvida com 
 
 * Arquitetura Hexagonal (Ports & Adapters)
 * Princípios SOLID
-* Padrões de projeto: Singleton, Injeção de Dependência (DI)
-* Uso extensivo de interfaces para desacoplamento([GitHub][1])
+* Padrões de projeto: Singleton, Injeção de Dependência e Inversão de Dependência
+* Uso extensivo de interfaces para desacoplamento
 
 ## 🚀 Tecnologias Utilizadas
 
 * Java 21
 * Apache Maven
-* Docker & Docker Compose (para o banco de dados)([GitHub][2])
+* Docker & Docker Compose (para o banco de dados)
 
 ## 🛠️ Como Executar o Projeto
 
@@ -25,7 +25,7 @@ API REST para gerenciamento de compra de ingressos em cinemas, desenvolvida com 
 
 * Java 21 instalado
 * Apache Maven instalado
-* Docker e Docker Compose instalados([GitHub][3], [GitHub][4])
+* Docker instalado
 
 ### Passos para execução
 
@@ -36,24 +36,17 @@ API REST para gerenciamento de compra de ingressos em cinemas, desenvolvida com 
    cd POOA-cinema-api
    ```
 
-
-
 2. Inicie o banco de dados com Docker Compose:
 
    ```bash
    docker-compose up -d
    ```
 
-
-
 3. Compile e execute a aplicação:
 
    ```bash
-   mvn clean install
    mvn spring-boot:run
    ```
-
-
 
 4. Acesse a API em:
 
