@@ -3,18 +3,10 @@ package br.ufscar.pooa.cinema_api;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(
-		scanBasePackages = {
-				"br.ufscar.pooa.cinema_api",
-				"br.ufscar.pooa.cinema_api.infrastructure",
-				"br.ufscar.pooa.cinema_api.application",
-				"br.ufscar.pooa.cinema_api.adapters"
-		}
-)
+@SpringBootApplication
 public class CinemaApiApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CinemaApiApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(CinemaApiApplication.class, args);
+    }
 }

@@ -31,8 +31,8 @@ public class RegisterUsuarioUseCase implements IRegisterUsuarioUseCase {
         usuario.setEmail(requestDTO.email());
         usuario.setSenha(requestDTO.senha());
 
-        Usuario response = IUsuarioRepository.save(usuario);
+        Usuario usuarioSalvo = IUsuarioRepository.save(usuario);
 
-        return ObjectMapper.parseObject(response, UsuarioResponseDTO.class);
+        return new UsuarioResponseDTO(usuarioSalvo.getId(), usuarioSalvo.getNome(), usuarioSalvo.getEmail(), usuarioSalvo.getSenha());
     }
 }
