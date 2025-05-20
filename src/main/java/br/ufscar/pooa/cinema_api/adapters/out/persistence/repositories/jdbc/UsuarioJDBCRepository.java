@@ -4,12 +4,58 @@ import br.ufscar.pooa.cinema_api.application.ports.out.IUsuarioRepository;
 import br.ufscar.pooa.cinema_api.domain.model.Usuario;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class UsuarioJDBCRepository implements IUsuarioRepository {
     @Override
     public Optional<Usuario> findById(Long id) {
+        String sql = "SELECT * FROM usuarios WHERE id = ?";
+
+        try (DatabaseConnection conn = DatabaseConnection.getInstance();
+             PreparedStatement stmt = conn.getConnection().prepareStatement(sql)) {
+
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setId(rs.getLong("id"));
+                usuario.setNome(rs.getString("nome"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setSenha(rs.getString("senha"));
+                return Optional.of(usuario);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao buscar usuário por ID", e);
+        }
+
         return Optional.empty();
+    }
+
+    @Override
+    public ArrayList<Usuario> list() {
+        String sql = "SELECT * FROM usuarios";
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+
+        try (DatabaseConnection conn = DatabaseConnection.getInstance();
+             Statement stmt = conn.getConnection().createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setId(rs.getLong("id"));
+                usuario.setNome(rs.getString("nome"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setSenha(rs.getString("senha"));
+                usuarios.add(usuario);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao listar usuários", e);
+        }
+
+        return usuarios;
     }
 
     @Override

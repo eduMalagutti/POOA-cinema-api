@@ -5,13 +5,23 @@ import br.ufscar.pooa.cinema_api.application.mapper.ObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.IUsuarioRepository;
 import br.ufscar.pooa.cinema_api.domain.model.Usuario;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class UsuarioJPaRepositoryAdapter implements IUsuarioRepository {
     private final UsuarioJpaRepository usuarioJpaRepository;
 
     public UsuarioJPaRepositoryAdapter(UsuarioJpaRepository usuarioJpaRepository) {
         this.usuarioJpaRepository = usuarioJpaRepository;
+    }
+
+    @Override
+    public List<Usuario> list() {
+        List<UsuarioEntity> entities = usuarioJpaRepository.findAll();
+        return entities.stream()
+                .map(entity -> ObjectMapper.parseObject(entity, Usuario.class))
+                .collect(Collectors.toList());
     }
 
     @Override
