@@ -1,5 +1,6 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
+import br.ufscar.pooa.cinema_api.domain.enums.Papel;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -26,13 +27,13 @@ public class UsuarioEntity implements Serializable {
     @Column(nullable = false)
     private String senha;
 
+//    @Column(nullable = false)
+//    @Enumerated(EnumType.ORDINAL)
+//    private Papel papel;
+
 //    @ManyToOne
 //    @JoinColumn(name = "cinema_id")
 //    private CinemaEntity cinema;
-
-//    @ManyToMany
-//    @JoinTable(name = "users_papeis", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "papel_id"))
-//    private Set<PapelEntity> papeis;
 
     public UsuarioEntity() {
     }

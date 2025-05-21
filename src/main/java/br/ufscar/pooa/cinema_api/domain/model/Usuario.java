@@ -3,7 +3,6 @@ package br.ufscar.pooa.cinema_api.domain.model;
 import br.ufscar.pooa.cinema_api.domain.enums.Papel;
 
 import java.util.Objects;
-import java.util.Set;
 
 public class Usuario {
     private Long id;
@@ -11,17 +10,17 @@ public class Usuario {
     private String email;
     private String senha;
     private Cinema cinema;
-    private Set<Papel> papeis;
+    private Papel papel;
 
     public Usuario() {
     }
 
-    public Usuario(String nome, String email, String senha, Cinema cinema, Set<Papel> papeis) {
+    public Usuario(String nome, String email, String senha, Cinema cinema, Papel papel) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.cinema = cinema;
-        this.papeis = papeis;
+        this.papel = papel;
     }
 
     public Long getId() {
@@ -64,12 +63,12 @@ public class Usuario {
         this.cinema = cinema;
     }
 
-    public Set<Papel> getPapeis() {
-        return papeis;
+    public Papel getPapel() {
+        return papel;
     }
 
-    public void setPapeis(Set<Papel> papeis) {
-        this.papeis = papeis;
+    public void setPapel(Papel papel) {
+        this.papel = papel;
     }
 
     @Override
@@ -80,7 +79,7 @@ public class Usuario {
                 ", email='" + email + '\'' +
                 ", senha='" + senha + '\'' +
                 ", cinema=" + cinema +
-                ", papeis=" + papeis +
+                ", papeis=" + papel +
                 '}';
     }
 
@@ -89,11 +88,11 @@ public class Usuario {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Usuario usuario = (Usuario) o;
-        return Objects.equals(getId(), usuario.getId()) && Objects.equals(getNome(), usuario.getNome()) && Objects.equals(getEmail(), usuario.getEmail()) && Objects.equals(getSenha(), usuario.getSenha()) && Objects.equals(getCinema(), usuario.getCinema()) && Objects.equals(getPapeis(), usuario.getPapeis());
+        return Objects.equals(getId(), usuario.getId()) && Objects.equals(getNome(), usuario.getNome()) && Objects.equals(getEmail(), usuario.getEmail()) && Objects.equals(getSenha(), usuario.getSenha()) && Objects.equals(getCinema(), usuario.getCinema()) && Objects.equals(getPapel(), usuario.getPapel());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getNome(), getEmail(), getSenha(), getCinema(), getPapeis());
+        return Objects.hash(getId(), getNome(), getEmail(), getSenha(), getCinema(), getPapel());
     }
 }

@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.application.mapper;
+package br.ufscar.pooa.cinema_api.adapters.out.persistence.mapper;
 
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;

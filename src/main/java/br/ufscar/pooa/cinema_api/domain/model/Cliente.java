@@ -22,8 +22,8 @@ public class Cliente extends Usuario {
                    Genero genero,
                    LocalDateTime dataNascimento,
                    List<Ingresso> ingressos,
-                   Set<Papel> papeis) {
-        super(nome, email, senha, cinema, papeis);
+                   Papel papel) {
+        super(nome, email, senha, cinema, papel);
         this.cpf = cpf;
         this.genero = genero;
         this.dataNascimento = dataNascimento;

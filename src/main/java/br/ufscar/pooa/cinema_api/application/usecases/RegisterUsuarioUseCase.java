@@ -3,7 +3,6 @@ package br.ufscar.pooa.cinema_api.application.usecases;
 import br.ufscar.pooa.cinema_api.application.dtos.request.RegisterUsuarioRequestDTO;
 import br.ufscar.pooa.cinema_api.application.dtos.response.UsuarioResponseDTO;
 import br.ufscar.pooa.cinema_api.application.exceptions.ResourceAlreadyExistsException;
-import br.ufscar.pooa.cinema_api.application.mapper.ObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.in.IRegisterUsuarioUseCase;
 import br.ufscar.pooa.cinema_api.application.ports.out.IUsuarioRepository;
 import br.ufscar.pooa.cinema_api.domain.model.Usuario;
