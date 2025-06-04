@@ -4,7 +4,7 @@ import br.ufscar.pooa.cinema_api.domain.enums.RoomType;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "room")
+@Table(name = "rooms")
 public class RoomEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

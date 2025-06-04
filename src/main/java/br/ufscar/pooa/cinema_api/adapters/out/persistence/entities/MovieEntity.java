@@ -37,7 +37,6 @@ public class MovieEntity {
 //    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    private List<MovieGenreEntity> movieGenres;
 
-
     public MovieEntity() {
     }
 

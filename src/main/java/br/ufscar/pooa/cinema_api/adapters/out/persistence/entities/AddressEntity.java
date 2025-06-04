@@ -3,7 +3,7 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "address")
+@Table(name = "addresses")
 public class AddressEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
