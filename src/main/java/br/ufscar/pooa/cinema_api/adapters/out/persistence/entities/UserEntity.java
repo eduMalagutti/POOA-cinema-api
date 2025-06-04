@@ -1,19 +1,14 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
-import br.ufscar.pooa.cinema_api.domain.enums.Papel;
+import br.ufscar.pooa.cinema_api.domain.enums.Role;
 import jakarta.persistence.*;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "usuarios")
-public class UsuarioEntity implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 1L;
-
+@Table(name = "users")
+@Inheritance(strategy = InheritanceType.JOINED)
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,47 +22,60 @@ public class UsuarioEntity implements Serializable {
     @Column(nullable = false)
     private String senha;
 
-//    @Column(nullable = false)
-//    @Enumerated(EnumType.ORDINAL)
-//    private Papel papel;
+    @Column(nullable = false)
+    @Enumerated(EnumType.ORDINAL)
+    private Role role;
 
 //    @ManyToOne
 //    @JoinColumn(name = "cinema_id")
 //    private CinemaEntity cinema;
 
-    public UsuarioEntity() {
+    public UserEntity() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public UserEntity setId(Long id) {
         this.id = id;
+        return this;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public UserEntity setNome(String nome) {
         this.nome = nome;
+        return this;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public UserEntity setEmail(String email) {
         this.email = email;
+        return this;
     }
 
     public String getSenha() {
         return senha;
     }
 
-    public void setSenha(String senha) {
+    public UserEntity setSenha(String senha) {
         this.senha = senha;
+        return this;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public UserEntity setRole(Role role) {
+        this.role = role;
+        return this;
     }
 
     @Override
@@ -84,7 +92,7 @@ public class UsuarioEntity implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UsuarioEntity that = (UsuarioEntity) o;
+        UserEntity that = (UserEntity) o;
         return Objects.equals(getId(), that.getId()) && Objects.equals(getNome(), that.getNome()) && Objects.equals(getEmail(), that.getEmail()) && Objects.equals(getSenha(), that.getSenha());
     }
 

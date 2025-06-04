@@ -1,19 +1,19 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jdbc;
 
-import br.ufscar.pooa.cinema_api.application.ports.out.IUsuarioRepository;
-import br.ufscar.pooa.cinema_api.domain.model.Usuario;
+import br.ufscar.pooa.cinema_api.application.ports.out.IUserRepository;
+import br.ufscar.pooa.cinema_api.domain.model.User;
 
 import java.sql.*;
 import java.util.Optional;
 
-public class UsuarioJDBCRepository implements IUsuarioRepository {
+public class UserJDBCRepository implements IUserRepository {
     @Override
-    public Optional<Usuario> findById(Long id) {
+    public Optional<User> findById(Long id) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<Usuario> findByEmail(String email) {
+    public Optional<User> findByEmail(String email) {
         String sql = "SELECT * FROM usuarios WHERE email = ?";
 
         try {
@@ -21,14 +21,14 @@ public class UsuarioJDBCRepository implements IUsuarioRepository {
             PreparedStatement statement = conn.getConnection().prepareStatement(sql);
 
             statement.setString(1, email);
-            Usuario usuario = new Usuario();
+            User usuario = new User();
 
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
                 usuario.setId(rs.getLong("id"));
-                usuario.setNome(rs.getString("nome"));
+                usuario.setName(rs.getString("nome"));
                 usuario.setEmail(rs.getString("email"));
-                usuario.setSenha(rs.getString("senha"));
+                usuario.setPassword(rs.getString("senha"));
             }
 
             rs.close();
@@ -46,7 +46,7 @@ public class UsuarioJDBCRepository implements IUsuarioRepository {
     }
 
     @Override
-    public Usuario save(Usuario usuario) {
+    public User save(User usuario) {
         String sql = """ 
                     INSERT INTO usuarios (nome, email, senha)
                     VALUES (?, ?, ?)
@@ -55,9 +55,9 @@ public class UsuarioJDBCRepository implements IUsuarioRepository {
         try (DatabaseConnection conn = DatabaseConnection.getInstance();
              PreparedStatement statement = conn.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         ) {
-            statement.setString(1, usuario.getNome());
+            statement.setString(1, usuario.getName());
             statement.setString(2, usuario.getEmail());
-            statement.setString(3, usuario.getSenha());
+            statement.setString(3, usuario.getPassword());
             statement.executeUpdate();
 
             try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
@@ -75,7 +75,7 @@ public class UsuarioJDBCRepository implements IUsuarioRepository {
     }
 
     @Override
-    public void delete(Usuario usuario) {
+    public void delete(User usuario) {
 
     }
 }

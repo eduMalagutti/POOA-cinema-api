@@ -1,7 +1,7 @@
 package br.ufscar.pooa.cinema_api.domain.enums;
 
-public enum Legenda {
-	LEGENDADO,
-	DUBLADO,
+public enum Subtitle {
+	SUBTITLED,
+	DUBBED,
 	ORIGINAL
 }
