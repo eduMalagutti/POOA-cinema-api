@@ -1,15 +1,16 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
+import br.ufscar.pooa.cinema_api.domain.enums.Role;
 import jakarta.persistence.*;
 
 import java.util.Objects;
 
 @Entity
 @Table(name = "users")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
@@ -21,9 +22,9 @@ public class UserEntity {
     @Column(nullable = false)
     private String senha;
 
-//    @Column(nullable = false)
-//    @Enumerated(EnumType.ORDINAL)
-//    private Papel papel;
+    @Column(nullable = false)
+    @Enumerated(EnumType.ORDINAL)
+    private Role role;
 
 //    @ManyToOne
 //    @JoinColumn(name = "cinema_id")
@@ -36,32 +37,45 @@ public class UserEntity {
         return id;
     }
 
-    public void setId(Long id) {
+    public UserEntity setId(Long id) {
         this.id = id;
+        return this;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public UserEntity setNome(String nome) {
         this.nome = nome;
+        return this;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public UserEntity setEmail(String email) {
         this.email = email;
+        return this;
     }
 
     public String getSenha() {
         return senha;
     }
 
-    public void setSenha(String senha) {
+    public UserEntity setSenha(String senha) {
         this.senha = senha;
+        return this;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public UserEntity setRole(Role role) {
+        this.role = role;
+        return this;
     }
 
     @Override
