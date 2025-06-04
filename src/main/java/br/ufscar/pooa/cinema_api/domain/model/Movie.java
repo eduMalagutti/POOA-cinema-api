@@ -12,15 +12,15 @@ public class Movie {
     private String coverUrl;
     private String trailerUrl;
     private Integer durationInSeconds;
-    private Theater cinema;
+    private Theater theater;
     private List<Session> sessions;
     private List<MovieGenre> movieGenres;
     private AgeRating ageRating;
 
-    public Movie(AgeRating ageRating, List<MovieGenre> movieGenres, Theater cinema, List<Session> sessions, Integer durationInSeconds, String trailerUrl, String coverUrl, String synopsis, String title) {
+    public Movie(AgeRating ageRating, List<MovieGenre> movieGenres, Theater theater, List<Session> sessions, Integer durationInSeconds, String trailerUrl, String coverUrl, String synopsis, String title) {
         this.ageRating = ageRating;
         this.movieGenres = movieGenres;
-        this.cinema = cinema;
+        this.theater = theater;
         this.sessions = sessions;
         this.durationInSeconds = durationInSeconds;
         this.trailerUrl = trailerUrl;
@@ -90,11 +90,11 @@ public class Movie {
     }
 
     public Theater getTheater() {
-        return cinema;
+        return theater;
     }
 
     public void setTheater(Theater cinema) {
-        this.cinema = cinema;
+        this.theater = cinema;
     }
 
     public List<MovieGenre> getMovieGenres() {

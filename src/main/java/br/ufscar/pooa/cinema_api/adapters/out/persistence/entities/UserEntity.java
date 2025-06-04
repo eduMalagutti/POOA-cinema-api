@@ -14,13 +14,13 @@ public class UserEntity {
     private Long id;
 
     @Column(nullable = false)
-    private String nome;
+    private String name;
 
     @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
-    private String senha;
+    private String password;
 
     @Column(nullable = false)
     @Enumerated(EnumType.ORDINAL)
@@ -42,12 +42,12 @@ public class UserEntity {
         return this;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public UserEntity setNome(String nome) {
-        this.nome = nome;
+    public UserEntity setName(String nome) {
+        this.name = nome;
         return this;
     }
 
@@ -60,12 +60,12 @@ public class UserEntity {
         return this;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getPassword() {
+        return password;
     }
 
-    public UserEntity setSenha(String senha) {
-        this.senha = senha;
+    public UserEntity setPassword(String senha) {
+        this.password = senha;
         return this;
     }
 
@@ -82,9 +82,9 @@ public class UserEntity {
     public String toString() {
         return "UsuarioEntity{" +
                 "id=" + id +
-                ", nome='" + nome + '\'' +
+                ", nome='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", senha='" + senha + '\'' +
+                ", senha='" + password + '\'' +
                 '}';
     }
 
@@ -93,11 +93,11 @@ public class UserEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserEntity that = (UserEntity) o;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getNome(), that.getNome()) && Objects.equals(getEmail(), that.getEmail()) && Objects.equals(getSenha(), that.getSenha());
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && Objects.equals(getEmail(), that.getEmail()) && Objects.equals(getPassword(), that.getPassword());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getNome(), getEmail(), getSenha());
+        return Objects.hash(getId(), getName(), getEmail(), getPassword());
     }
 }

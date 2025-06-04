@@ -4,6 +4,7 @@ import br.ufscar.pooa.cinema_api.domain.enums.Format;
 import br.ufscar.pooa.cinema_api.domain.enums.Subtitle;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 public class Session {
@@ -14,9 +15,9 @@ public class Session {
     private Integer priceInCents;
     private Room room;
     private Movie movie;
-    private Collection<Ticket> tickets;
+    private List<Ticket> tickets;
 
-    public Session(Format format, Integer date, Subtitle subtitle, Integer priceInCents, Room room, Movie movie, Collection<Ticket> tickets) {
+    public Session(Format format, Integer date, Subtitle subtitle, Integer priceInCents, Room room, Movie movie, List<Ticket> tickets) {
         this.format = format;
         this.date = date;
         this.subtitle = subtitle;
@@ -86,11 +87,11 @@ public class Session {
         this.movie = movie;
     }
 
-    public Collection<Ticket> getTickets() {
+    public List<Ticket> getTickets() {
         return tickets;
     }
 
-    public void setTickets(Collection<Ticket> tickets) {
+    public void setTickets(List<Ticket> tickets) {
         this.tickets = tickets;
     }
 
