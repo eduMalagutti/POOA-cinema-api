@@ -1,22 +1,22 @@
 package br.ufscar.pooa.cinema_api;
 
-import br.ufscar.pooa.cinema_api.adapters.in.presentation.controllers.UsuarioController;
-import br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jdbc.UsuarioJDBCRepository;
-import br.ufscar.pooa.cinema_api.application.dtos.request.RegisterUsuarioRequestDTO;
-import br.ufscar.pooa.cinema_api.application.ports.in.IRegisterUsuarioUseCase;
-import br.ufscar.pooa.cinema_api.application.ports.out.IUsuarioRepository;
-import br.ufscar.pooa.cinema_api.application.usecases.RegisterUsuarioUseCase;
+import br.ufscar.pooa.cinema_api.adapters.in.presentation.controllers.UserController;
+import br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jdbc.UserJDBCRepository;
+import br.ufscar.pooa.cinema_api.application.dtos.request.RegisterUserRequestDTO;
+import br.ufscar.pooa.cinema_api.application.ports.in.IRegisterUserUseCase;
+import br.ufscar.pooa.cinema_api.application.ports.out.IUserRepository;
+import br.ufscar.pooa.cinema_api.application.usecases.RegisterUserUseCase;
 
 public class CustomMain {
     public static void main(String[] args) {
-        IUsuarioRepository repository = new UsuarioJDBCRepository();
+        IUserRepository repository = new UserJDBCRepository();
 
-        IRegisterUsuarioUseCase useCase = new RegisterUsuarioUseCase(repository);
+        IRegisterUserUseCase useCase = new RegisterUserUseCase(repository);
 
-        UsuarioController controller = new UsuarioController(useCase);
+        UserController controller = new UserController(useCase);
 
         var response = controller.register(
-                new RegisterUsuarioRequestDTO("Joe Doe", "joe@example.com", "password123")
+                new RegisterUserRequestDTO("Joe Doe", "joe@example.com", "password123")
         );
 
         System.out.println(response);

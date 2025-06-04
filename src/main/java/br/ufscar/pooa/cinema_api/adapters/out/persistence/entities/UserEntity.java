@@ -1,21 +1,15 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
-import br.ufscar.pooa.cinema_api.domain.enums.Papel;
 import jakarta.persistence.*;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "usuarios")
-public class UsuarioEntity implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 1L;
-
+@Table(name = "users")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class UserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(nullable = false)
@@ -35,7 +29,7 @@ public class UsuarioEntity implements Serializable {
 //    @JoinColumn(name = "cinema_id")
 //    private CinemaEntity cinema;
 
-    public UsuarioEntity() {
+    public UserEntity() {
     }
 
     public Long getId() {
@@ -84,7 +78,7 @@ public class UsuarioEntity implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UsuarioEntity that = (UsuarioEntity) o;
+        UserEntity that = (UserEntity) o;
         return Objects.equals(getId(), that.getId()) && Objects.equals(getNome(), that.getNome()) && Objects.equals(getEmail(), that.getEmail()) && Objects.equals(getSenha(), that.getSenha());
     }
 

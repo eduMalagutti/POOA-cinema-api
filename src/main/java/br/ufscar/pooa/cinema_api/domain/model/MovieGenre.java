@@ -3,15 +3,15 @@ package br.ufscar.pooa.cinema_api.domain.model;
 import java.util.List;
 import java.util.Objects;
 
-public class GeneroFilme {
+public class MovieGenre {
 	private Integer id;
 	private String name;
-	private List<Filme> filmes;
+	private List<Movie> movies;
 
-	public GeneroFilme(Integer id, String name, List<Filme> filmes) {
+	public MovieGenre(Integer id, String name, List<Movie> movies) {
 		this.id = id;
 		this.name = name;
-		this.filmes = filmes;
+		this.movies = movies;
 	}
 
 	public Integer getId() {
@@ -30,23 +30,23 @@ public class GeneroFilme {
 		this.name = name;
 	}
 
-	public List<Filme> getFilmes() {
-		return filmes;
+	public List<Movie> getMovies() {
+		return movies;
 	}
 
-	public void setFilmes(List<Filme> filmes) {
-		this.filmes = filmes;
+	public void setMovies(List<Movie> movies) {
+		this.movies = movies;
 	}
 
 	@Override
 	public boolean equals(Object o) {
 		if (o == null || getClass() != o.getClass()) return false;
-		GeneroFilme generoFilme = (GeneroFilme) o;
-		return Objects.equals(id, generoFilme.id) && Objects.equals(name, generoFilme.name) && Objects.equals(filmes, generoFilme.filmes);
+		MovieGenre movieGenre = (MovieGenre) o;
+		return Objects.equals(id, movieGenre.id) && Objects.equals(name, movieGenre.name) && Objects.equals(movies, movieGenre.movies);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name, filmes);
+		return Objects.hash(id, name, movies);
 	}
 }
