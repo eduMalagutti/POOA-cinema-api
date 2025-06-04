@@ -3,6 +3,8 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 import br.ufscar.pooa.cinema_api.domain.enums.AgeRating;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "movies")
 public class MovieEntity {
@@ -31,8 +33,8 @@ public class MovieEntity {
     @ManyToOne
     private TheaterEntity theater;
 
-//    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<SessionEntity> sessions;
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<SessionEntity> sessions;
 
 //    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    private List<MovieGenreEntity> movieGenres;

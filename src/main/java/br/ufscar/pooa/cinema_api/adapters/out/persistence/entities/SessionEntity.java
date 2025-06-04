@@ -4,6 +4,8 @@ import br.ufscar.pooa.cinema_api.domain.enums.Format;
 import br.ufscar.pooa.cinema_api.domain.enums.Subtitle;
 import jakarta.persistence.*;
 
+@Entity
+@Table(name = "sessions")
 public class SessionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -3,6 +3,8 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 import br.ufscar.pooa.cinema_api.domain.enums.RoomType;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "rooms")
 public class RoomEntity {
@@ -20,6 +22,12 @@ public class RoomEntity {
     @ManyToOne
     @JoinColumn(name = "theater_id", nullable = false)
     private TheaterEntity theater;
+
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<RowEntity> rows;
+
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<SessionEntity> sessions;
 
     public RoomEntity() {
     }
