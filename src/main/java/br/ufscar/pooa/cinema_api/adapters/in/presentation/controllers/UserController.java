@@ -14,16 +14,15 @@ import java.net.URI;
 @RestController
 @RequestMapping("/users")
 public class UserController {
+    private final IRegisterUserUseCase registerUserUseCase;
 
-    private final IRegisterUserUseCase registerUsuarioUseCase;
-
-    public UserController(IRegisterUserUseCase registerUsuarioUseCase) {
-        this.registerUsuarioUseCase = registerUsuarioUseCase;
+    public UserController(IRegisterUserUseCase registerUserUseCase) {
+        this.registerUserUseCase = registerUserUseCase;
     }
 
     @PostMapping
     public ResponseEntity<UserResponseDTO> register(@RequestBody RegisterUserRequestDTO registerRequestBody) {
-        var responseDTO = registerUsuarioUseCase.execute(registerRequestBody);
+        var responseDTO = registerUserUseCase.execute(registerRequestBody);
 
         URI uri = URI.create("/users/" + responseDTO.id());
 
