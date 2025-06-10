@@ -4,6 +4,7 @@ import br.ufscar.pooa.cinema_api.domain.enums.AgeRating;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class Movie {
     private Long id;
@@ -14,12 +15,12 @@ public class Movie {
     private Integer durationInSeconds;
     private Theater theater;
     private List<Session> sessions;
-    private List<MovieGenre> movieGenres;
+    private Set<Genre> genres;
     private AgeRating ageRating;
 
-    public Movie(AgeRating ageRating, List<MovieGenre> movieGenres, Theater theater, List<Session> sessions, Integer durationInSeconds, String trailerUrl, String coverUrl, String synopsis, String title) {
+    public Movie(AgeRating ageRating, Set<Genre> genres, Theater theater, List<Session> sessions, Integer durationInSeconds, String trailerUrl, String coverUrl, String synopsis, String title) {
         this.ageRating = ageRating;
-        this.movieGenres = movieGenres;
+        this.genres = genres;
         this.theater = theater;
         this.sessions = sessions;
         this.durationInSeconds = durationInSeconds;
@@ -97,12 +98,12 @@ public class Movie {
         this.theater = cinema;
     }
 
-    public List<MovieGenre> getMovieGenres() {
-        return movieGenres;
+    public Set<Genre> getMovieGenres() {
+        return genres;
     }
 
-    public void setMovieGenres(List<MovieGenre> movieGenres) {
-        this.movieGenres = movieGenres;
+    public void setMovieGenres(Set<Genre> genres) {
+        this.genres = genres;
     }
 
     public AgeRating getAgeRating() {

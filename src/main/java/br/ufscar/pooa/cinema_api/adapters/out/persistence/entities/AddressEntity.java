@@ -2,15 +2,17 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "addresses")
 public class AddressEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne(mappedBy = "address")
-    @JoinColumn(name="theaterId", nullable = false, unique = true)
     private TheaterEntity theater;
 
     @Column(nullable = false)
@@ -103,11 +105,15 @@ public class AddressEntity {
         this.complement = complement;
     }
 
-    public Long getId() {
-        return id;
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        AddressEntity that = (AddressEntity) o;
+        return Objects.equals(id, that.id) && Objects.equals(theater, that.theater) && Objects.equals(getState(), that.getState()) && Objects.equals(getCountry(), that.getCountry()) && Objects.equals(getCity(), that.getCity()) && Objects.equals(getZipCode(), that.getZipCode()) && Objects.equals(getNeighborhood(), that.getNeighborhood()) && Objects.equals(getStreet(), that.getStreet()) && Objects.equals(getNumber(), that.getNumber()) && Objects.equals(getComplement(), that.getComplement());
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, theater, getState(), getCountry(), getCity(), getZipCode(), getNeighborhood(), getStreet(), getNumber(), getComplement());
     }
 }

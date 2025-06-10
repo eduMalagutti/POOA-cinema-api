@@ -4,6 +4,7 @@ import br.ufscar.pooa.cinema_api.domain.enums.RoomType;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "rooms")
@@ -16,17 +17,17 @@ public class RoomEntity {
     private String name;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "room_type", nullable = false)
+    @Column(nullable = false)
     private RoomType roomType;
 
     @ManyToOne
     @JoinColumn(name = "theater_id", nullable = false)
     private TheaterEntity theater;
 
-    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
     private List<RowEntity> rows;
 
-    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
     private List<SessionEntity> sessions;
 
     public RoomEntity() {
@@ -66,5 +67,17 @@ public class RoomEntity {
     public RoomEntity setTheater(TheaterEntity theater) {
         this.theater = theater;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        RoomEntity that = (RoomEntity) o;
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && getRoomType() == that.getRoomType() && Objects.equals(getTheater(), that.getTheater()) && Objects.equals(rows, that.rows) && Objects.equals(sessions, that.sessions);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getRoomType(), getTheater(), rows, sessions);
     }
 }

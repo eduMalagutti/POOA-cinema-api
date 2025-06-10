@@ -26,9 +26,9 @@ public class UserEntity {
     @Enumerated(EnumType.ORDINAL)
     private Role role;
 
-//    @ManyToOne
-//    @JoinColumn(name = "cinema_id")
-//    private CinemaEntity cinema;
+    @ManyToOne
+    @JoinColumn(name = "theater_id")
+    private TheaterEntity theater;
 
     public UserEntity() {
     }
@@ -78,26 +78,24 @@ public class UserEntity {
         return this;
     }
 
-    @Override
-    public String toString() {
-        return "UsuarioEntity{" +
-                "id=" + id +
-                ", nome='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", senha='" + password + '\'' +
-                '}';
+    public TheaterEntity getTheater() {
+        return theater;
+    }
+
+    public UserEntity setTheater(TheaterEntity theater) {
+        this.theater = theater;
+        return this;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserEntity that = (UserEntity) o;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && Objects.equals(getEmail(), that.getEmail()) && Objects.equals(getPassword(), that.getPassword());
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && Objects.equals(getEmail(), that.getEmail()) && Objects.equals(getPassword(), that.getPassword()) && getRole() == that.getRole();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getEmail(), getPassword());
+        return Objects.hash(getId(), getName(), getEmail(), getPassword(), getRole());
     }
 }

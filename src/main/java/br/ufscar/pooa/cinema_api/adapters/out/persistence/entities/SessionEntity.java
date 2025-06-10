@@ -4,6 +4,9 @@ import br.ufscar.pooa.cinema_api.domain.enums.Format;
 import br.ufscar.pooa.cinema_api.domain.enums.Subtitle;
 import jakarta.persistence.*;
 
+import java.util.List;
+import java.util.Objects;
+
 @Entity
 @Table(name = "sessions")
 public class SessionEntity {
@@ -12,16 +15,16 @@ public class SessionEntity {
     private Long id;
 
     @Column
-    private Format format;
-
-    @Column
     private Integer date;
 
     @Column
-    private Subtitle subtitle;
+    private Integer priceInCents;
 
     @Column
-    private Integer priceInCents;
+    private Format format;
+
+    @Column
+    private Subtitle subtitle;
 
     @ManyToOne
     @JoinColumn(name = "room_id", nullable = false)
@@ -31,8 +34,8 @@ public class SessionEntity {
     @JoinColumn(name = "movie_id", nullable = false)
     private MovieEntity movie;
 
-//    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<TicketEntity> tickets;
+    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL)
+    private List<TicketEntity> tickets;
 
     public SessionEntity() {
     }
@@ -98,5 +101,17 @@ public class SessionEntity {
     public SessionEntity setMovie(MovieEntity movie) {
         this.movie = movie;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        SessionEntity that = (SessionEntity) o;
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getDate(), that.getDate()) && Objects.equals(getPriceInCents(), that.getPriceInCents()) && getFormat() == that.getFormat() && getSubtitle() == that.getSubtitle() && Objects.equals(getRoom(), that.getRoom()) && Objects.equals(getMovie(), that.getMovie()) && Objects.equals(tickets, that.tickets);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getDate(), getPriceInCents(), getFormat(), getSubtitle(), getRoom(), getMovie(), tickets);
     }
 }

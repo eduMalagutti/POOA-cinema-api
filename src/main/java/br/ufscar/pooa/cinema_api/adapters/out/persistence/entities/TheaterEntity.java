@@ -1,7 +1,9 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
 import jakarta.persistence.*;
-import java.util.List;
+
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "theaters")
@@ -17,21 +19,18 @@ public class TheaterEntity {
     @Column
     private String logoUrl;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", unique = true)
     private AddressEntity address;
 
-    @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "room_id", referencedColumnName = "id")
-    private List<RoomEntity> rooms;
+    @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
+    private Set<RoomEntity> rooms;
 
-    @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name="managers_id", referencedColumnName = "id")
-    private List<UserEntity> managers;
+    @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
+    private Set<UserEntity> managers;
 
-    @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "movies", referencedColumnName = "id")
-    private List<MovieEntity> movies;
+    @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
+    private Set<MovieEntity> movies;
 
     public Long getId() {
         return id;
@@ -65,27 +64,42 @@ public class TheaterEntity {
         this.address = address;
     }
 
-    public List<RoomEntity> getRooms() {
+    public Set<RoomEntity> getRooms() {
         return rooms;
     }
 
-    public void setRooms(List<RoomEntity> rooms) {
+    public TheaterEntity setRooms(Set<RoomEntity> rooms) {
         this.rooms = rooms;
+        return this;
     }
 
-    public List<UserEntity> getManagers() {
+    public Set<UserEntity> getManagers() {
         return managers;
     }
 
-    public void setManagers(List<UserEntity> managers) {
+    public TheaterEntity setManagers(Set<UserEntity> managers) {
         this.managers = managers;
+        return this;
     }
 
-    public List<MovieEntity> getMovies() {
+    public Set<MovieEntity> getMovies() {
         return movies;
     }
 
-    public void setMovies(List<MovieEntity> movies) {
+    public TheaterEntity setMovies(Set<MovieEntity> movies) {
         this.movies = movies;
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        TheaterEntity that = (TheaterEntity) o;
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && Objects.equals(getLogoUrl(), that.getLogoUrl()) && Objects.equals(getAddress(), that.getAddress()) && Objects.equals(getRooms(), that.getRooms()) && Objects.equals(getManagers(), that.getManagers()) && Objects.equals(getMovies(), that.getMovies());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getLogoUrl(), getAddress(), getRooms(), getManagers(), getMovies());
     }
 }

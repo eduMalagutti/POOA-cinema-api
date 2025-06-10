@@ -4,6 +4,8 @@ import br.ufscar.pooa.cinema_api.domain.enums.AgeRating;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "movies")
@@ -33,11 +35,16 @@ public class MovieEntity {
     @ManyToOne
     private TheaterEntity theater;
 
-    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
     private List<SessionEntity> sessions;
 
-//    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<MovieGenreEntity> movieGenres;
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @JoinTable(
+            name = "movie_genres",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
+    private Set<GenreEntity> genres;
 
     public MovieEntity() {
     }
@@ -112,5 +119,17 @@ public class MovieEntity {
     public MovieEntity setTheater(TheaterEntity theater) {
         this.theater = theater;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        MovieEntity that = (MovieEntity) o;
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getTitle(), that.getTitle()) && Objects.equals(getSynopsis(), that.getSynopsis()) && Objects.equals(getCoverUrl(), that.getCoverUrl()) && Objects.equals(getTrailerUrl(), that.getTrailerUrl()) && Objects.equals(getDurationInSeconds(), that.getDurationInSeconds()) && getAgeRating() == that.getAgeRating() && Objects.equals(getTheater(), that.getTheater()) && Objects.equals(sessions, that.sessions) && Objects.equals(genres, that.genres);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getTitle(), getSynopsis(), getCoverUrl(), getTrailerUrl(), getDurationInSeconds(), getAgeRating(), getTheater(), sessions, genres);
     }
 }

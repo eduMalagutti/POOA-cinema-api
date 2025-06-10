@@ -3,6 +3,9 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 import br.ufscar.pooa.cinema_api.domain.enums.SeatType;
 import jakarta.persistence.*;
 
+import java.util.List;
+import java.util.Objects;
+
 @Entity
 @Table(name = "seats")
 public class SeatEntity {
@@ -17,12 +20,12 @@ public class SeatEntity {
     @Enumerated(EnumType.STRING)
     private SeatType seatType;
 
-//    @ManyToOne
-//    @JoinColumn(name = "row_id", nullable = false)
-//    private RowEntity row;
+    @ManyToOne
+    @JoinColumn(name = "row_id", nullable = false)
+    private RowEntity row;
 
-//    @OneToMany(mappedBy = "seat", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<Ticket> tickets;
+    @OneToMany(mappedBy = "seat", cascade = CascadeType.ALL)
+    private List<TicketEntity> tickets;
 
     public SeatEntity() {
     }
@@ -52,5 +55,17 @@ public class SeatEntity {
     public SeatEntity setSeatType(SeatType seatType) {
         this.seatType = seatType;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        SeatEntity that = (SeatEntity) o;
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getNumber(), that.getNumber()) && getSeatType() == that.getSeatType() && Objects.equals(row, that.row) && Objects.equals(tickets, that.tickets);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getNumber(), getSeatType(), row, tickets);
     }
 }

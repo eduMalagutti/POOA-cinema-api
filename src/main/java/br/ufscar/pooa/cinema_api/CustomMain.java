@@ -5,7 +5,7 @@ import br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jdbc.User
 import br.ufscar.pooa.cinema_api.application.dtos.request.RegisterUserRequestDTO;
 import br.ufscar.pooa.cinema_api.application.ports.in.IRegisterUserUseCase;
 import br.ufscar.pooa.cinema_api.application.ports.out.IUserRepository;
-import br.ufscar.pooa.cinema_api.application.usecases.RegisterUserUseCase;
+import br.ufscar.pooa.cinema_api.application.useCases.RegisterUserUseCase;
 
 public class CustomMain {
     public static void main(String[] args) {

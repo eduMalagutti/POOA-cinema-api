@@ -14,6 +14,7 @@ import java.net.URI;
 @RestController
 @RequestMapping("/users")
 public class UserController {
+
     private final IRegisterUserUseCase registerUsuarioUseCase;
 
     public UserController(IRegisterUserUseCase registerUsuarioUseCase) {
