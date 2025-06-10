@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.application.usecases;
+package br.ufscar.pooa.cinema_api.application.useCases;
 
 import br.ufscar.pooa.cinema_api.application.dtos.request.RegisterUserRequestDTO;
 import br.ufscar.pooa.cinema_api.application.dtos.response.UserResponseDTO;

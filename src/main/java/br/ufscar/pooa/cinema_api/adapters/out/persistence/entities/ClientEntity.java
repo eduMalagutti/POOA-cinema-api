@@ -1,9 +1,11 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
 import br.ufscar.pooa.cinema_api.domain.enums.Gender;
+import br.ufscar.pooa.cinema_api.domain.model.Ticket;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -19,6 +21,9 @@ public class ClientEntity extends UserEntity {
 
     @Column
     private LocalDate birthDate;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<TicketEntity> tickets;
 
     public ClientEntity() {
     }

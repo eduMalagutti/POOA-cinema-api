@@ -1,14 +1,14 @@
 package br.ufscar.pooa.cinema_api.domain.model;
 
-import java.util.List;
+import java.util.Set;
 import java.util.Objects;
 
-public class MovieGenre {
+public class Genre {
 	private Integer id;
 	private String name;
-	private List<Movie> movies;
+	private Set<Movie> movies;
 
-	public MovieGenre(Integer id, String name, List<Movie> movies) {
+	public Genre(Integer id, String name, Set<Movie> movies) {
 		this.id = id;
 		this.name = name;
 		this.movies = movies;
@@ -30,19 +30,19 @@ public class MovieGenre {
 		this.name = name;
 	}
 
-	public List<Movie> getMovies() {
+	public Set<Movie> getMovies() {
 		return movies;
 	}
 
-	public void setMovies(List<Movie> movies) {
+	public void setMovies(Set<Movie> movies) {
 		this.movies = movies;
 	}
 
 	@Override
 	public boolean equals(Object o) {
 		if (o == null || getClass() != o.getClass()) return false;
-		MovieGenre movieGenre = (MovieGenre) o;
-		return Objects.equals(id, movieGenre.id) && Objects.equals(name, movieGenre.name) && Objects.equals(movies, movieGenre.movies);
+		Genre genre = (Genre) o;
+		return Objects.equals(id, genre.id) && Objects.equals(name, genre.name) && Objects.equals(movies, genre.movies);
 	}
 
 	@Override

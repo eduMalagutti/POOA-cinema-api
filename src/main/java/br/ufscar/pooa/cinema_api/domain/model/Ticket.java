@@ -2,19 +2,21 @@ package br.ufscar.pooa.cinema_api.domain.model;
 
 import br.ufscar.pooa.cinema_api.domain.enums.PaymentMethod;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class Ticket {
 	private Long id;
-	private Integer paymentDate;
+	private Instant paymentDate;
 	private Integer priceInCents;
 	private Session session;
 	private Client client;
 	private Seat seat;
-	private List<PaymentMethod> paymentMethods;
+	private Set<PaymentMethod> paymentMethods;
 
-	public Ticket(Integer paymentDate, Integer priceInCents, Session session, Client client, Seat seat, List<PaymentMethod> paymentMethods) {
+	public Ticket(Instant paymentDate, Integer priceInCents, Session session, Client client, Seat seat, Set<PaymentMethod> paymentMethods) {
 		this.paymentDate = paymentDate;
 		this.priceInCents = priceInCents;
 		this.session = session;
@@ -31,11 +33,11 @@ public class Ticket {
 		this.id = id;
 	}
 
-	public Integer getPaymentDate() {
+	public Instant getPaymentDate() {
 		return paymentDate;
 	}
 
-	public void setPaymentDate(Integer paymentDate) {
+	public void setPaymentDate(Instant paymentDate) {
 		this.paymentDate = paymentDate;
 	}
 
@@ -71,11 +73,11 @@ public class Ticket {
 		this.seat = seat;
 	}
 
-	public List<PaymentMethod> getPaymentMethods() {
+	public Set<PaymentMethod> getPaymentMethods() {
 		return paymentMethods;
 	}
 
-	public void setPaymentMethods(List<PaymentMethod> paymentMethods) {
+	public void setPaymentMethods(Set<PaymentMethod> paymentMethods) {
 		this.paymentMethods = paymentMethods;
 	}
 
