@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.application.useCases;
+package br.ufscar.pooa.cinema_api.application.usecases;
 
 import br.ufscar.pooa.cinema_api.application.dtos.request.RegisterUserRequestDTO;
 import br.ufscar.pooa.cinema_api.application.dtos.response.UserResponseDTO;
@@ -12,14 +12,14 @@ import java.util.Optional;
 
 @Service
 public class RegisterUserUseCase implements IRegisterUserUseCase {
-    private final IUserRepository IUserRepository;
+    private final IUserRepository userRepository;
 
-    public RegisterUserUseCase(IUserRepository IUserRepository) {
-        this.IUserRepository = IUserRepository;
+    public RegisterUserUseCase(IUserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     public UserResponseDTO execute(RegisterUserRequestDTO requestDTO) {
-        Optional<User> usuarioEncontrado = IUserRepository.findByEmail(requestDTO.email());
+        Optional<User> usuarioEncontrado = userRepository.findByEmail(requestDTO.email());
 
         if (usuarioEncontrado.isPresent()) {
             throw new ResourceAlreadyExistsException("User", "email", requestDTO.email());
@@ -30,7 +30,7 @@ public class RegisterUserUseCase implements IRegisterUserUseCase {
         usuario.setEmail(requestDTO.email());
         usuario.setPassword(requestDTO.senha());
 
-        User usuarioSalvo = IUserRepository.save(usuario);
+        User usuarioSalvo = userRepository.save(usuario);
 
         return new UserResponseDTO(usuarioSalvo.getId(), usuarioSalvo.getName(), usuarioSalvo.getEmail(), usuarioSalvo.getPassword());
     }

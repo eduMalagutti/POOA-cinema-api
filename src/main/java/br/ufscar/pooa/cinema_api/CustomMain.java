@@ -5,9 +5,13 @@ import br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jdbc.User
 import br.ufscar.pooa.cinema_api.application.dtos.request.RegisterUserRequestDTO;
 import br.ufscar.pooa.cinema_api.application.ports.in.IRegisterUserUseCase;
 import br.ufscar.pooa.cinema_api.application.ports.out.IUserRepository;
-import br.ufscar.pooa.cinema_api.application.useCases.RegisterUserUseCase;
+import br.ufscar.pooa.cinema_api.application.usecases.RegisterUserUseCase;
+
+import java.util.logging.Logger;
 
 public class CustomMain {
+    private static final Logger logger = Logger.getLogger(CustomMain.class.getName());
+
     public static void main(String[] args) {
         IUserRepository repository = new UserJDBCRepository();
 
@@ -19,6 +23,6 @@ public class CustomMain {
                 new RegisterUserRequestDTO("Joe Doe", "joe@example.com", "password123")
         );
 
-        System.out.println(response);
+        logger.info(response.toString());
     }
 }

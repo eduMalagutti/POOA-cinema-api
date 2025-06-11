@@ -5,18 +5,18 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection implements AutoCloseable {
-    private static volatile DatabaseConnection instance = null;
+    private static DatabaseConnection instance = null;
     private Connection connection;
 
-    private final String url = "jdbc:postgresql://localhost:5432/cinema-db";
-    private final String user = "root";
-    private final String password = "root";
+    private static final String URL = "jdbc:postgresql://localhost:5432/cinema-db";
+    private static final String USER = "root";
+    private static final String PASSWORD = "root";
 
     private DatabaseConnection() throws SQLException {
-        this.connection = DriverManager.getConnection(url, user, password);
+        this.connection = DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
-    public synchronized static DatabaseConnection getInstance() throws SQLException {
+    public static synchronized DatabaseConnection getInstance() throws SQLException {
         if (instance == null) {
             instance = new DatabaseConnection();
         }
@@ -25,7 +25,7 @@ public class DatabaseConnection implements AutoCloseable {
 
     public Connection getConnection() throws SQLException {
         if (connection.isClosed()) {
-            connection = DriverManager.getConnection(url, user, password);
+            connection = DriverManager.getConnection(URL, USER, PASSWORD);
         }
         return connection;
     }
