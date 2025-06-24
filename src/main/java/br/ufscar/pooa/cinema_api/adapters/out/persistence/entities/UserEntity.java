@@ -1,27 +1,36 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
 import br.ufscar.pooa.cinema_api.domain.enums.Role;
+import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.annotation.PFColumn;
+import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.annotation.PFEntity;
+import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.annotation.PFId;
 import jakarta.persistence.*;
 
 import java.util.Objects;
 
+@PFEntity(tableName = "users")
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class UserEntity {
+    @PFId
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @PFColumn(name = "name")
     @Column(nullable = false)
     private String name;
 
+    @PFColumn(name = "email")
     @Column(nullable = false, unique = true)
     private String email;
 
+    @PFColumn(name = "password")
     @Column(nullable = false)
     private String password;
 
+    @PFColumn(name = "role")
     @Column(nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private Role role;

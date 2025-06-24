@@ -8,17 +8,17 @@ import br.ufscar.pooa.cinema_api.domain.model.User;
 import java.util.Optional;
 
 public class UserJPaRepositoryAdapter implements IUserRepository {
-    private final UserJpaRepository userJpaRepository;
+    private final IUserJpaRepository IUserJpaRepository;
 
-    public UserJPaRepositoryAdapter(UserJpaRepository userJpaRepository) {
-        this.userJpaRepository = userJpaRepository;
+    public UserJPaRepositoryAdapter(IUserJpaRepository IUserJpaRepository) {
+        this.IUserJpaRepository = IUserJpaRepository;
     }
 
     @Override
     public Optional<User> findById(Long id) {
         if (id == null) return Optional.empty();
 
-        Optional<UserEntity> entity = userJpaRepository.findById(id);
+        Optional<UserEntity> entity = IUserJpaRepository.findById(id);
         return Optional.ofNullable(ObjectMapper.parseObject(entity, User.class));
     }
 
@@ -26,7 +26,7 @@ public class UserJPaRepositoryAdapter implements IUserRepository {
     public Optional<User> findByEmail(String email) {
         if (email == null) return Optional.empty();
 
-        Optional<UserEntity> entity = userJpaRepository.findByEmail(email);
+        Optional<UserEntity> entity = IUserJpaRepository.findByEmail(email);
         return Optional.ofNullable(ObjectMapper.parseObject(entity, User.class));
     }
 
@@ -36,11 +36,11 @@ public class UserJPaRepositoryAdapter implements IUserRepository {
 
         System.out.println(entity.toString());
 
-        return ObjectMapper.parseObject(userJpaRepository.save(entity), User.class);
+        return ObjectMapper.parseObject(IUserJpaRepository.save(entity), User.class);
     }
 
     @Override
     public void delete(User usuario) {
-        userJpaRepository.delete(ObjectMapper.parseObject(usuario, UserEntity.class));
+        IUserJpaRepository.delete(ObjectMapper.parseObject(usuario, UserEntity.class));
     }
 }

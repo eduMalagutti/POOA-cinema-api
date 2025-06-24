@@ -2,6 +2,7 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jdbc;
 
 import br.ufscar.pooa.cinema_api.application.ports.out.IUserRepository;
 import br.ufscar.pooa.cinema_api.domain.model.User;
+import br.ufscar.pooa.cinema_api.infrastructure.DatabaseManager;
 
 import java.sql.*;
 import java.util.Optional;
@@ -17,7 +18,7 @@ public class UserJDBCRepository implements IUserRepository {
         String sql = "SELECT * FROM usuarios WHERE email = ?";
 
         try {
-            DatabaseConnection conn = DatabaseConnection.getInstance();
+            DatabaseManager conn = DatabaseManager.getInstance();
             PreparedStatement statement = conn.getConnection().prepareStatement(sql);
 
             statement.setString(1, email);
@@ -52,7 +53,7 @@ public class UserJDBCRepository implements IUserRepository {
                     VALUES (?, ?, ?)
                 """;
 
-        try (DatabaseConnection conn = DatabaseConnection.getInstance();
+        try (DatabaseManager conn = DatabaseManager.getInstance();
              PreparedStatement statement = conn.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         ) {
             statement.setString(1, usuario.getName());
