@@ -23,9 +23,9 @@ public class DDLGenerator {
     }
 
     private String getColumnDefinition(Field field) {
-        Column Column = field.getAnnotation(Column.class);
+        Column column = field.getAnnotation(Column.class);
 
-        String columnName = Column.name();
+        String columnName = column.name();
         String dataType = PostgreSQLTypeMapper.getPostgreSQLType(field);
 
         columnName = columnName.concat(" ").concat(dataType);

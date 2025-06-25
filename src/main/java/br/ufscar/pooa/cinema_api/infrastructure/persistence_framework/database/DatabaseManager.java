@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.infrastructure;
+package br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,7 +12,7 @@ public class DatabaseManager implements AutoCloseable {
     private String user = "root";
     private String password = "root";
 
-    public DatabaseManager(String url, String user, String password) throws SQLException {
+    private DatabaseManager(String url, String user, String password) throws SQLException {
         this.url = url;
         this.user = user;
         this.password = password;
@@ -21,6 +21,13 @@ public class DatabaseManager implements AutoCloseable {
 
     private DatabaseManager() throws SQLException {
         this.connection = DriverManager.getConnection(url, user, password);
+    }
+
+    public static synchronized DatabaseManager getInstance(String url, String user, String password) throws SQLException {
+        if (instance == null) {
+            instance = new DatabaseManager(url, user, password);
+        }
+        return instance;
     }
 
     public static synchronized DatabaseManager getInstance() throws SQLException {

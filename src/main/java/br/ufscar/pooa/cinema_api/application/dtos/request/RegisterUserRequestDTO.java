@@ -1,5 +1,7 @@
 package br.ufscar.pooa.cinema_api.application.dtos.request;
 
+import br.ufscar.pooa.cinema_api.application.validation.ValueOfEnum;
+import br.ufscar.pooa.cinema_api.domain.enums.Role;
 import jakarta.validation.constraints.NotNull;
 
 public record RegisterUserRequestDTO(
@@ -8,6 +10,10 @@ public record RegisterUserRequestDTO(
         @NotNull
         String email,
         @NotNull
-        String senha
+        String senha,
+
+        @NotNull
+        @ValueOfEnum(enumClass = Role.class)
+        Role role
 ) {
 }

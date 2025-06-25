@@ -4,6 +4,7 @@ package br.ufscar.pooa.cinema_api.infrastructure;
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.UserEntity;
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.persistence_framework.UserPersistenceFrameworkRepository;
 import br.ufscar.pooa.cinema_api.application.ports.out.IUserRepository;
+import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.database.DatabaseManager;
 import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.IFrameworkRepository;
 import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.SimpleFrameworkRepository;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,7 +27,7 @@ public class BeansFactory {
 
     @Bean
     DatabaseManager databaseManager() throws SQLException {
-        return new DatabaseManager(url, user, password);
+        return DatabaseManager.getInstance(url, user, password);
     }
 
     @Bean

@@ -29,6 +29,7 @@ public class RegisterUserUseCase implements IRegisterUserUseCase {
         usuario.setName(requestDTO.nome());
         usuario.setEmail(requestDTO.email());
         usuario.setPassword(requestDTO.senha());
+        usuario.setRole(requestDTO.role());
 
         User usuarioSalvo = userRepository.save(usuario);
 
