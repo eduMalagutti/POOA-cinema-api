@@ -1,6 +1,6 @@
 package br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.database;
 
-import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.annotation.PFColumn;
+import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.annotation.Column;
 
 import java.lang.reflect.Field;
 import java.util.List;
@@ -23,7 +23,7 @@ public class DQLGenerator {
 
         for (int i = 0; i < columns.size(); i++) {
             Field currentField = columns.get(i);
-            PFColumn columnAnnotation = currentField.getAnnotation(PFColumn.class);
+            Column columnAnnotation = currentField.getAnnotation(Column.class);
             sql.append(columnAnnotation.name());
 
             if (i < columns.size() - 1) {
@@ -34,7 +34,7 @@ public class DQLGenerator {
         sql.append(" FROM ").append(tableName);
         sql.append(" WHERE ");
 
-        PFColumn idColumnAnnotation = idField.getAnnotation(PFColumn.class);
+        Column idColumnAnnotation = idField.getAnnotation(Column.class);
         sql.append(idColumnAnnotation.name()).append(" = ?");
 
         return sql.toString();
@@ -45,7 +45,7 @@ public class DQLGenerator {
 
         for (int i = 0; i < columns.size(); i++) {
             Field currentField = columns.get(i);
-            PFColumn columnAnnotation = currentField.getAnnotation(PFColumn.class);
+            Column columnAnnotation = currentField.getAnnotation(Column.class);
             sql.append(columnAnnotation.name());
 
             if (i < columns.size() - 1) {
@@ -56,7 +56,7 @@ public class DQLGenerator {
         sql.append(" FROM ").append(tableName);
         sql.append(" WHERE ");
 
-        PFColumn fieldAnnotation = field.getAnnotation(PFColumn.class);
+        Column fieldAnnotation = field.getAnnotation(Column.class);
         sql.append(fieldAnnotation.name()).append(" = ?");
 
         return sql.toString();
@@ -67,7 +67,7 @@ public class DQLGenerator {
 
         for (int i = 0; i < columns.size(); i++) {
             Field currentField = columns.get(i);
-            PFColumn columnAnnotation = currentField.getAnnotation(PFColumn.class);
+            Column columnAnnotation = currentField.getAnnotation(Column.class);
             sql.append(columnAnnotation.name());
 
             if (i < columns.size() - 1) {
@@ -85,7 +85,7 @@ public class DQLGenerator {
         sql.append(tableName);
         sql.append(" WHERE ");
 
-        PFColumn idColumnAnnotation = idField.getAnnotation(PFColumn.class);
+        Column idColumnAnnotation = idField.getAnnotation(Column.class);
         sql.append(idColumnAnnotation.name()).append(" = ?");
 
         return sql.toString();
@@ -96,7 +96,7 @@ public class DQLGenerator {
         sql.append(tableName);
         sql.append(" WHERE ");
 
-        PFColumn columnAnnotation = field.getAnnotation(PFColumn.class);
+        Column columnAnnotation = field.getAnnotation(Column.class);
         sql.append(columnAnnotation.name()).append(" = ?");
 
         return sql.toString();

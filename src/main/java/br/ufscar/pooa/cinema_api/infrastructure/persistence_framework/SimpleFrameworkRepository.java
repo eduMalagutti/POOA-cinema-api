@@ -2,9 +2,9 @@ package br.ufscar.pooa.cinema_api.infrastructure.persistence_framework;
 
 
 import br.ufscar.pooa.cinema_api.infrastructure.DatabaseManager;
-import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.annotation.PFColumn;
-import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.annotation.PFEntity;
-import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.annotation.PFId;
+import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.annotation.Column;
+import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.annotation.Entity;
+import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.annotation.Id;
 import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.database.DDLGenerator;
 import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.database.DQLGenerator;
 
@@ -41,7 +41,7 @@ public class SimpleFrameworkRepository<T, ID extends Serializable> implements IF
         }
 
         List<Field> insertColumns = columns.stream()
-                .filter(field -> !field.isAnnotationPresent(PFId.class))
+                .filter(field -> !field.isAnnotationPresent(Id.class))
                 .toList();
 
         return executeInsert(entity, tableName, insertColumns);
@@ -164,22 +164,22 @@ public class SimpleFrameworkRepository<T, ID extends Serializable> implements IF
 
     // Helper methods from PersistenceFramework
     private String getTableName(Class<?> clazz) {
-        if (!clazz.isAnnotationPresent(PFEntity.class)) {
+        if (!clazz.isAnnotationPresent(Entity.class)) {
             throw new IllegalArgumentException("Object is not an entity");
         }
-        return clazz.getAnnotation(PFEntity.class).tableName();
+        return clazz.getAnnotation(Entity.class).tableName();
     }
 
     private List<Field> getColumns(Class<?> clazz) {
         List<Field> fields = new ArrayList<>(List.of(clazz.getDeclaredFields()));
-        fields.removeIf(field -> !field.isAnnotationPresent(PFColumn.class));
+        fields.removeIf(field -> !field.isAnnotationPresent(Column.class));
         fields.forEach(field -> field.setAccessible(true));
         return fields;
     }
 
     private Field getIdField(List<Field> columns) {
         return columns.stream()
-                .filter(field -> field.isAnnotationPresent(PFId.class))
+                .filter(field -> field.isAnnotationPresent(Id.class))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("Entity must have an @Id field"));
     }
@@ -194,8 +194,8 @@ public class SimpleFrameworkRepository<T, ID extends Serializable> implements IF
     private T mapResultSetToEntity(ResultSet resultSet, Class<T> clazz, List<Field> columns) throws Exception {
         T instance = clazz.getDeclaredConstructor().newInstance();
         for (Field field : columns) {
-            PFColumn PFColumnAnnotation = field.getAnnotation(PFColumn.class);
-            String columnName = PFColumnAnnotation.name();
+            Column ColumnAnnotation = field.getAnnotation(Column.class);
+            String columnName = ColumnAnnotation.name();
             Object value = resultSet.getObject(columnName);
             field.set(instance, value);
         }

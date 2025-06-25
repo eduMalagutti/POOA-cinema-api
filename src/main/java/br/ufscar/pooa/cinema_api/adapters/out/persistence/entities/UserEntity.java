@@ -1,38 +1,40 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
 import br.ufscar.pooa.cinema_api.domain.enums.Role;
-import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.annotation.PFColumn;
-import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.annotation.PFEntity;
-import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.annotation.PFId;
+import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.annotation.Enumerated;
+import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.annotation.Column;
+import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.annotation.Entity;
+import br.ufscar.pooa.cinema_api.infrastructure.persistence_framework.annotation.Id;
 import jakarta.persistence.*;
 
 import java.util.Objects;
 
-@PFEntity(tableName = "users")
-@Entity
+@Entity(tableName = "users")
+@jakarta.persistence.Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class UserEntity {
-    @PFId
     @Id
+    @jakarta.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @PFColumn(name = "name")
-    @Column(nullable = false)
+    @Column(name = "name")
+    @jakarta.persistence.Column(nullable = false)
     private String name;
 
-    @PFColumn(name = "email")
-    @Column(nullable = false, unique = true)
+    @Column(name = "email")
+    @jakarta.persistence.Column(nullable = false, unique = true)
     private String email;
 
-    @PFColumn(name = "password")
-    @Column(nullable = false)
+    @Column(name = "password")
+    @jakarta.persistence.Column(nullable = false)
     private String password;
 
-    @PFColumn(name = "role")
-    @Column(nullable = false)
-    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "role")
+    @Enumerated
+    @jakarta.persistence.Column(nullable = false)
+    @jakarta.persistence.Enumerated(EnumType.ORDINAL)
     private Role role;
 
     @ManyToOne
