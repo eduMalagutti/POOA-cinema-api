@@ -3,6 +3,7 @@ package br.ufscar.pooa.cinema_api.adapters.in.presentation.controllers;
 import br.ufscar.pooa.cinema_api.application.dtos.request.RegisterUserRequestDTO;
 import br.ufscar.pooa.cinema_api.application.dtos.response.UserResponseDTO;
 import br.ufscar.pooa.cinema_api.application.ports.in.IRegisterUserUseCase;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +22,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponseDTO> register(@RequestBody RegisterUserRequestDTO registerRequestBody) {
+    public ResponseEntity<UserResponseDTO> register(@Valid @RequestBody RegisterUserRequestDTO registerRequestBody) {
         var responseDTO = registerUserUseCase.execute(registerRequestBody);
 
         URI uri = URI.create("/users/" + responseDTO.id());
