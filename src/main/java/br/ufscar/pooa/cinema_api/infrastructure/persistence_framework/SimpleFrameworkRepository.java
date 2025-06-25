@@ -377,12 +377,10 @@ public class SimpleFrameworkRepository<T, ID extends Serializable> implements IF
     private Object convertIdValue(Object value, Class<?> targetType) {
         if (value == null) return null;
 
-        // Se os tipos já são compatíveis
         if (targetType.isAssignableFrom(value.getClass())) {
             return value;
         }
 
-        // Conversões específicas
         if (targetType == Long.class || targetType == long.class) {
             if (value instanceof Number) {
                 return ((Number) value).longValue();
@@ -395,7 +393,6 @@ public class SimpleFrameworkRepository<T, ID extends Serializable> implements IF
 
         return value;
     }
-
 
     private boolean tableExists(String tableName) {
         try {

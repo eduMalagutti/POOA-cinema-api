@@ -1,3 +1,4 @@
+
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
 import br.ufscar.pooa.cinema_api.domain.enums.Role;
@@ -89,24 +90,30 @@ public class UserEntity {
         return this;
     }
 
-    public TheaterEntity getTheater() {
-        return theater;
-    }
-
-    public UserEntity setTheater(TheaterEntity theater) {
-        this.theater = theater;
-        return this;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         UserEntity that = (UserEntity) o;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && Objects.equals(getEmail(), that.getEmail()) && Objects.equals(getPassword(), that.getPassword()) && getRole() == that.getRole();
+        return Objects.equals(getId(), that.getId()) &&
+                Objects.equals(getName(), that.getName()) &&
+                Objects.equals(getEmail(), that.getEmail()) &&
+                Objects.equals(getPassword(), that.getPassword()) &&
+                getRole() == that.getRole();
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getName(), getEmail(), getPassword(), getRole());
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                '}';
     }
 }
