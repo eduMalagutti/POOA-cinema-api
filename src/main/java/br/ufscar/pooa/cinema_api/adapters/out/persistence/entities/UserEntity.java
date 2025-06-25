@@ -16,6 +16,7 @@ import java.util.Objects;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class UserEntity {
     @Id
+    @Column(name = "id")
     @jakarta.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
