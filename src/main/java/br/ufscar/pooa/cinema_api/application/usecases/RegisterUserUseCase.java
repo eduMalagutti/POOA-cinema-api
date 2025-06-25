@@ -33,6 +33,11 @@ public class RegisterUserUseCase implements IRegisterUserUseCase {
 
         User usuarioSalvo = userRepository.save(usuario);
 
-        return new UserResponseDTO(usuarioSalvo.getId(), usuarioSalvo.getName(), usuarioSalvo.getEmail(), usuarioSalvo.getPassword());
+        return new UserResponseDTO(
+                usuarioSalvo.getId(),
+                usuarioSalvo.getName(),
+                usuarioSalvo.getEmail(),
+                usuarioSalvo.getPassword(),
+                usuarioSalvo.getRole());
     }
 }
