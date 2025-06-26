@@ -12,6 +12,8 @@ public class Theater {
     private List<User> managers;
     private List<Movie> movies;
 
+    public Theater() {}
+
     public Theater(String name, String logoUrl, List<Room> rooms, Address address, List<User> managers, List<Movie> movies) {
         this.name = name;
         this.logoUrl = logoUrl;
@@ -88,5 +90,18 @@ public class Theater {
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getName(), getLogoUrl(), getAddress(), getRooms(), getManagers(), getMovies());
+    }
+
+    @Override
+    public String toString() {
+        return "Theater{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", logoUrl='" + logoUrl + '\'' +
+                ", address=" + address +
+                ", rooms=" + rooms +
+                ", managers=" + managers +
+                ", movies=" + movies +
+                '}';
     }
 }

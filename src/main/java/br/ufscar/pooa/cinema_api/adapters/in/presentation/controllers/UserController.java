@@ -24,7 +24,7 @@ public class UserController {
     public ResponseEntity<UserResponseDTO> register(@RequestBody RegisterUserRequestDTO registerRequestBody) {
         var responseDTO = registerUserUseCase.execute(registerRequestBody);
 
-        URI uri = URI.create("/users/" + responseDTO.id());
+        URI uri = URI.create("/users/" + responseDTO.getId());
 
         return ResponseEntity.created(uri).body(responseDTO);
     }

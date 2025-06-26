@@ -15,6 +15,9 @@ public class Ticket {
 	private Seat seat;
 	private Set<PaymentMethod> paymentMethods;
 
+	public Ticket() {
+	}
+
 	public Ticket(Instant paymentDate, Integer priceInCents, Session session, Client client, Seat seat, Set<PaymentMethod> paymentMethods) {
 		this.paymentDate = paymentDate;
 		this.priceInCents = priceInCents;

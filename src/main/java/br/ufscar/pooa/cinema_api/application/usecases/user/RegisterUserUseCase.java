@@ -22,13 +22,14 @@ public class RegisterUserUseCase implements IRegisterUserUseCase {
     }
 
     public UserResponseDTO execute(RegisterUserRequestDTO requestDTO) {
-        Optional<User> usuarioEncontrado = userRepository.findByEmail(requestDTO.email());
+        Optional<User> usuarioEncontrado = userRepository.findByEmail(requestDTO.getEmail());
 
         if (usuarioEncontrado.isPresent()) {
-            throw new ResourceAlreadyExistsException("User", "email", requestDTO.email());
+            throw new ResourceAlreadyExistsException("User", "email", requestDTO.getEmail());
         }
 
         User newUser = objectMapper.parseObject(requestDTO, User.class);
+        System.out.println(newUser);
 
         User savedUser = userRepository.save(newUser);
 
