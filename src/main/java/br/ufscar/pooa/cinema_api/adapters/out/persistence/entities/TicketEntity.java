@@ -1,12 +1,8 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
 import br.ufscar.pooa.cinema_api.domain.enums.PaymentMethod;
-import br.ufscar.pooa.cinema_api.domain.model.Client;
-import br.ufscar.pooa.cinema_api.domain.model.Seat;
-import br.ufscar.pooa.cinema_api.domain.model.Session;
 import jakarta.persistence.*;
 
-import java.util.List;
 import java.util.Objects;
 
 @Entity

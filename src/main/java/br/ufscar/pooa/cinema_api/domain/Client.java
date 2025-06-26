@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.domain.model;
+package br.ufscar.pooa.cinema_api.domain;
 
 import br.ufscar.pooa.cinema_api.domain.enums.Role;
 import br.ufscar.pooa.cinema_api.domain.enums.Gender;

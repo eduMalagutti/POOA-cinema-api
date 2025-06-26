@@ -1,7 +1,7 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jdbc;
 
 import br.ufscar.pooa.cinema_api.application.ports.out.IUserRepository;
-import br.ufscar.pooa.cinema_api.domain.model.User;
+import br.ufscar.pooa.cinema_api.domain.User;
 
 import java.sql.*;
 import java.util.Optional;

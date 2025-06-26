@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jpa;
+package br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jpa.user;
 
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

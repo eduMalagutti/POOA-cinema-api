@@ -1,16 +1,16 @@
-package br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jpa;
+package br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jpa.user;
 
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.UserEntity;
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.mapper.ObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.IUserRepository;
-import br.ufscar.pooa.cinema_api.domain.model.User;
+import br.ufscar.pooa.cinema_api.domain.User;
 
 import java.util.Optional;
 
-public class UserJPaRepositoryAdapter implements IUserRepository {
+public class UserRepositoryImpl implements IUserRepository {
     private final UserJpaRepository userJpaRepository;
 
-    public UserJPaRepositoryAdapter(UserJpaRepository userJpaRepository) {
+    public UserRepositoryImpl(UserJpaRepository userJpaRepository) {
         this.userJpaRepository = userJpaRepository;
     }
 

@@ -1,7 +1,6 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
 import br.ufscar.pooa.cinema_api.domain.enums.Gender;
-import br.ufscar.pooa.cinema_api.domain.model.Ticket;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;

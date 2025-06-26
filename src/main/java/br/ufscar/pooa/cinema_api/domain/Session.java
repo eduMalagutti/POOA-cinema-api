@@ -1,9 +1,8 @@
-package br.ufscar.pooa.cinema_api.domain.model;
+package br.ufscar.pooa.cinema_api.domain;
 
 import br.ufscar.pooa.cinema_api.domain.enums.Format;
 import br.ufscar.pooa.cinema_api.domain.enums.Subtitle;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 

@@ -1,7 +1,7 @@
 package br.ufscar.pooa.cinema_api.adapters.in.presentation.controllers;
 
-import br.ufscar.pooa.cinema_api.application.dtos.request.RegisterUserRequestDTO;
-import br.ufscar.pooa.cinema_api.application.dtos.response.UserResponseDTO;
+import br.ufscar.pooa.cinema_api.application.dtos.user.RegisterUserRequestDTO;
+import br.ufscar.pooa.cinema_api.application.dtos.user.UserResponseDTO;
 import br.ufscar.pooa.cinema_api.application.ports.in.IRegisterUserUseCase;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

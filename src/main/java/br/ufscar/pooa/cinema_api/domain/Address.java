@@ -1,26 +1,26 @@
-package br.ufscar.pooa.cinema_api.domain.model;
+package br.ufscar.pooa.cinema_api.domain;
 
 import java.util.Objects;
 
 public class Address {
-	private String country;
-	private String state;
-	private String city;
 	private String zipCode;
-	private String neighborhood;
 	private String street;
 	private String number;
 	private String complement;
+	private String city;
+	private String neighborhood;
+	private String state;
+	private String country;
 
-	public Address(String country, String state, String city, String zipCode, String neighborhood, String street, String number, String complement) {
-		this.country = country;
-		this.state = state;
-		this.city = city;
+	public Address(String zipCode, String street, String number, String complement, String city, String neighborhood, String state, String country) {
 		this.zipCode = zipCode;
-		this.neighborhood = neighborhood;
 		this.street = street;
 		this.number = number;
 		this.complement = complement;
+		this.city = city;
+		this.neighborhood = neighborhood;
+		this.state = state;
+		this.country = country;
 	}
 
 	public String getCountry() {
