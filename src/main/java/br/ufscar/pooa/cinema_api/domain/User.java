@@ -9,8 +9,8 @@ public class User {
     private String name;
     private String email;
     private String password;
-    private Theater theater;
     private Role role;
+    private Theater theater;
 
     public User() {
     }

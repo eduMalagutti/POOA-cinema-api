@@ -4,9 +4,11 @@ import br.ufscar.pooa.cinema_api.adapters.in.presentation.controllers.UserContro
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jdbc.UserJDBCRepository;
 import br.ufscar.pooa.cinema_api.application.dtos.user.RegisterUserRequestDTO;
 import br.ufscar.pooa.cinema_api.application.ports.in.IRegisterUserUseCase;
-import br.ufscar.pooa.cinema_api.application.ports.out.IUserRepository;
+import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
+import br.ufscar.pooa.cinema_api.application.ports.out.repository.IUserRepository;
 import br.ufscar.pooa.cinema_api.application.usecases.user.RegisterUserUseCase;
 import br.ufscar.pooa.cinema_api.domain.enums.Role;
+import br.ufscar.pooa.cinema_api.infrastructure.mapper.ObjectMapper;
 
 import java.util.logging.Logger;
 
@@ -15,8 +17,9 @@ public class CustomMain {
 
     public static void main(String[] args) {
         IUserRepository repository = new UserJDBCRepository();
+        IObjectMapper objectMapper = new ObjectMapper();
 
-        IRegisterUserUseCase useCase = new RegisterUserUseCase(repository);
+        IRegisterUserUseCase useCase = new RegisterUserUseCase(repository, objectMapper);
 
         UserController controller = new UserController(useCase);
 

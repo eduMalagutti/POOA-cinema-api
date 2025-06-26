@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.application.ports.out;
+package br.ufscar.pooa.cinema_api.application.ports.out.repository;
 
 import br.ufscar.pooa.cinema_api.domain.Theater;
 
