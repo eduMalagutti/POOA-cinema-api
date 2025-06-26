@@ -19,11 +19,19 @@ public class UserRepositoryAdapter implements IUserRepository {
     }
 
     @Override
+    public User save(User usuario) {
+        UserEntity entity = objectMapper.parseObject(usuario, UserEntity.class);
+
+        return objectMapper.parseObject(userJpaRepository.save(entity), User.class);
+    }
+
+    @Override
     public Optional<User> findById(Long id) {
         if (id == null) return Optional.empty();
 
         Optional<UserEntity> entity = userJpaRepository.findById(id);
-        return Optional.ofNullable(objectMapper.parseObject(entity, User.class));
+
+        return entity.map(userEntity -> objectMapper.parseObject(entity, User.class));
     }
 
     @Override
@@ -31,16 +39,8 @@ public class UserRepositoryAdapter implements IUserRepository {
         if (email == null) return Optional.empty();
 
         Optional<UserEntity> entity = userJpaRepository.findByEmail(email);
-        return Optional.ofNullable(objectMapper.parseObject(entity, User.class));
-    }
 
-    @Override
-    public User save(User usuario) {
-        UserEntity entity = objectMapper.parseObject(usuario, UserEntity.class);
-
-        System.out.println(entity.toString());
-
-        return objectMapper.parseObject(userJpaRepository.save(entity), User.class);
+        return entity.map(userEntity -> objectMapper.parseObject(entity, User.class));
     }
 
     @Override
