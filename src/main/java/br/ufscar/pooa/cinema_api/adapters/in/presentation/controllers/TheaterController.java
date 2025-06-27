@@ -13,10 +13,10 @@ import java.net.URI;
 
 @RequestMapping("/theaters")
 @RestController
-public class CinemaController {
+public class TheaterController {
     private final IRegisterTheaterUseCase registerTheaterUseCase;
 
-    public CinemaController(IRegisterTheaterUseCase registerTheaterUseCase) {
+    public TheaterController(IRegisterTheaterUseCase registerTheaterUseCase) {
         this.registerTheaterUseCase = registerTheaterUseCase;
     }
 
