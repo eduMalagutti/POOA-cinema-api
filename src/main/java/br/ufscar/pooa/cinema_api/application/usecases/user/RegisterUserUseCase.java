@@ -29,7 +29,6 @@ public class RegisterUserUseCase implements IRegisterUserUseCase {
         }
 
         User newUser = objectMapper.parseObject(requestDTO, User.class);
-        System.out.println(newUser);
 
         User savedUser = userRepository.save(newUser);
 

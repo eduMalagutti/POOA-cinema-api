@@ -5,9 +5,9 @@ import br.ufscar.pooa.cinema_api.domain.Room;
 import java.util.Optional;
 
 public interface IRoomRepository {
-    Optional<Room> findById(Long id);
-
     Room save(Room room);
+
+    Optional<Room> findById(Long id);
 
     void delete(Room room);
 }

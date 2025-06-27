@@ -5,9 +5,9 @@ import br.ufscar.pooa.cinema_api.domain.Movie;
 import java.util.Optional;
 
 public interface IMovieRepository {
-    Optional<Movie> findById(Long id);
-
     Movie save(Movie movie);
+
+    Optional<Movie> findById(Long id);
 
     void delete(Movie movie);
 }
