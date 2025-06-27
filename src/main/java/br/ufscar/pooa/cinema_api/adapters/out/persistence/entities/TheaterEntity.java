@@ -2,13 +2,13 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @Table(name = "theaters")
 public class TheaterEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,10 +27,11 @@ public class TheaterEntity {
     private Set<RoomEntity> rooms;
 
     @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
-    private Set<UserEntity> managers;
+    private Set<UserEntity> managers = new HashSet<>();
 
     @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
     private Set<MovieEntity> movies;
+
 
     public Long getId() {
         return id;
