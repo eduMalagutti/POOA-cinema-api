@@ -16,6 +16,9 @@ public class Session {
     private Movie movie;
     private List<Ticket> tickets;
 
+    public Session() {
+    }
+
     public Session(Format format, Integer date, Subtitle subtitle, Integer priceInCents, Room room, Movie movie, List<Ticket> tickets) {
         this.format = format;
         this.date = date;

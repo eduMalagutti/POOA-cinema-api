@@ -11,6 +11,9 @@ public class Seat {
     private Row row;
     private List<Ticket> tickets;
 
+    public Seat() {
+    }
+
     public Seat(Character number, Row row, List<Ticket> tickets, SeatType seatType) {
         this.number = number;
         this.row = row;
