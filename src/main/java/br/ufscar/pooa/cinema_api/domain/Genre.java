@@ -13,6 +13,9 @@ public class Genre {
 		this.name = name;
 		this.movies = movies;
 	}
+	public Genre(){
+
+	}
 
 	public Integer getId() {
 		return id;

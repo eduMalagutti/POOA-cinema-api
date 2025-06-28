@@ -2,6 +2,7 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,8 +20,8 @@ public class RowEntity {
     @JoinColumn(name = "room_id", nullable = false)
     private RoomEntity room;
 
-    @OneToMany(mappedBy = "row", cascade = CascadeType.ALL)
-    private List<SeatEntity> seats;
+    @OneToMany(mappedBy = "row", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<SeatEntity> seats = new ArrayList<>();
 
     public RowEntity() {
     }
@@ -63,13 +64,14 @@ public class RowEntity {
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RowEntity rowEntity = (RowEntity) o;
-        return Objects.equals(getId(), rowEntity.getId()) && Objects.equals(getLetter(), rowEntity.getLetter()) && Objects.equals(getRoom(), rowEntity.getRoom()) && Objects.equals(getSeats(), rowEntity.getSeats());
+        RowEntity that = (RowEntity) o;
+        return this.id != null && Objects.equals(this.id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getLetter(), getRoom(), getSeats());
+        return getClass().hashCode();
     }
 }

@@ -9,7 +9,7 @@ public interface ITheaterRepository {
 
     Optional<Theater> findById(Long id);
 
-    Optional<Theater> findByName(String email);
+    void delete(Long id);
 
-    void delete(Theater theater);
+    Long count();
 }

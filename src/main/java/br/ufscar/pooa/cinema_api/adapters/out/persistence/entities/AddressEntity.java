@@ -107,13 +107,14 @@ public class AddressEntity {
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AddressEntity that = (AddressEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(theater, that.theater) && Objects.equals(getState(), that.getState()) && Objects.equals(getCountry(), that.getCountry()) && Objects.equals(getCity(), that.getCity()) && Objects.equals(getZipCode(), that.getZipCode()) && Objects.equals(getNeighborhood(), that.getNeighborhood()) && Objects.equals(getStreet(), that.getStreet()) && Objects.equals(getNumber(), that.getNumber()) && Objects.equals(getComplement(), that.getComplement());
+        return this.id != null && Objects.equals(this.id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, theater, getState(), getCountry(), getCity(), getZipCode(), getNeighborhood(), getStreet(), getNumber(), getComplement());
+        return getClass().hashCode();
     }
 }

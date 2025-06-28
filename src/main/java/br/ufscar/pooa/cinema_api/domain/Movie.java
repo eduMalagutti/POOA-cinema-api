@@ -30,6 +30,10 @@ public class Movie {
         this.title = title;
     }
 
+    public Movie(){
+
+    }
+
     public Session[] getAvailableSessions() {
         return null;
     }

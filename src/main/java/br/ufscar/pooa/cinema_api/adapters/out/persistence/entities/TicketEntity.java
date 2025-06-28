@@ -3,6 +3,7 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 import br.ufscar.pooa.cinema_api.domain.enums.PaymentMethod;
 import jakarta.persistence.*;
 
+import java.time.Instant;
 import java.util.Objects;
 
 @Entity
@@ -13,7 +14,7 @@ public class TicketEntity {
     private Long id;
 
     @Column
-    private Integer paymentDate;
+    private Instant paymentDate;
 
     @Column
     private Integer priceInCents;
@@ -45,11 +46,11 @@ public class TicketEntity {
         return this;
     }
 
-    public Integer getPaymentDate() {
+    public Instant getPaymentDate() {
         return paymentDate;
     }
 
-    public TicketEntity setPaymentDate(Integer paymentDate) {
+    public TicketEntity setPaymentDate(Instant paymentDate) {
         this.paymentDate = paymentDate;
         return this;
     }

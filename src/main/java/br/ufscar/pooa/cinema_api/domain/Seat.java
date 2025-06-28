@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Seat {
+    private Long id;
     private Character number;
     private SeatType seatType;
     private Row row;
@@ -29,6 +30,9 @@ public class Seat {
         this.number = number;
     }
 
+    public Long getId() {
+        return id;
+    }
     public Row getRow() {
         return row;
     }
@@ -63,5 +67,9 @@ public class Seat {
     @Override
     public int hashCode() {
         return Objects.hash(number, row, tickets, seatType);
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

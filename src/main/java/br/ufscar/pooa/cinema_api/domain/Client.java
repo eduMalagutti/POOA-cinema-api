@@ -29,6 +29,9 @@ public class Client extends User {
         this.tickets = tickets;
     }
 
+    public Client(){
+    }
+
     public String getCpf() {
         return cpf;
     }

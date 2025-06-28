@@ -10,7 +10,7 @@ import java.util.Objects;
 @Table(name = "seats")
 public class SeatEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
@@ -20,7 +20,7 @@ public class SeatEntity {
     @Enumerated(EnumType.STRING)
     private SeatType seatType;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "row_id", nullable = false)
     private RowEntity row;
 
@@ -37,6 +37,14 @@ public class SeatEntity {
     public SeatEntity setId(Long id) {
         this.id = id;
         return this;
+    }
+
+    public RowEntity getRow() {
+        return row;
+    }
+
+    public void setRow(RowEntity row) {
+        this.row = row;
     }
 
     public Character getNumber() {
@@ -59,13 +67,14 @@ public class SeatEntity {
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SeatEntity that = (SeatEntity) o;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getNumber(), that.getNumber()) && getSeatType() == that.getSeatType() && Objects.equals(row, that.row) && Objects.equals(tickets, that.tickets);
+        return this.id != null && Objects.equals(this.id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getNumber(), getSeatType(), row, tickets);
+        return getClass().hashCode();
     }
 }

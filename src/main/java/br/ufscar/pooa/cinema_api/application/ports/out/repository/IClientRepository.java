@@ -7,7 +7,6 @@ import java.util.Optional;
 public interface IClientRepository {
     Optional<Client> findById(Long id);
 
-    Optional<Client> findByEmail(String email);
 
     Client save(Client client);
 

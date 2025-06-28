@@ -71,13 +71,14 @@ public class RoomEntity {
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RoomEntity that = (RoomEntity) o;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && getRoomType() == that.getRoomType() && Objects.equals(getTheater(), that.getTheater()) && Objects.equals(rows, that.rows) && Objects.equals(sessions, that.sessions);
+        return this.id != null && Objects.equals(this.id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getRoomType(), getTheater(), rows, sessions);
+        return getClass().hashCode();
     }
 }

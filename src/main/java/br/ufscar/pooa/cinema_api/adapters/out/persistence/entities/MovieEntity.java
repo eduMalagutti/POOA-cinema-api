@@ -123,13 +123,14 @@ public class MovieEntity {
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MovieEntity that = (MovieEntity) o;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getTitle(), that.getTitle()) && Objects.equals(getSynopsis(), that.getSynopsis()) && Objects.equals(getCoverUrl(), that.getCoverUrl()) && Objects.equals(getTrailerUrl(), that.getTrailerUrl()) && Objects.equals(getDurationInSeconds(), that.getDurationInSeconds()) && getAgeRating() == that.getAgeRating() && Objects.equals(getTheater(), that.getTheater()) && Objects.equals(sessions, that.sessions) && Objects.equals(genres, that.genres);
+        return this.id != null && Objects.equals(this.id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getTitle(), getSynopsis(), getCoverUrl(), getTrailerUrl(), getDurationInSeconds(), getAgeRating(), getTheater(), sessions, genres);
+        return getClass().hashCode();
     }
 }

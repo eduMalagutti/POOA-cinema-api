@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Row {
+	private Long id;
 	private Character letter;
 	private Room room;
 	private List<Seat> seats;
@@ -12,6 +13,18 @@ public class Row {
 		this.letter = letter;
 		this.room = room;
 		this.seats = seats;
+	}
+
+	public Row(){
+
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Character getLetter() {
