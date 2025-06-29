@@ -2,9 +2,9 @@ package br.ufscar.pooa.cinema_api.domain;
 
 import br.ufscar.pooa.cinema_api.domain.enums.AgeRating;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 public class Movie {
     private Long id;
@@ -14,11 +14,11 @@ public class Movie {
     private String trailerUrl;
     private Integer durationInSeconds;
     private Theater theater;
-    private List<Session> sessions;
-    private Set<Genre> genres;
+    private List<Session> sessions = new ArrayList<>();
+    private List<Genre> genres;
     private AgeRating ageRating;
 
-    public Movie(AgeRating ageRating, Set<Genre> genres, Theater theater, List<Session> sessions, Integer durationInSeconds, String trailerUrl, String coverUrl, String synopsis, String title) {
+    public Movie(AgeRating ageRating, List<Genre> genres, Theater theater, List<Session> sessions, Integer durationInSeconds, String trailerUrl, String coverUrl, String synopsis, String title) {
         this.ageRating = ageRating;
         this.genres = genres;
         this.theater = theater;
@@ -30,8 +30,8 @@ public class Movie {
         this.title = title;
     }
 
-    public Session[] getAvailableSessions() {
-        return null;
+    public Movie(){
+
     }
 
     public Long getId() {
@@ -82,6 +82,14 @@ public class Movie {
         this.durationInSeconds = durationInSeconds;
     }
 
+    public Theater getTheater() {
+        return theater;
+    }
+
+    public void setTheater(Theater theater) {
+        this.theater = theater;
+    }
+
     public List<Session> getSessions() {
         return sessions;
     }
@@ -90,19 +98,11 @@ public class Movie {
         this.sessions = sessions;
     }
 
-    public Theater getTheater() {
-        return theater;
-    }
-
-    public void setTheater(Theater cinema) {
-        this.theater = cinema;
-    }
-
-    public Set<Genre> getMovieGenres() {
+    public List<Genre> getGenres() {
         return genres;
     }
 
-    public void setMovieGenres(Set<Genre> genres) {
+    public void setGenres(List<Genre> genres) {
         this.genres = genres;
     }
 
@@ -116,14 +116,13 @@ public class Movie {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Movie movie = (Movie) o;
-        return Objects.equals(id, movie.id) && Objects.equals(getTitle(), movie.getTitle()) && Objects.equals(getSynopsis(), movie.getSynopsis()) && Objects.equals(getCoverUrl(), movie.getCoverUrl()) && Objects.equals(getTrailerUrl(), movie.getTrailerUrl()) && Objects.equals(getDurationInSeconds(), movie.getDurationInSeconds()) && Objects.equals(getTheater(), movie.getTheater()) && Objects.equals(getSessions(), movie.getSessions()) && Objects.equals(getMovieGenres(), movie.getMovieGenres()) && getAgeRating() == movie.getAgeRating();
+        return Objects.equals(getId(), movie.getId()) && Objects.equals(getTitle(), movie.getTitle()) && Objects.equals(getSynopsis(), movie.getSynopsis()) && Objects.equals(getCoverUrl(), movie.getCoverUrl()) && Objects.equals(getTrailerUrl(), movie.getTrailerUrl()) && Objects.equals(getDurationInSeconds(), movie.getDurationInSeconds()) && getAgeRating() == movie.getAgeRating();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, getTitle(), getSynopsis(), getCoverUrl(), getTrailerUrl(), getDurationInSeconds(), getTheater(), getSessions(), getMovieGenres(), getAgeRating());
+        return Objects.hash(getId(), getTitle(), getSynopsis(), getCoverUrl(), getTrailerUrl(), getDurationInSeconds(), getAgeRating());
     }
 }

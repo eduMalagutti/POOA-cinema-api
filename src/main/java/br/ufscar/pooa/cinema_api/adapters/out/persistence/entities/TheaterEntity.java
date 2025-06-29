@@ -2,8 +2,10 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "theaters")
@@ -24,13 +26,13 @@ public class TheaterEntity {
     private AddressEntity address;
 
     @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
-    private Set<RoomEntity> rooms;
+    private List<RoomEntity> rooms = new ArrayList<>();
 
     @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
-    private Set<UserEntity> managers;
+    private List<UserEntity> managers = new ArrayList<>();
 
     @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
-    private Set<MovieEntity> movies;
+    private List<MovieEntity> movies = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -64,42 +66,39 @@ public class TheaterEntity {
         this.address = address;
     }
 
-    public Set<RoomEntity> getRooms() {
+    public List<RoomEntity> getRooms() {
         return rooms;
     }
 
-    public TheaterEntity setRooms(Set<RoomEntity> rooms) {
+    public void setRooms(List<RoomEntity> rooms) {
         this.rooms = rooms;
-        return this;
     }
 
-    public Set<UserEntity> getManagers() {
+    public List<UserEntity> getManagers() {
         return managers;
     }
 
-    public TheaterEntity setManagers(Set<UserEntity> managers) {
+    public void setManagers(List<UserEntity> managers) {
         this.managers = managers;
-        return this;
     }
 
-    public Set<MovieEntity> getMovies() {
+    public List<MovieEntity> getMovies() {
         return movies;
     }
 
-    public TheaterEntity setMovies(Set<MovieEntity> movies) {
+    public void setMovies(List<MovieEntity> movies) {
         this.movies = movies;
-        return this;
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         TheaterEntity that = (TheaterEntity) o;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && Objects.equals(getLogoUrl(), that.getLogoUrl()) && Objects.equals(getAddress(), that.getAddress()) && Objects.equals(getRooms(), that.getRooms()) && Objects.equals(getManagers(), that.getManagers()) && Objects.equals(getMovies(), that.getMovies());
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && Objects.equals(getLogoUrl(), that.getLogoUrl());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getLogoUrl(), getAddress(), getRooms(), getManagers(), getMovies());
+        return Objects.hash(getId(), getName(), getLogoUrl());
     }
 }

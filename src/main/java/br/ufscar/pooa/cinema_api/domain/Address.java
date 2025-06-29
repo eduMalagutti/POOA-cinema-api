@@ -12,6 +12,9 @@ public class Address {
 	private String state;
 	private String country;
 
+	public Address() {
+	}
+
 	public Address(String zipCode, String street, String number, String complement, String city, String neighborhood, String state, String country) {
 		this.zipCode = zipCode;
 		this.street = street;
@@ -97,5 +100,19 @@ public class Address {
 	@Override
 	public int hashCode() {
 		return Objects.hash(country, state, city, zipCode, neighborhood, street, number, complement);
+	}
+
+	@Override
+	public String toString() {
+		return "Address{" +
+				"zipCode='" + zipCode + '\'' +
+				", street='" + street + '\'' +
+				", number='" + number + '\'' +
+				", complement='" + complement + '\'' +
+				", city='" + city + '\'' +
+				", neighborhood='" + neighborhood + '\'' +
+				", state='" + state + '\'' +
+				", country='" + country + '\'' +
+				'}';
 	}
 }

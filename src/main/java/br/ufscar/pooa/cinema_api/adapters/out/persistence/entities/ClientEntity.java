@@ -47,8 +47,16 @@ public class ClientEntity extends UserEntity {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate dataNascimento) {
-        this.birthDate = dataNascimento;
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public List<TicketEntity> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<TicketEntity> tickets) {
+        this.tickets = tickets;
     }
 
     @Override
