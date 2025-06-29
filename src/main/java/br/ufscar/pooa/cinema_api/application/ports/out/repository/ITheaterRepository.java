@@ -9,7 +9,9 @@ public interface ITheaterRepository {
 
     Optional<Theater> findById(Long id);
 
-    void delete(Long id);
+    Optional<Theater> findByName(String name);
+
+    void deleteById(Long id);
 
     Long count();
 }

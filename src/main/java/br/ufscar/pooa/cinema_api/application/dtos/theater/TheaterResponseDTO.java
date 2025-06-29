@@ -1,5 +1,7 @@
 package br.ufscar.pooa.cinema_api.application.dtos.theater;
 
+import br.ufscar.pooa.cinema_api.application.dtos.user.UserResponseDTO;
+
 import java.util.List;
 
 public class TheaterResponseDTO {
@@ -8,21 +10,17 @@ public class TheaterResponseDTO {
     private String name;
     private String logoUrl;
     private AddressDTO address;
-    private List<Long> roomIds;
-    private List<Long> managerIds;
-    private List<Long> movieIds;
+    private List<UserResponseDTO> managers;
 
     public TheaterResponseDTO() {
     }
 
-    public TheaterResponseDTO(Long id, String name, String logoUrl, AddressDTO address, List<Long> roomIds, List<Long> managerIds, List<Long> movieIds) {
+    public TheaterResponseDTO(Long id, String name, String logoUrl, AddressDTO address, List<UserResponseDTO> managers) {
         this.id = id;
         this.name = name;
         this.logoUrl = logoUrl;
         this.address = address;
-        this.roomIds = roomIds;
-        this.managerIds = managerIds;
-        this.movieIds = movieIds;
+        this.managers = managers;
     }
 
     public Long getId() {
@@ -57,27 +55,11 @@ public class TheaterResponseDTO {
         this.address = address;
     }
 
-    public List<Long> getRoomIds() {
-        return roomIds;
+    public List<UserResponseDTO> getManagers() {
+        return managers;
     }
 
-    public void setRoomIds(List<Long> roomIds) {
-        this.roomIds = roomIds;
-    }
-
-    public List<Long> getManagerIds() {
-        return managerIds;
-    }
-
-    public void setManagerIds(List<Long> managerIds) {
-        this.managerIds = managerIds;
-    }
-
-    public List<Long> getMovieIds() {
-        return movieIds;
-    }
-
-    public void setMovieIds(List<Long> movieIds) {
-        this.movieIds = movieIds;
+    public void setManagers(List<UserResponseDTO> managers) {
+        this.managers = managers;
     }
 }

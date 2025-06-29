@@ -9,9 +9,10 @@ import br.ufscar.pooa.cinema_api.domain.Theater;
 import br.ufscar.pooa.cinema_api.domain.User;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
@@ -30,19 +31,26 @@ public class TheaterRepositoryAdapter implements ITheaterRepository {
 
     @Override
     public Theater save(Theater theater) {
-        TheaterEntity theaterEntity = objectMapper.parseObject(theater, TheaterEntity.class);
-        if (theater.getManagers() != null && !theater.getManagers().isEmpty()) {
-            Set<Long> managerIds = theater.getManagers().stream()
-                    .map(User::getId)
-                    .collect(Collectors.toSet());
-
-            Set<UserEntity> managedManagers = new HashSet<>(userJpaRepository.findAllById(managerIds));
-            theaterEntity.setManagers(managedManagers);
-            for (UserEntity manager : managedManagers) {
-                manager.setTheater(theaterEntity);
-            }
+        if (theater == null) {
+            throw new IllegalArgumentException("Theater cannot be null");
         }
+        if (theater.getId() != null) {
+            throw new IllegalArgumentException("Theater ID must be null for a new theater");
+        }
+
+        TheaterEntity theaterEntity = objectMapper.parseObject(theater, TheaterEntity.class);
+
+        // Re-hydrate the managers to ensure they are managed entities
+        if (theater.getManagers() != null && !theater.getManagers().isEmpty()) {
+            List<Long> managerIds = theater.getManagers().stream()
+                    .map(User::getId)
+                    .toList();
+            List<UserEntity> managedManagers = new ArrayList<>(userJpaRepository.findAllById(managerIds));
+            theaterEntity.setManagers(managedManagers);
+        }
+
         TheaterEntity savedEntity = theaterJpaRepository.save(theaterEntity);
+
         return objectMapper.parseObject(savedEntity, Theater.class);
     }
 
@@ -59,8 +67,14 @@ public class TheaterRepositoryAdapter implements ITheaterRepository {
     }
 
     @Override
-    public void delete(Theater theater) {
-        TheaterEntity entity = objectMapper.parseObject(theater, TheaterEntity.class);
+    public void deleteById(Long id) {
+        TheaterEntity entity = theaterJpaRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("Theater not found"));
         theaterJpaRepository.delete(entity);
+    }
+
+    @Override
+    public Long count() {
+        return theaterJpaRepository.count();
     }
 }

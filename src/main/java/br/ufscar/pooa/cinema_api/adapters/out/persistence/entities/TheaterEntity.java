@@ -28,12 +28,10 @@ public class TheaterEntity {
     private List<RoomEntity> rooms = new ArrayList<>();
 
     @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
-
     private List<UserEntity> managers = new ArrayList<>();
 
     @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
     private List<MovieEntity> movies = new ArrayList<>();
-
 
     public Long getId() {
         return id;
