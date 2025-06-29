@@ -20,7 +20,7 @@ public class RowEntity {
     @JoinColumn(name = "room_id", nullable = false)
     private RoomEntity room;
 
-    @OneToMany(mappedBy = "row", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "row", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private List<SeatEntity> seats = new ArrayList<>();
 
     public RowEntity() {
@@ -68,5 +68,13 @@ public class RowEntity {
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getLetter());
+    }
+
+    @Override
+    public String toString() {
+        return "RowEntity{" +
+                "id=" + id +
+                ", letter=" + letter +
+                '}';
     }
 }

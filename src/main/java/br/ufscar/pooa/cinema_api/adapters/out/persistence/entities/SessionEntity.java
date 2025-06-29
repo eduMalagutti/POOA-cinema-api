@@ -4,6 +4,7 @@ import br.ufscar.pooa.cinema_api.domain.enums.Format;
 import br.ufscar.pooa.cinema_api.domain.enums.Subtitle;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,7 +36,7 @@ public class SessionEntity {
     private MovieEntity movie;
 
     @OneToMany(mappedBy = "session", cascade = CascadeType.ALL)
-    private List<TicketEntity> tickets;
+    private List<TicketEntity> tickets = new ArrayList<>();
 
     public SessionEntity() {
     }
@@ -114,5 +115,16 @@ public class SessionEntity {
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getDate(), getPriceInCents(), getFormat(), getSubtitle());
+    }
+
+    @Override
+    public String toString() {
+        return "SessionEntity{" +
+                "id=" + id +
+                ", date=" + date +
+                ", priceInCents=" + priceInCents +
+                ", format=" + format +
+                ", subtitle=" + subtitle +
+                '}';
     }
 }

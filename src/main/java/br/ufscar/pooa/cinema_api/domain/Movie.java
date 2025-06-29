@@ -2,9 +2,9 @@ package br.ufscar.pooa.cinema_api.domain;
 
 import br.ufscar.pooa.cinema_api.domain.enums.AgeRating;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 public class Movie {
     private Long id;
@@ -14,11 +14,11 @@ public class Movie {
     private String trailerUrl;
     private Integer durationInSeconds;
     private Theater theater;
-    private List<Session> sessions;
-    private Set<Genre> genres;
+    private List<Session> sessions = new ArrayList<>();
+    private List<Genre> genres;
     private AgeRating ageRating;
 
-    public Movie(AgeRating ageRating, Set<Genre> genres, Theater theater, List<Session> sessions, Integer durationInSeconds, String trailerUrl, String coverUrl, String synopsis, String title) {
+    public Movie(AgeRating ageRating, List<Genre> genres, Theater theater, List<Session> sessions, Integer durationInSeconds, String trailerUrl, String coverUrl, String synopsis, String title) {
         this.ageRating = ageRating;
         this.genres = genres;
         this.theater = theater;
@@ -32,10 +32,6 @@ public class Movie {
 
     public Movie(){
 
-    }
-
-    public Session[] getAvailableSessions() {
-        return null;
     }
 
     public Long getId() {
@@ -86,6 +82,14 @@ public class Movie {
         this.durationInSeconds = durationInSeconds;
     }
 
+    public Theater getTheater() {
+        return theater;
+    }
+
+    public void setTheater(Theater theater) {
+        this.theater = theater;
+    }
+
     public List<Session> getSessions() {
         return sessions;
     }
@@ -94,19 +98,11 @@ public class Movie {
         this.sessions = sessions;
     }
 
-    public Theater getTheater() {
-        return theater;
-    }
-
-    public void setTheater(Theater cinema) {
-        this.theater = cinema;
-    }
-
-    public Set<Genre> getMovieGenres() {
+    public List<Genre> getGenres() {
         return genres;
     }
 
-    public void setMovieGenres(Set<Genre> genres) {
+    public void setGenres(List<Genre> genres) {
         this.genres = genres;
     }
 

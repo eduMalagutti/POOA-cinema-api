@@ -4,6 +4,7 @@ import br.ufscar.pooa.cinema_api.domain.enums.Role;
 import br.ufscar.pooa.cinema_api.domain.enums.Gender;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,7 +12,7 @@ public class Client extends User {
     private String cpf;
     private Gender gender;
     private LocalDateTime birthDate;
-    private List<Ticket> tickets;
+    private List<Ticket> tickets = new ArrayList<>();
 
     public Client(String name,
                    String email,

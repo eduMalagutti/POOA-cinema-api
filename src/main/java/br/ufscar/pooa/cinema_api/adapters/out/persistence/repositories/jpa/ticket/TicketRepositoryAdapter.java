@@ -21,6 +21,13 @@ public class TicketRepositoryAdapter implements ITicketRepository {
 
     @Override
     public Ticket save(Ticket ticket) {
+        if (ticket == null) {
+            throw new IllegalArgumentException("Ticket cannot be null");
+        }
+        if (ticket.getId() != null) {
+            throw new IllegalArgumentException("Ticket ID must be null");
+        }
+
         TicketEntity ticketEntity = objectMapper.parseObject(ticket, TicketEntity.class);
         TicketEntity savedEntity = ticketJpaRepository.save(ticketEntity);
         return objectMapper.parseObject(savedEntity, Ticket.class);

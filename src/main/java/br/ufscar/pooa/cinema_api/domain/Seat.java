@@ -2,6 +2,7 @@ package br.ufscar.pooa.cinema_api.domain;
 
 import br.ufscar.pooa.cinema_api.domain.enums.SeatType;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,7 +11,7 @@ public class Seat {
     private Character number;
     private SeatType seatType;
     private Row row;
-    private List<Ticket> tickets;
+    private List<Ticket> tickets = new ArrayList<>();
 
     public Seat() {
     }

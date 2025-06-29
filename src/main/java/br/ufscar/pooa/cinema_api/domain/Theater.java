@@ -1,5 +1,6 @@
 package br.ufscar.pooa.cinema_api.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -8,9 +9,9 @@ public class Theater {
     private String name;
     private String logoUrl;
     private Address address;
-    private List<Room> rooms;
-    private List<User> managers;
-    private List<Movie> movies;
+    private List<Room> rooms = new ArrayList<>();
+    private List<User> managers = new ArrayList<>();
+    private List<Movie> movies = new ArrayList<>();
 
     public Theater() {}
 

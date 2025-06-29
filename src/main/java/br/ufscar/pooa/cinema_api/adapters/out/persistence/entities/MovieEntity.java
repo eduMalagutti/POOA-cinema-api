@@ -3,6 +3,7 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 import br.ufscar.pooa.cinema_api.domain.enums.AgeRating;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -36,7 +37,7 @@ public class MovieEntity {
     private TheaterEntity theater;
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
-    private List<SessionEntity> sessions;
+    private List<SessionEntity> sessions = new ArrayList<>();
 
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinTable(

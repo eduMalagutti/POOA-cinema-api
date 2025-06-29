@@ -2,6 +2,7 @@ package br.ufscar.pooa.cinema_api.domain;
 
 import br.ufscar.pooa.cinema_api.domain.enums.RoomType;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,8 +11,8 @@ public class Room {
     private String name;
     private RoomType roomType;
     private Theater theater;
-    private List<Row> rows;
-    private List<Session> sessions;
+    private List<Row> rows = new ArrayList<>();
+    private List<Session> sessions = new ArrayList<>();
 
     public Room() {
     }

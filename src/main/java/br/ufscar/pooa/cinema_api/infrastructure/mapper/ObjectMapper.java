@@ -16,14 +16,8 @@ public class ObjectMapper implements IObjectMapper {
 
     private final ModelMapper modelMapper;
 
-    public ObjectMapper() {
-        this.modelMapper = new ModelMapper();
-
-        this.modelMapper.getConfiguration()
-                .setMatchingStrategy(MatchingStrategies.STRICT)
-                .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE)
-                .setPropertyCondition(context ->
-                        !(context.getSource() instanceof org.hibernate.collection.spi.PersistentBag));
+    public ObjectMapper(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
     }
 
     @Override

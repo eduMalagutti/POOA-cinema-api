@@ -3,6 +3,7 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 import br.ufscar.pooa.cinema_api.domain.enums.RoomType;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,11 +25,11 @@ public class RoomEntity {
     @JoinColumn(name = "theater_id", nullable = false)
     private TheaterEntity theater;
 
-    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
-    private List<RowEntity> rows;
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<RowEntity> rows = new ArrayList<>();
 
     @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
-    private List<SessionEntity> sessions;
+    private List<SessionEntity> sessions = new ArrayList<>();
 
     public RoomEntity() {
     }
@@ -91,5 +92,14 @@ public class RoomEntity {
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getName(), getRoomType());
+    }
+
+    @Override
+    public String toString() {
+        return "RoomEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", roomType=" + roomType +
+                '}';
     }
 }

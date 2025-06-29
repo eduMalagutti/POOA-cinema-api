@@ -1,5 +1,6 @@
 package br.ufscar.pooa.cinema_api.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -7,7 +8,7 @@ public class Row {
 	private Long id;
 	private Character letter;
 	private Room room;
-	private List<Seat> seats;
+	private List<Seat> seats = new ArrayList<>();
 
 	public Row(Character letter, Room room, List<Seat> seats) {
 		this.letter = letter;

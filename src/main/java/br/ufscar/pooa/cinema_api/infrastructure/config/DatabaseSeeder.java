@@ -11,8 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Component
 @Profile("dev")
@@ -54,38 +53,38 @@ public class DatabaseSeeder implements CommandLineRunner {
 
         System.out.println("Iniciando seeding MÍNIMO para criação de Ticket...");
 
-        // 1. Criar o Cinema (Theater)
+        // 1. Theater
         Address address = new Address("13560-000", "Rua do Teste", "123", null, "São Carlos", "Centro", "SP", "Brasil");
         Theater theater = new Theater("Cine Teste", "http://logo.url/logo.png", new ArrayList<>(), address, new ArrayList<>(), new ArrayList<>());
         Theater savedTheater = theaterRepository.save(theater);
 
-        // 2. Criar o Cliente (Client)
+        // 2. Client
         Client client = new Client("Cliente de Teste", "cliente@teste.com", passwordEncoder.encode("123456"), savedTheater, "123.456.789-00", Gender.MALE, LocalDateTime.now().minusYears(25), new ArrayList<>(), Role.CLIENT);
         Client savedClient = clientRepository.save(client);
 
-        // ======================= INÍCIO DA CORREÇÃO =======================
-        // 3. Criar a Sala, Fileira e Assento
+        // 3. Room
         Room room = new Room(null, "Sala Teste 1", RoomType.STANDARD, savedTheater, new ArrayList<>(), new ArrayList<>());
         Room savedRoom = roomRepository.save(room);
 
+        // 4. Row
         Row row = new Row('A', savedRoom, new ArrayList<>());
-        // Primeiro, salve a fileira para garantir que ela exista no banco e tenha um ID.
         Row savedRow = rowRepository.save(row);
 
-        // Agora crie o assento, passando a fileira JÁ SALVA (com ID) para ele.
+        // 5. Seat
         Seat seat = new Seat('1', savedRow, new ArrayList<>(), SeatType.STANDARD);
-        // E salve o assento explicitamente. A variável 'savedSeat' agora terá o ID correto.
         Seat savedSeat = seatRepository.save(seat);
-        // ======================== FIM DA CORREÇÃO =========================
 
-        // 4. Criar o Gênero e o Filme
-        Genre genre = new Genre(null, "Ação", new HashSet<>());
+        // 6. Genre
+        Genre genre = new Genre(null, "Ação", new ArrayList<>());
         Genre savedGenre = genreRepository.save(genre);
 
-        Movie movie = new Movie(AgeRating.FOURTEEN_YEARS, new HashSet<>(Set.of(savedGenre)), savedTheater, new ArrayList<>(), 7500, "http://trailer.url/trailer.mp4", "http://cover.url/cover.jpg", "Um filme de teste para uma API incrível.", "Filme de Teste");
+        // 7. Movie
+        List<Genre> genres = new ArrayList<>();
+        genres.add(savedGenre);
+        Movie movie = new Movie(AgeRating.FOURTEEN_YEARS, genres, savedTheater, new ArrayList<>(), 7500, "http://trailer.url/trailer.mp4", "http://cover.url/cover.jpg", "Um filme de teste para uma API incrível.", "Filme de Teste");
         Movie savedMovie = movieRepository.save(movie);
 
-        // 5. Criar a Sessão
+        // 8. Session
         Session session = new Session(Format.TWO_D, (int) (System.currentTimeMillis() / 1000), Subtitle.DUBBED, 3500, savedRoom, savedMovie, new ArrayList<>());
         Session savedSession = sessionRepository.save(session);
 

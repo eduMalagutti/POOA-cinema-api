@@ -3,6 +3,7 @@ package br.ufscar.pooa.cinema_api.domain;
 import br.ufscar.pooa.cinema_api.domain.enums.Format;
 import br.ufscar.pooa.cinema_api.domain.enums.Subtitle;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,7 +15,7 @@ public class Session {
     private Integer priceInCents;
     private Room room;
     private Movie movie;
-    private List<Ticket> tickets;
+    private List<Ticket> tickets = new ArrayList<>();
 
     public boolean isSeatAvailable(Seat newSeat) {
         if ( newSeat == null ) return false;

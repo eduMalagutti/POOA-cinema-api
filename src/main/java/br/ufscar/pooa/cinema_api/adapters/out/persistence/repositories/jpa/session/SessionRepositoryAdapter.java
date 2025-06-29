@@ -1,7 +1,7 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jpa.session;
 
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.SessionEntity;
-import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper; // 1. Importar a interface do Mapper
+import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.ISessionRepository;
 import br.ufscar.pooa.cinema_api.domain.Session;
 import org.springframework.stereotype.Repository;
@@ -20,6 +20,13 @@ public class SessionRepositoryAdapter implements ISessionRepository {
 
     @Override
     public Session save(Session session) {
+        if (session == null) {
+            throw new IllegalArgumentException("Session cannot be null");
+        }
+        if (session.getId() != null) {
+            throw new IllegalArgumentException("Session ID must be null for a new session");
+        }
+
         SessionEntity sessionEntity = objectMapper.parseObject(session, SessionEntity.class);
         SessionEntity savedEntity = sessionJpaRepository.save(sessionEntity);
         return objectMapper.parseObject(savedEntity, Session.class);
@@ -28,7 +35,20 @@ public class SessionRepositoryAdapter implements ISessionRepository {
     @Override
     public Optional<Session> findById(Long id) {
         Optional<SessionEntity> entityOptional = sessionJpaRepository.findById(id);
-        return entityOptional.map(sessionEntity -> objectMapper.parseObject(sessionEntity, Session.class));
+
+        return entityOptional.map(sessionEntity -> {
+            System.out.println(sessionEntity.getRoom());
+            System.out.println(sessionEntity.getRoom().getRows());
+            System.out.println(sessionEntity.getRoom().getRows().getFirst().getSeats());
+            System.out.println(sessionEntity.getTickets());
+            var session = objectMapper.parseObject(sessionEntity, Session.class);
+            System.out.println();
+            System.out.println(session.getRoom());
+            System.out.println(session.getRoom().getRows());
+            System.out.println(session.getRoom().getRows().getFirst().getSeats());
+            System.out.println(session.getTickets());
+            return session;
+        });
     }
 
     @Override

@@ -56,17 +56,15 @@ public class RegisterTicketUseCase implements IRegisterTicketUseCase {
                 .orElseThrow(() -> new ResourceNotFoundException("Cliente", "id", requestDTO.getClientId().toString()));
 
         IPaymentStrategy paymentStrategy = paymentStrategyFactory.getStrategy(requestDTO.getPaymentMethod())
-                .orElseThrow(() -> new IllegalArgumentException("Método de pagamento inválido ou não suportado."));
-
-        System.out.println(session.getTickets());
+                .orElseThrow(() -> new IllegalArgumentException("Payment method not supported."));
 
         if (!session.isSeatAvailable(seat)) {
-            throw new BadRequestException("Assento indisponível.");
+            throw new BadRequestException("Seat is not available.");
         }
 
         boolean paymentSuccessful = paymentStrategy.pay(requestDTO.getPriceInCentsClient());
         if (!paymentSuccessful) {
-            throw new RuntimeException("Falha ao processar o pagamento.");
+            throw new RuntimeException("Payment failed.");
         }
 
         Ticket newTicket = new Ticket();
@@ -78,8 +76,6 @@ public class RegisterTicketUseCase implements IRegisterTicketUseCase {
         newTicket.setPaymentDate(Instant.now());
 
         Ticket savedTicket = ticketRepository.save(newTicket);
-
-        System.out.println(savedTicket.getSession());
 
         return objectMapper.parseObject(savedTicket, TicketResponseDTO.class);
     }
