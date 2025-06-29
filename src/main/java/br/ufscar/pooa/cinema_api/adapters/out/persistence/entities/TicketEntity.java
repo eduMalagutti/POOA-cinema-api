@@ -21,7 +21,7 @@ public class TicketEntity {
 
     @Column
     @Enumerated(EnumType.STRING)
-    private PaymentMethod paymentMethods;
+    private PaymentMethod paymentMethod;
 
     @ManyToOne
     @JoinColumn(name = "session_id", nullable = false)
@@ -64,12 +64,12 @@ public class TicketEntity {
         return this;
     }
 
-    public PaymentMethod getPaymentMethods() {
-        return paymentMethods;
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
     }
 
-    public TicketEntity setPaymentMethods(PaymentMethod paymentMethods) {
-        this.paymentMethods = paymentMethods;
+    public TicketEntity setPaymentMethod(PaymentMethod paymentMethods) {
+        this.paymentMethod = paymentMethods;
         return this;
     }
 
@@ -104,11 +104,21 @@ public class TicketEntity {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         TicketEntity that = (TicketEntity) o;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getPaymentDate(), that.getPaymentDate()) && Objects.equals(getPriceInCents(), that.getPriceInCents()) && getPaymentMethods() == that.getPaymentMethods() && Objects.equals(getSession(), that.getSession()) && Objects.equals(getClient(), that.getClient()) && Objects.equals(getSeat(), that.getSeat());
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getPaymentDate(), that.getPaymentDate()) && Objects.equals(getPriceInCents(), that.getPriceInCents()) && getPaymentMethod() == that.getPaymentMethod();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getPaymentDate(), getPriceInCents(), getPaymentMethods(), getSession(), getClient(), getSeat());
+        return Objects.hash(getId(), getPaymentDate(), getPriceInCents(), getPaymentMethod());
+    }
+
+    @Override
+    public String toString() {
+        return "TicketEntity{" +
+                "id=" + id +
+                ", paymentDate=" + paymentDate +
+                ", priceInCents=" + priceInCents +
+                ", paymentMethods=" + paymentMethod +
+                '}';
     }
 }

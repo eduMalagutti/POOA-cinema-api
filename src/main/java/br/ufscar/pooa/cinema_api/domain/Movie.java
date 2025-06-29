@@ -120,14 +120,13 @@ public class Movie {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Movie movie = (Movie) o;
-        return Objects.equals(id, movie.id) && Objects.equals(getTitle(), movie.getTitle()) && Objects.equals(getSynopsis(), movie.getSynopsis()) && Objects.equals(getCoverUrl(), movie.getCoverUrl()) && Objects.equals(getTrailerUrl(), movie.getTrailerUrl()) && Objects.equals(getDurationInSeconds(), movie.getDurationInSeconds()) && Objects.equals(getTheater(), movie.getTheater()) && Objects.equals(getSessions(), movie.getSessions()) && Objects.equals(getMovieGenres(), movie.getMovieGenres()) && getAgeRating() == movie.getAgeRating();
+        return Objects.equals(getId(), movie.getId()) && Objects.equals(getTitle(), movie.getTitle()) && Objects.equals(getSynopsis(), movie.getSynopsis()) && Objects.equals(getCoverUrl(), movie.getCoverUrl()) && Objects.equals(getTrailerUrl(), movie.getTrailerUrl()) && Objects.equals(getDurationInSeconds(), movie.getDurationInSeconds()) && getAgeRating() == movie.getAgeRating();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, getTitle(), getSynopsis(), getCoverUrl(), getTrailerUrl(), getDurationInSeconds(), getTheater(), getSessions(), getMovieGenres(), getAgeRating());
+        return Objects.hash(getId(), getTitle(), getSynopsis(), getCoverUrl(), getTrailerUrl(), getDurationInSeconds(), getAgeRating());
     }
 }

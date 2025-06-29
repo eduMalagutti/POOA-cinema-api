@@ -44,74 +44,75 @@ public class SessionEntity {
         return id;
     }
 
-    public SessionEntity setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
-        return this;
-    }
-
-    public Format getFormat() {
-        return format;
-    }
-
-    public SessionEntity setFormat(Format format) {
-        this.format = format;
-        return this;
     }
 
     public Integer getDate() {
         return date;
     }
 
-    public SessionEntity setDate(Integer date) {
+    public void setDate(Integer date) {
         this.date = date;
-        return this;
-    }
-
-    public Subtitle getSubtitle() {
-        return subtitle;
-    }
-
-    public SessionEntity setSubtitle(Subtitle subtitle) {
-        this.subtitle = subtitle;
-        return this;
     }
 
     public Integer getPriceInCents() {
         return priceInCents;
     }
 
-    public SessionEntity setPriceInCents(Integer priceInCents) {
+    public void setPriceInCents(Integer priceInCents) {
         this.priceInCents = priceInCents;
-        return this;
+    }
+
+    public Format getFormat() {
+        return format;
+    }
+
+    public void setFormat(Format format) {
+        this.format = format;
+    }
+
+    public Subtitle getSubtitle() {
+        return subtitle;
+    }
+
+    public void setSubtitle(Subtitle subtitle) {
+        this.subtitle = subtitle;
     }
 
     public RoomEntity getRoom() {
         return room;
     }
 
-    public SessionEntity setRoom(RoomEntity room) {
+    public void setRoom(RoomEntity room) {
         this.room = room;
-        return this;
     }
 
     public MovieEntity getMovie() {
         return movie;
     }
 
-    public SessionEntity setMovie(MovieEntity movie) {
+    public void setMovie(MovieEntity movie) {
         this.movie = movie;
-        return this;
+    }
+
+    public List<TicketEntity> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<TicketEntity> tickets) {
+        this.tickets = tickets;
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         SessionEntity that = (SessionEntity) o;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getDate(), that.getDate()) && Objects.equals(getPriceInCents(), that.getPriceInCents()) && getFormat() == that.getFormat() && getSubtitle() == that.getSubtitle() && Objects.equals(getRoom(), that.getRoom()) && Objects.equals(getMovie(), that.getMovie()) && Objects.equals(tickets, that.tickets);
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getDate(), that.getDate()) && Objects.equals(getPriceInCents(), that.getPriceInCents()) && getFormat() == that.getFormat() && getSubtitle() == that.getSubtitle();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getDate(), getPriceInCents(), getFormat(), getSubtitle(), getRoom(), getMovie(), tickets);
+        return Objects.hash(getId(), getDate(), getPriceInCents(), getFormat(), getSubtitle());
     }
 }

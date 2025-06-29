@@ -4,12 +4,14 @@ import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.config.Configuration;
 import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Primary
 public class ObjectMapper implements IObjectMapper {
 
     private final ModelMapper modelMapper;
@@ -19,7 +21,9 @@ public class ObjectMapper implements IObjectMapper {
 
         this.modelMapper.getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.STRICT)
-                .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE);
+                .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE)
+                .setPropertyCondition(context ->
+                        !(context.getSource() instanceof org.hibernate.collection.spi.PersistentBag));
     }
 
     @Override

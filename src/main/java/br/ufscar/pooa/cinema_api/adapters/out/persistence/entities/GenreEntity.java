@@ -49,11 +49,11 @@ public class GenreEntity {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         GenreEntity that = (GenreEntity) o;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && Objects.equals(getMovies(), that.getMovies());
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getMovies());
+        return Objects.hash(getId(), getName());
     }
 }

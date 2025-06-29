@@ -10,21 +10,21 @@ public class Ticket {
 	private Long id;
 	private Instant paymentDate;
 	private Integer priceInCents;
+	private PaymentMethod paymentMethod;
 	private Session session;
 	private Client client;
 	private Seat seat;
-	private Set<PaymentMethod> paymentMethods;
 
 	public Ticket() {
 	}
 
-	public Ticket(Instant paymentDate, Integer priceInCents, Session session, Client client, Seat seat, Set<PaymentMethod> paymentMethods) {
+	public Ticket(Instant paymentDate, Integer priceInCents, Session session, Client client, Seat seat, PaymentMethod paymentMethod) {
 		this.paymentDate = paymentDate;
 		this.priceInCents = priceInCents;
 		this.session = session;
 		this.client = client;
 		this.seat = seat;
-		this.paymentMethods = paymentMethods;
+		this.paymentMethod = paymentMethod;
 	}
 
 	public Long getId() {
@@ -51,6 +51,14 @@ public class Ticket {
 		this.priceInCents = priceInCents;
 	}
 
+	public PaymentMethod getPaymentMethod() {
+		return paymentMethod;
+	}
+
+	public void setPaymentMethod(PaymentMethod paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
+
 	public Session getSession() {
 		return session;
 	}
@@ -75,23 +83,25 @@ public class Ticket {
 		this.seat = seat;
 	}
 
-	public Set<PaymentMethod> getPaymentMethods() {
-		return paymentMethods;
-	}
-
-	public void setPaymentMethods(Set<PaymentMethod> paymentMethods) {
-		this.paymentMethods = paymentMethods;
-	}
-
 	@Override
 	public boolean equals(Object o) {
 		if (o == null || getClass() != o.getClass()) return false;
 		Ticket ticket = (Ticket) o;
-		return Objects.equals(paymentDate, ticket.paymentDate) && Objects.equals(priceInCents, ticket.priceInCents) && Objects.equals(session, ticket.session) && Objects.equals(client, ticket.client) && Objects.equals(seat, ticket.seat) && Objects.equals(paymentMethods, ticket.paymentMethods);
+		return Objects.equals(paymentDate, ticket.paymentDate) && Objects.equals(priceInCents, ticket.priceInCents) && Objects.equals(session, ticket.session) && Objects.equals(client, ticket.client) && Objects.equals(seat, ticket.seat) && Objects.equals(paymentMethod, ticket.paymentMethod);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(paymentDate, priceInCents, session, client, seat, paymentMethods);
+		return Objects.hash(paymentDate, priceInCents, session, client, seat, paymentMethod);
+	}
+
+	@Override
+	public String toString() {
+		return "Ticket{" +
+				"id=" + id +
+				", paymentDate=" + paymentDate +
+				", priceInCents=" + priceInCents +
+				", paymentMethod=" + paymentMethod +
+				'}';
 	}
 }

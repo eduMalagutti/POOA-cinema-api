@@ -93,14 +93,13 @@ public class TheaterEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TheaterEntity that = (TheaterEntity) o;
-        return this.id != null && Objects.equals(this.id, that.id);
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && Objects.equals(getLogoUrl(), that.getLogoUrl());
     }
 
     @Override
     public int hashCode() {
-        return getClass().hashCode();
+        return Objects.hash(getId(), getName(), getLogoUrl());
     }
 }

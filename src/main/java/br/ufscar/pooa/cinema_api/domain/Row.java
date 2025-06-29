@@ -55,11 +55,21 @@ public class Row {
 	public boolean equals(Object o) {
 		if (o == null || getClass() != o.getClass()) return false;
 		Row row = (Row) o;
-		return Objects.equals(letter, row.letter) && Objects.equals(room, row.room) && Objects.equals(seats, row.seats);
+		return Objects.equals(getId(), row.getId()) && Objects.equals(getLetter(), row.getLetter()) && Objects.equals(getRoom(), row.getRoom()) && Objects.equals(getSeats(), row.getSeats());
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(letter, room, seats);
+		return Objects.hash(getId(), getLetter(), getRoom(), getSeats());
+	}
+
+	@Override
+	public String toString() {
+		return "Row{" +
+				"id=" + id +
+				", letter=" + letter +
+				", room=" + room +
+				", seats=" + seats +
+				'}';
 	}
 }

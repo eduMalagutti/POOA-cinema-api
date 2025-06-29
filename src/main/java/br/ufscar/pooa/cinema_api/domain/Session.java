@@ -16,6 +16,22 @@ public class Session {
     private Movie movie;
     private List<Ticket> tickets;
 
+    public boolean isSeatAvailable(Seat newSeat) {
+        if ( newSeat == null ) return false;
+        if ( room == null ) return true;
+        if ( tickets == null ) return true;
+
+        List<List<Seat>> allSeats = room.getRows().stream().map(Row::getSeats).toList();
+        List<Seat> takenSeats = tickets.stream().map(Ticket::getSeat).toList();
+
+        List<Seat> availableSeats = allSeats.stream()
+                .flatMap(List::stream)
+                .filter(seat -> !takenSeats.contains(seat))
+                .toList();
+
+        return availableSeats.contains(newSeat);
+    }
+
     public Session() {
     }
 
@@ -35,10 +51,6 @@ public class Session {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Seat[] getAvailableSeats() {
-        return null;
     }
 
     public Format getFormat() {
@@ -101,11 +113,22 @@ public class Session {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Session session = (Session) o;
-        return format == session.format && Objects.equals(date, session.date) && subtitle == session.subtitle && Objects.equals(priceInCents, session.priceInCents) && Objects.equals(room, session.room) && Objects.equals(movie, session.movie) && Objects.equals(tickets, session.tickets);
+        return Objects.equals(getId(), session.getId()) && getFormat() == session.getFormat() && Objects.equals(getDate(), session.getDate()) && getSubtitle() == session.getSubtitle() && Objects.equals(getPriceInCents(), session.getPriceInCents());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(format, date, subtitle, priceInCents, room, movie, tickets);
+        return Objects.hash(getId(), getFormat(), getDate(), getSubtitle(), getPriceInCents());
+    }
+
+    @Override
+    public String toString() {
+        return "Session{" +
+                "id=" + id +
+                ", format=" + format +
+                ", date=" + date +
+                ", subtitle=" + subtitle +
+                ", priceInCents=" + priceInCents +
+                '}';
     }
 }

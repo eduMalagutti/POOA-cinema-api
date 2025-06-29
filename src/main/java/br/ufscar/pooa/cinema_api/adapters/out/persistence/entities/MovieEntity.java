@@ -53,84 +53,91 @@ public class MovieEntity {
         return id;
     }
 
-    public MovieEntity setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
-        return this;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public MovieEntity setTitle(String title) {
+    public void setTitle(String title) {
         this.title = title;
-        return this;
     }
 
     public String getSynopsis() {
         return synopsis;
     }
 
-    public MovieEntity setSynopsis(String synopsis) {
+    public void setSynopsis(String synopsis) {
         this.synopsis = synopsis;
-        return this;
     }
 
     public String getCoverUrl() {
         return coverUrl;
     }
 
-    public MovieEntity setCoverUrl(String coverUrl) {
+    public void setCoverUrl(String coverUrl) {
         this.coverUrl = coverUrl;
-        return this;
     }
 
     public String getTrailerUrl() {
         return trailerUrl;
     }
 
-    public MovieEntity setTrailerUrl(String trailerUrl) {
+    public void setTrailerUrl(String trailerUrl) {
         this.trailerUrl = trailerUrl;
-        return this;
     }
 
     public Integer getDurationInSeconds() {
         return durationInSeconds;
     }
 
-    public MovieEntity setDurationInSeconds(Integer durationInSeconds) {
+    public void setDurationInSeconds(Integer durationInSeconds) {
         this.durationInSeconds = durationInSeconds;
-        return this;
     }
 
     public AgeRating getAgeRating() {
         return ageRating;
     }
 
-    public MovieEntity setAgeRating(AgeRating ageRating) {
+    public void setAgeRating(AgeRating ageRating) {
         this.ageRating = ageRating;
-        return this;
     }
 
     public TheaterEntity getTheater() {
         return theater;
     }
 
-    public MovieEntity setTheater(TheaterEntity theater) {
+    public void setTheater(TheaterEntity theater) {
         this.theater = theater;
-        return this;
+    }
+
+    public List<SessionEntity> getSessions() {
+        return sessions;
+    }
+
+    public void setSessions(List<SessionEntity> sessions) {
+        this.sessions = sessions;
+    }
+
+    public Set<GenreEntity> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(Set<GenreEntity> genres) {
+        this.genres = genres;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MovieEntity that = (MovieEntity) o;
-        return this.id != null && Objects.equals(this.id, that.id);
+        return Objects.equals(id, that.id) && Objects.equals(title, that.title) && Objects.equals(synopsis, that.synopsis) && Objects.equals(coverUrl, that.coverUrl) && Objects.equals(trailerUrl, that.trailerUrl) && Objects.equals(durationInSeconds, that.durationInSeconds) && ageRating == that.ageRating;
     }
 
     @Override
     public int hashCode() {
-        return getClass().hashCode();
+        return Objects.hash(id, title, synopsis, coverUrl, trailerUrl, durationInSeconds, ageRating);
     }
 }

@@ -45,11 +45,11 @@ public class Genre {
 	public boolean equals(Object o) {
 		if (o == null || getClass() != o.getClass()) return false;
 		Genre genre = (Genre) o;
-		return Objects.equals(id, genre.id) && Objects.equals(name, genre.name) && Objects.equals(movies, genre.movies);
+		return Objects.equals(getId(), genre.getId()) && Objects.equals(getName(), genre.getName());
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name, movies);
+		return Objects.hash(getId(), getName());
 	}
 }

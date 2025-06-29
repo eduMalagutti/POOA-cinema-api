@@ -22,6 +22,14 @@ public class Seat {
         this.seatType = seatType;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Character getNumber() {
         return number;
     }
@@ -30,9 +38,14 @@ public class Seat {
         this.number = number;
     }
 
-    public Long getId() {
-        return id;
+    public SeatType getSeatType() {
+        return seatType;
     }
+
+    public void setSeatType(SeatType seatType) {
+        this.seatType = seatType;
+    }
+
     public Row getRow() {
         return row;
     }
@@ -49,27 +62,24 @@ public class Seat {
         this.tickets = tickets;
     }
 
-    public SeatType getSeatType() {
-        return seatType;
-    }
-
-    public void setSeatType(SeatType seatType) {
-        this.seatType = seatType;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Seat seat = (Seat) o;
-        return Objects.equals(number, seat.number) && Objects.equals(row, seat.row) && Objects.equals(tickets, seat.tickets) && seatType == seat.seatType;
+        return Objects.equals(getId(), seat.getId()) && Objects.equals(getNumber(), seat.getNumber()) && getSeatType() == seat.getSeatType();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(number, row, tickets, seatType);
+        return Objects.hash(getId(), getNumber(), getSeatType());
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    @Override
+    public String toString() {
+        return "Seat{" +
+                "id=" + id +
+                ", number=" + number +
+                ", seatType=" + seatType +
+                '}';
     }
 }

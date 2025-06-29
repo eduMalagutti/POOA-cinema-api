@@ -67,12 +67,13 @@ public class Client extends User {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Client client = (Client) o;
-        return Objects.equals(cpf, client.cpf) && Objects.equals(gender, client.gender) && Objects.equals(birthDate, client.birthDate) && Objects.equals(tickets, client.tickets);
+        return Objects.equals(getCpf(), client.getCpf()) && getGender() == client.getGender() && Objects.equals(getBirthDate(), client.getBirthDate());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cpf, gender, birthDate, tickets);
+        return Objects.hash(super.hashCode(), getCpf(), getGender(), getBirthDate());
     }
 }

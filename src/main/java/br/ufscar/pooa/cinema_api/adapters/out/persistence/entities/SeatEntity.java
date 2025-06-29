@@ -67,14 +67,13 @@ public class SeatEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SeatEntity that = (SeatEntity) o;
-        return this.id != null && Objects.equals(this.id, that.id);
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getNumber(), that.getNumber()) && getSeatType() == that.getSeatType();
     }
 
     @Override
     public int hashCode() {
-        return getClass().hashCode();
+        return Objects.hash(getId(), getNumber(), getSeatType());
     }
 }

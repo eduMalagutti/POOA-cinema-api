@@ -30,48 +30,43 @@ public class RowEntity {
         return id;
     }
 
-    public RowEntity setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
-        return this;
     }
 
     public Character getLetter() {
         return letter;
     }
 
-    public RowEntity setLetter(Character letter) {
+    public void setLetter(Character letter) {
         this.letter = letter;
-        return this;
     }
 
     public RoomEntity getRoom() {
         return room;
     }
 
-    public RowEntity setRoom(RoomEntity room) {
+    public void setRoom(RoomEntity room) {
         this.room = room;
-        return this;
     }
 
     public List<SeatEntity> getSeats() {
         return seats;
     }
 
-    public RowEntity setSeats(List<SeatEntity> seats) {
+    public void setSeats(List<SeatEntity> seats) {
         this.seats = seats;
-        return this;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RowEntity that = (RowEntity) o;
-        return this.id != null && Objects.equals(this.id, that.id);
+        RowEntity rowEntity = (RowEntity) o;
+        return Objects.equals(getId(), rowEntity.getId()) && Objects.equals(getLetter(), rowEntity.getLetter());
     }
 
     @Override
     public int hashCode() {
-        return getClass().hashCode();
+        return Objects.hash(getId(), getLetter());
     }
 }

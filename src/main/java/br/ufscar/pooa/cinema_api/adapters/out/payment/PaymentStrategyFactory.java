@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.adapters.out.persistence.payment;
+package br.ufscar.pooa.cinema_api.adapters.out.payment;
 
 import br.ufscar.pooa.cinema_api.application.ports.out.payment.IPaymentStrategy;
 import br.ufscar.pooa.cinema_api.domain.enums.PaymentMethod;

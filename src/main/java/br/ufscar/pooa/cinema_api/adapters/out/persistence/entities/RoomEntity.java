@@ -37,48 +37,59 @@ public class RoomEntity {
         return id;
     }
 
-    public RoomEntity setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
-        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public RoomEntity setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
     public RoomType getRoomType() {
         return roomType;
     }
 
-    public RoomEntity setRoomType(RoomType roomType) {
+    public void setRoomType(RoomType roomType) {
         this.roomType = roomType;
-        return this;
     }
 
     public TheaterEntity getTheater() {
         return theater;
     }
 
-    public RoomEntity setTheater(TheaterEntity theater) {
+    public void setTheater(TheaterEntity theater) {
         this.theater = theater;
-        return this;
+    }
+
+    public List<RowEntity> getRows() {
+        return rows;
+    }
+
+    public void setRows(List<RowEntity> rows) {
+        this.rows = rows;
+    }
+
+    public List<SessionEntity> getSessions() {
+        return sessions;
+    }
+
+    public void setSessions(List<SessionEntity> sessions) {
+        this.sessions = sessions;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RoomEntity that = (RoomEntity) o;
-        return this.id != null && Objects.equals(this.id, that.id);
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && getRoomType() == that.getRoomType();
     }
 
     @Override
     public int hashCode() {
-        return getClass().hashCode();
+        return Objects.hash(getId(), getName(), getRoomType());
     }
 }

@@ -101,4 +101,18 @@ public class Address {
 	public int hashCode() {
 		return Objects.hash(country, state, city, zipCode, neighborhood, street, number, complement);
 	}
+
+	@Override
+	public String toString() {
+		return "Address{" +
+				"zipCode='" + zipCode + '\'' +
+				", street='" + street + '\'' +
+				", number='" + number + '\'' +
+				", complement='" + complement + '\'' +
+				", city='" + city + '\'' +
+				", neighborhood='" + neighborhood + '\'' +
+				", state='" + state + '\'' +
+				", country='" + country + '\'' +
+				'}';
+	}
 }

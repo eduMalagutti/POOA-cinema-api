@@ -83,11 +83,20 @@ public class Room {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Room room = (Room) o;
-        return Objects.equals(getId(), room.getId()) && Objects.equals(getName(), room.getName()) && getRoomType() == room.getRoomType() && Objects.equals(getTheater(), room.getTheater()) && Objects.equals(getRows(), room.getRows()) && Objects.equals(getSessions(), room.getSessions());
+        return Objects.equals(getId(), room.getId()) && Objects.equals(getName(), room.getName()) && getRoomType() == room.getRoomType();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getRoomType(), getTheater(), getRows(), getSessions());
+        return Objects.hash(getId(), getName(), getRoomType());
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", roomType=" + roomType +
+                '}';
     }
 }

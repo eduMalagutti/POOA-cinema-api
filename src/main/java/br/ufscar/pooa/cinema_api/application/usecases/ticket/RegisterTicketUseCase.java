@@ -1,8 +1,9 @@
 package br.ufscar.pooa.cinema_api.application.usecases.ticket;
 
-import br.ufscar.pooa.cinema_api.adapters.out.persistence.payment.PaymentStrategyFactory;
+import br.ufscar.pooa.cinema_api.adapters.out.payment.PaymentStrategyFactory;
 import br.ufscar.pooa.cinema_api.application.dtos.ticket.RegisterTicketRequestDTO;
 import br.ufscar.pooa.cinema_api.application.dtos.ticket.TicketResponseDTO;
+import br.ufscar.pooa.cinema_api.application.exceptions.BadRequestException;
 import br.ufscar.pooa.cinema_api.application.exceptions.ResourceNotFoundException;
 import br.ufscar.pooa.cinema_api.application.ports.in.IRegisterTicketUseCase;
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
@@ -17,9 +18,7 @@ import br.ufscar.pooa.cinema_api.domain.Session;
 import br.ufscar.pooa.cinema_api.domain.Ticket;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.time.Instant;
-import java.util.Set;
 
 @Service
 public class RegisterTicketUseCase implements IRegisterTicketUseCase {
@@ -59,6 +58,12 @@ public class RegisterTicketUseCase implements IRegisterTicketUseCase {
         IPaymentStrategy paymentStrategy = paymentStrategyFactory.getStrategy(requestDTO.getPaymentMethod())
                 .orElseThrow(() -> new IllegalArgumentException("Método de pagamento inválido ou não suportado."));
 
+        System.out.println(session.getTickets());
+
+        if (!session.isSeatAvailable(seat)) {
+            throw new BadRequestException("Assento indisponível.");
+        }
+
         boolean paymentSuccessful = paymentStrategy.pay(requestDTO.getPriceInCentsClient());
         if (!paymentSuccessful) {
             throw new RuntimeException("Falha ao processar o pagamento.");
@@ -68,11 +73,13 @@ public class RegisterTicketUseCase implements IRegisterTicketUseCase {
         newTicket.setClient(client);
         newTicket.setSession(session);
         newTicket.setSeat(seat);
-        newTicket.setPaymentMethods(Set.of(requestDTO.getPaymentMethod()));
+        newTicket.setPaymentMethod(requestDTO.getPaymentMethod());
         newTicket.setPriceInCents(requestDTO.getPriceInCentsClient());
         newTicket.setPaymentDate(Instant.now());
 
         Ticket savedTicket = ticketRepository.save(newTicket);
+
+        System.out.println(savedTicket.getSession());
 
         return objectMapper.parseObject(savedTicket, TicketResponseDTO.class);
     }
