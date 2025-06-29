@@ -9,9 +9,9 @@ public class Theater {
     private String name;
     private String logoUrl;
     private Address address;
-    private List<Room> rooms;
+    private List<Room> rooms = new ArrayList<>();
     private List<User> managers = new ArrayList<>();
-    private List<Movie> movies;
+    private List<Movie> movies = new ArrayList<>();
 
     public Theater() {}
 
@@ -85,12 +85,14 @@ public class Theater {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Theater theater = (Theater) o;
-        return Objects.equals(getId(), theater.getId()) && Objects.equals(getName(), theater.getName()) && Objects.equals(getLogoUrl(), theater.getLogoUrl()) && Objects.equals(getAddress(), theater.getAddress()) && Objects.equals(getRooms(), theater.getRooms()) && Objects.equals(getManagers(), theater.getManagers()) && Objects.equals(getMovies(), theater.getMovies());
+        return Objects.equals(id, theater.id) &&
+                Objects.equals(name, theater.name) &&
+                Objects.equals(logoUrl, theater.logoUrl);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getLogoUrl(), getAddress(), getRooms(), getManagers(), getMovies());
+        return Objects.hash(id, name, logoUrl);
     }
 
     @Override
@@ -99,10 +101,6 @@ public class Theater {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", logoUrl='" + logoUrl + '\'' +
-                ", address=" + address +
-                ", rooms=" + rooms +
-                ", managers=" + managers +
-                ", movies=" + movies +
                 '}';
     }
 }

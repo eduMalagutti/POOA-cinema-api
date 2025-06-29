@@ -2,6 +2,7 @@ package br.ufscar.pooa.cinema_api.domain;
 
 import br.ufscar.pooa.cinema_api.domain.enums.RoomType;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,8 +11,8 @@ public class Room {
     private String name;
     private RoomType roomType;
     private Theater theater;
-    private List<Row> rows;
-    private List<Session> sessions;
+    private List<Row> rows = new ArrayList<>();
+    private List<Session> sessions = new ArrayList<>();
 
     public Room() {
     }
@@ -83,11 +84,20 @@ public class Room {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Room room = (Room) o;
-        return Objects.equals(getId(), room.getId()) && Objects.equals(getName(), room.getName()) && getRoomType() == room.getRoomType() && Objects.equals(getTheater(), room.getTheater()) && Objects.equals(getRows(), room.getRows()) && Objects.equals(getSessions(), room.getSessions());
+        return Objects.equals(getId(), room.getId()) && Objects.equals(getName(), room.getName()) && getRoomType() == room.getRoomType();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getRoomType(), getTheater(), getRows(), getSessions());
+        return Objects.hash(getId(), getName(), getRoomType());
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", roomType=" + roomType +
+                '}';
     }
 }

@@ -2,6 +2,7 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,8 +20,8 @@ public class RowEntity {
     @JoinColumn(name = "room_id", nullable = false)
     private RoomEntity room;
 
-    @OneToMany(mappedBy = "row", cascade = CascadeType.ALL)
-    private List<SeatEntity> seats;
+    @OneToMany(mappedBy = "row", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<SeatEntity> seats = new ArrayList<>();
 
     public RowEntity() {
     }
@@ -29,47 +30,51 @@ public class RowEntity {
         return id;
     }
 
-    public RowEntity setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
-        return this;
     }
 
     public Character getLetter() {
         return letter;
     }
 
-    public RowEntity setLetter(Character letter) {
+    public void setLetter(Character letter) {
         this.letter = letter;
-        return this;
     }
 
     public RoomEntity getRoom() {
         return room;
     }
 
-    public RowEntity setRoom(RoomEntity room) {
+    public void setRoom(RoomEntity room) {
         this.room = room;
-        return this;
     }
 
     public List<SeatEntity> getSeats() {
         return seats;
     }
 
-    public RowEntity setSeats(List<SeatEntity> seats) {
+    public void setSeats(List<SeatEntity> seats) {
         this.seats = seats;
-        return this;
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         RowEntity rowEntity = (RowEntity) o;
-        return Objects.equals(getId(), rowEntity.getId()) && Objects.equals(getLetter(), rowEntity.getLetter()) && Objects.equals(getRoom(), rowEntity.getRoom()) && Objects.equals(getSeats(), rowEntity.getSeats());
+        return Objects.equals(getId(), rowEntity.getId()) && Objects.equals(getLetter(), rowEntity.getLetter());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getLetter(), getRoom(), getSeats());
+        return Objects.hash(getId(), getLetter());
+    }
+
+    @Override
+    public String toString() {
+        return "RowEntity{" +
+                "id=" + id +
+                ", letter=" + letter +
+                '}';
     }
 }

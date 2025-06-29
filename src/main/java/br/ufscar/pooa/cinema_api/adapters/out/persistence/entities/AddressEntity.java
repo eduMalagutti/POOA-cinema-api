@@ -12,9 +12,6 @@ public class AddressEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(mappedBy = "address")
-    private TheaterEntity theater;
-
     @Column(nullable = false)
     private String state;
 
@@ -39,7 +36,18 @@ public class AddressEntity {
     @Column
     private String complement;
 
+    @OneToOne(mappedBy = "address")
+    private TheaterEntity theater;
+
     public AddressEntity() {}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getCountry() {
         return country;
@@ -105,15 +113,23 @@ public class AddressEntity {
         this.complement = complement;
     }
 
+    public TheaterEntity getTheater() {
+        return theater;
+    }
+
+    public void setTheater(TheaterEntity theater) {
+        this.theater = theater;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         AddressEntity that = (AddressEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(theater, that.theater) && Objects.equals(getState(), that.getState()) && Objects.equals(getCountry(), that.getCountry()) && Objects.equals(getCity(), that.getCity()) && Objects.equals(getZipCode(), that.getZipCode()) && Objects.equals(getNeighborhood(), that.getNeighborhood()) && Objects.equals(getStreet(), that.getStreet()) && Objects.equals(getNumber(), that.getNumber()) && Objects.equals(getComplement(), that.getComplement());
+        return Objects.equals(id, that.id) && Objects.equals(getState(), that.getState()) && Objects.equals(getCountry(), that.getCountry()) && Objects.equals(getCity(), that.getCity()) && Objects.equals(getZipCode(), that.getZipCode()) && Objects.equals(getNeighborhood(), that.getNeighborhood()) && Objects.equals(getStreet(), that.getStreet()) && Objects.equals(getNumber(), that.getNumber()) && Objects.equals(getComplement(), that.getComplement());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, theater, getState(), getCountry(), getCity(), getZipCode(), getNeighborhood(), getStreet(), getNumber(), getComplement());
+        return Objects.hash(id, getState(), getCountry(), getCity(), getZipCode(), getNeighborhood(), getStreet(), getNumber(), getComplement());
     }
 }

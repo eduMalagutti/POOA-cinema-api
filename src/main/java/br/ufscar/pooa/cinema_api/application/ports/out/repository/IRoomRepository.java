@@ -9,5 +9,5 @@ public interface IRoomRepository {
 
     Optional<Room> findById(Long id);
 
-    void delete(Room room);
+    void delete(Long id);
 }
