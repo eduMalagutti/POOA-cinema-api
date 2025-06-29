@@ -44,4 +44,10 @@ public class ClientRepositoryAdapter implements IClientRepository {
         return clientJpaRepository.findById(id)
                 .map(entity -> objectMapper.parseObject(entity, Client.class));
     }
+
+    @Override
+    public Optional<Client> findByCpf(String cpf) {
+        return clientJpaRepository.findByCpf(cpf)
+                .map(entity -> objectMapper.parseObject(entity, Client.class));
+    }
 }

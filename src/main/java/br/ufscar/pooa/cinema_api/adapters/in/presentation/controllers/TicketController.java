@@ -21,8 +21,8 @@ public class TicketController {
     }
 
     @PostMapping
-    public ResponseEntity<TicketResponseDTO> createTicket(@RequestBody RegisterTicketRequestDTO request) {
-        TicketResponseDTO response = ticketUseCase.execute(request);
+    public ResponseEntity<TicketResponseDTO> createTicket(@RequestBody RegisterTicketRequestDTO registerRequestBody) {
+        TicketResponseDTO response = ticketUseCase.execute(registerRequestBody);
         return ResponseEntity.created(URI.create("/tickets/" + response.getId())).body(response);
     }
 }
