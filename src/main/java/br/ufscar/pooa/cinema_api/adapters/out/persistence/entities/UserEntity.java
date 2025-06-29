@@ -98,4 +98,15 @@ public class UserEntity {
     public int hashCode() {
         return Objects.hash(getId(), getName(), getEmail(), getPassword(), getRole());
     }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                '}';
+    }
 }

@@ -4,5 +4,5 @@ import br.ufscar.pooa.cinema_api.application.dtos.theater.RegisterTheaterRequest
 import br.ufscar.pooa.cinema_api.application.dtos.theater.TheaterResponseDTO;
 
 public interface IRegisterTheaterUseCase {
-    TheaterResponseDTO execute(RegisterTheaterRequestDTO requestDTO);
+    TheaterResponseDTO execute(String email, RegisterTheaterRequestDTO requestDTO);
 }

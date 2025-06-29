@@ -2,15 +2,14 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
 import jakarta.persistence.*;
 
+
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Objects;
 import java.util.List;
 
 @Entity
 @Table(name = "theaters")
 public class TheaterEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
