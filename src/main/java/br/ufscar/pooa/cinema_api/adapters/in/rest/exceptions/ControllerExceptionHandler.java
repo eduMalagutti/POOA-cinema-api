@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.adapters.in.presentation.exceptions;
+package br.ufscar.pooa.cinema_api.adapters.in.rest.exceptions;
 
 import br.ufscar.pooa.cinema_api.application.exceptions.BadRequestException;
 import br.ufscar.pooa.cinema_api.application.exceptions.ResourceAlreadyExistsException;

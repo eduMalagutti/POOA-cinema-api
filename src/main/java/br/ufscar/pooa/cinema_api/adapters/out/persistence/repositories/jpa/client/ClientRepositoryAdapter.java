@@ -4,8 +4,7 @@ import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.ClientEntity;
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.IClientRepository;
 import br.ufscar.pooa.cinema_api.domain.Client;
-import br.ufscar.pooa.cinema_api.infrastructure.mapper.ObjectMapper;
-import com.fasterxml.jackson.core.ObjectCodec;
+import br.ufscar.pooa.cinema_api.adapters.out.mapper.ObjectMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

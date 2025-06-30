@@ -1,9 +1,7 @@
-package br.ufscar.pooa.cinema_api.infrastructure.mapper;
+package br.ufscar.pooa.cinema_api.adapters.out.mapper;
 
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.config.Configuration;
-import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 

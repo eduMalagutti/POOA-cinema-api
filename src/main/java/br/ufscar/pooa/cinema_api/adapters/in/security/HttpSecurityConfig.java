@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.adapters.in.presentation.security;
+package br.ufscar.pooa.cinema_api.adapters.in.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

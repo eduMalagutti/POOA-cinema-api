@@ -20,4 +20,6 @@ public class MyFrameworkFactory {
     public FrameworkClass myFrameworkGrupo1(){
         return new FrameworkClass(dbUrl, dbUser, dbPassword);
     }
+
+
 }

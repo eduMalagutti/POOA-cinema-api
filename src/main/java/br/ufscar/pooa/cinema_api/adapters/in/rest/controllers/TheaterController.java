@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.adapters.in.presentation.controllers;
+package br.ufscar.pooa.cinema_api.adapters.in.rest.controllers;
 
 import br.ufscar.pooa.cinema_api.application.dtos.theater.RegisterTheaterRequestDTO;
 import br.ufscar.pooa.cinema_api.application.dtos.theater.TheaterResponseDTO;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
-import java.security.Principal;
 
 @RequestMapping("/theaters")
 @RestController
