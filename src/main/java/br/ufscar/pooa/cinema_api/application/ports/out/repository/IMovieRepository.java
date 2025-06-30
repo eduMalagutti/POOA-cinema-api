@@ -9,5 +9,7 @@ public interface IMovieRepository {
 
     Optional<Movie> findById(Long id);
 
+    Optional<Movie> findByTitle(String title);
+
     void delete(long id);
 }
