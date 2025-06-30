@@ -59,6 +59,12 @@ public class MovieRepositoryAdapter implements IMovieRepository {
     }
 
     @Override
+    public Optional<Movie> findByTitle(String title) {
+        return movieJpaRepository.findByTitle(title)
+                .map(entity -> objectMapper.parseObject(entity, Movie.class));
+    }
+
+    @Override
     public void delete(long id) {
         if (id <= 0) {
             throw new IllegalArgumentException("ID must be a positive number");
