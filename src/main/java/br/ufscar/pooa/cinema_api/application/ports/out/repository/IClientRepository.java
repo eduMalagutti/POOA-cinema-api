@@ -7,6 +7,7 @@ import java.util.Optional;
 public interface IClientRepository {
     Optional<Client> findById(Long id);
 
+    Optional<Client> findByCpf(String cpf);
 
     Client save(Client client);
 
