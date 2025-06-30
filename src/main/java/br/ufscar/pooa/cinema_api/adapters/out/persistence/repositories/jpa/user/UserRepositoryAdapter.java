@@ -4,10 +4,12 @@ import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.UserEntity;
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.IUserRepository;
 import br.ufscar.pooa.cinema_api.domain.User;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+@Profile("jpa")
 @Repository
 public class UserRepositoryAdapter implements IUserRepository {
     private final UserJpaRepository userJpaRepository;
@@ -19,8 +21,8 @@ public class UserRepositoryAdapter implements IUserRepository {
     }
 
     @Override
-    public User save(User usuario) {
-        UserEntity entity = objectMapper.parseObject(usuario, UserEntity.class);
+    public User save(User user) {
+        UserEntity entity = objectMapper.parseObject(user, UserEntity.class);
 
         return objectMapper.parseObject(userJpaRepository.save(entity), User.class);
     }
