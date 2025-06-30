@@ -1,30 +1,37 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
 import br.ufscar.pooa.cinema_api.domain.enums.Role;
+import jakarta.persistence.Inheritance;
 import jakarta.persistence.*;
 
 import java.util.Objects;
 
+@framework.Entity(tableName = "users")
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class UserEntity {
+    @framework.Id
+    @framework.Column
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @framework.Column
     @Column(nullable = false)
     private String name;
 
+    @framework.Column
     @Column(nullable = false, unique = true)
     private String email;
 
+    @framework.Column
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
     @Enumerated(EnumType.ORDINAL)
-    private Role role;
+    @Column(nullable = false, columnDefinition = "smallint DEFAULT 1")
+    private Role role; // O myFramework não está salvando o role.
 
     @ManyToOne
     @JoinColumn(name = "theater_id")
