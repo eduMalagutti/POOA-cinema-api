@@ -4,6 +4,7 @@ import br.ufscar.pooa.cinema_api.application.dtos.client.ClientResponseDTO;
 import br.ufscar.pooa.cinema_api.application.dtos.client.RegisterClientRequestDTO;
 import br.ufscar.pooa.cinema_api.application.ports.in.IRegisterClientUseCase;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,7 @@ public class ClientController {
         this.registerClientUseCase = registerClientUseCase;
     }
 
+    @PostMapping
     public ResponseEntity<ClientResponseDTO> register(@RequestBody RegisterClientRequestDTO registerRequestBody) {
         var responseDTO = registerClientUseCase.execute(registerRequestBody);
 
