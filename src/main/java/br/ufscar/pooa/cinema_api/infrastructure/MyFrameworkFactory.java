@@ -17,9 +17,8 @@ public class MyFrameworkFactory {
     private String dbPassword;
 
     @Bean
-    public FrameworkClass myFrameworkGrupo1(){
+    public FrameworkClass frameworkClass(){
         return new FrameworkClass(dbUrl, dbUser, dbPassword);
     }
-
 
 }
