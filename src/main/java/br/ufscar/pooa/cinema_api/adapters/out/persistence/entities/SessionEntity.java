@@ -4,6 +4,7 @@ import br.ufscar.pooa.cinema_api.domain.enums.Format;
 import br.ufscar.pooa.cinema_api.domain.enums.Subtitle;
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -16,7 +17,7 @@ public class SessionEntity {
     private Long id;
 
     @Column
-    private Integer date;
+    private LocalDateTime date;
 
     @Column
     private Integer priceInCents;
@@ -49,11 +50,11 @@ public class SessionEntity {
         this.id = id;
     }
 
-    public Integer getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Integer date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
