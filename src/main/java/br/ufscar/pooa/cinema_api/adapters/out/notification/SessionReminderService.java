@@ -1,10 +1,10 @@
 package br.ufscar.pooa.cinema_api.adapters.out.notification;
 
+import br.ufscar.pooa.cinema_api.adapters.out.notification.entities.NotificationEvent;
+import br.ufscar.pooa.cinema_api.adapters.out.notification.entities.NotificationType;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.ISessionRepository;
 import br.ufscar.pooa.cinema_api.domain.Session;
 import br.ufscar.pooa.cinema_api.domain.Ticket;
-import br.ufscar.pooa.cinema_api.adapters.out.notification.entities.NotificationEvent;
-import br.ufscar.pooa.cinema_api.adapters.out.notification.entities.NotificationType;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -34,10 +34,11 @@ public class SessionReminderService {
         if (upcomingSessions.isEmpty()) {
             System.out.println("Sem lembretes para enviar.");
             System.out.println();
+            return;
         }
 
-        System.out.println("Enviando lembretes... para " + upcomingSessions.size() + " sessões.");
-            System.out.println();
+        upcomingSessions.forEach(session -> System.out.println(createReminderMessage(session)));
+        System.out.println();
 
         for (Session session : upcomingSessions) {
             sendSessionReminders(session);
