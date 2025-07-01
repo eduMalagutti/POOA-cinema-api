@@ -33,10 +33,6 @@ public class UserEntity {
     @Column(nullable = false, columnDefinition = "smallint DEFAULT 1")
     private Role role; // O myFramework não está salvando o role.
 
-    @ManyToOne
-    @JoinColumn(name = "theater_id")
-    private TheaterEntity theater;
-
     public UserEntity() {
     }
 
@@ -82,15 +78,6 @@ public class UserEntity {
 
     public UserEntity setRole(Role role) {
         this.role = role;
-        return this;
-    }
-
-    public TheaterEntity getTheater() {
-        return theater;
-    }
-
-    public UserEntity setTheater(TheaterEntity theater) {
-        this.theater = theater;
         return this;
     }
 
