@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.domain.notification;
+package br.ufscar.pooa.cinema_api.adapters.out.notification.entities;
 
 import java.util.List;
 
