@@ -56,7 +56,7 @@ public class DatabaseSeeder implements CommandLineRunner {
 
         // 1. Theater
         Address address = new Address("13560-000", "Rua do Teste", "123", null, "São Carlos", "Centro", "SP", "Brasil");
-        Theater theater = new Theater("Cine Teste", "http://logo.url/logo.png", new ArrayList<>(), address, new ArrayList<>(), new ArrayList<>());
+        Theater theater = new Theater("Cine Teste", "http://logo.url/logo.png", new ArrayList<>(), address, new ArrayList<>());
         Theater savedTheater = theaterRepository.save(theater);
 
         // 2. Client
@@ -82,7 +82,7 @@ public class DatabaseSeeder implements CommandLineRunner {
         // 7. Movie
         List<Genre> genres = new ArrayList<>();
         genres.add(savedGenre);
-        Movie movie = new Movie(AgeRating.FOURTEEN_YEARS, genres, savedTheater, new ArrayList<>(), 7500, "http://trailer.url/trailer.mp4", "http://cover.url/cover.jpg", "Um filme de teste para uma API incrível.", "Filme de Teste");
+        Movie movie = new Movie(AgeRating.FOURTEEN_YEARS, genres, new ArrayList<>(), 7500, "http://trailer.url/trailer.mp4", "http://cover.url/cover.jpg", "Um filme de teste para uma API incrível.", "Filme de Teste");
         Movie savedMovie = movieRepository.save(movie);
 
         // 8. Session

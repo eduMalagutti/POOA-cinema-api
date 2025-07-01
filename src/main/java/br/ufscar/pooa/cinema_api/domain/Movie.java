@@ -13,15 +13,13 @@ public class Movie {
     private String coverUrl;
     private String trailerUrl;
     private Integer durationInSeconds;
-    private Theater theater;
     private List<Session> sessions = new ArrayList<>();
     private List<Genre> genres;
     private AgeRating ageRating;
 
-    public Movie(AgeRating ageRating, List<Genre> genres, Theater theater, List<Session> sessions, Integer durationInSeconds, String trailerUrl, String coverUrl, String synopsis, String title) {
+    public Movie(AgeRating ageRating, List<Genre> genres, List<Session> sessions, Integer durationInSeconds, String trailerUrl, String coverUrl, String synopsis, String title) {
         this.ageRating = ageRating;
         this.genres = genres;
-        this.theater = theater;
         this.sessions = sessions;
         this.durationInSeconds = durationInSeconds;
         this.trailerUrl = trailerUrl;
@@ -82,13 +80,6 @@ public class Movie {
         this.durationInSeconds = durationInSeconds;
     }
 
-    public Theater getTheater() {
-        return theater;
-    }
-
-    public void setTheater(Theater theater) {
-        this.theater = theater;
-    }
 
     public List<Session> getSessions() {
         return sessions;

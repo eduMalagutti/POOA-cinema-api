@@ -11,17 +11,15 @@ public class Theater {
     private Address address;
     private List<Room> rooms = new ArrayList<>();
     private List<User> managers = new ArrayList<>();
-    private List<Movie> movies = new ArrayList<>();
 
     public Theater() {}
 
-    public Theater(String name, String logoUrl, List<Room> rooms, Address address, List<User> managers, List<Movie> movies) {
+    public Theater(String name, String logoUrl, List<Room> rooms, Address address, List<User> managers) {
         this.name = name;
         this.logoUrl = logoUrl;
         this.rooms = rooms;
         this.address = address;
         this.managers = managers;
-        this.movies = movies;
     }
 
     public Long getId() {
@@ -72,13 +70,6 @@ public class Theater {
         this.managers = managers;
     }
 
-    public List<Movie> getMovies() {
-        return movies;
-    }
-
-    public void setMovies(List<Movie> movies) {
-        this.movies = movies;
-    }
 
     @Override
     public boolean equals(Object o) {

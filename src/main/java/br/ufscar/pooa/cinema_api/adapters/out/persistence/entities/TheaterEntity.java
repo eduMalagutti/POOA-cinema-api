@@ -28,10 +28,7 @@ public class TheaterEntity {
     private List<RoomEntity> rooms = new ArrayList<>();
 
     @OneToMany(mappedBy = "theater")
-    private List<UserEntity> managers = new ArrayList<>();
-
-    @OneToMany(mappedBy = "theater")
-    private List<MovieEntity> movies = new ArrayList<>();
+    private List<ManagerEntity> managers = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -73,21 +70,14 @@ public class TheaterEntity {
         this.rooms = rooms;
     }
 
-    public List<UserEntity> getManagers() {
+    public List<ManagerEntity> getManagers() {
         return managers;
     }
 
-    public void setManagers(List<UserEntity> managers) {
+    public void setManagers(List<ManagerEntity> managers) {
         this.managers = managers;
     }
 
-    public List<MovieEntity> getMovies() {
-        return movies;
-    }
-
-    public void setMovies(List<MovieEntity> movies) {
-        this.movies = movies;
-    }
 
     @Override
     public boolean equals(Object o) {

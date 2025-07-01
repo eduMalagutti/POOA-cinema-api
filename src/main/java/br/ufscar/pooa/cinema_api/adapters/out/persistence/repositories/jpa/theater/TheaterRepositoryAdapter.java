@@ -1,8 +1,8 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jpa.theater;
 
+import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.ManagerEntity;
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.TheaterEntity;
-import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.UserEntity;
-import br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jpa.user.UserJpaRepository;
+import br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jpa.manager.ManagerJpaRepository;
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.ITheaterRepository;
 import br.ufscar.pooa.cinema_api.domain.Theater;
@@ -10,22 +10,20 @@ import br.ufscar.pooa.cinema_api.domain.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Optional;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Repository
 public class TheaterRepositoryAdapter implements ITheaterRepository {
     private final TheaterJpaRepository theaterJpaRepository;
-    private final UserJpaRepository userJpaRepository;
+    private final ManagerJpaRepository managerJpaRepository;
     private final IObjectMapper objectMapper;
 
     public TheaterRepositoryAdapter(TheaterJpaRepository theaterJpaRepository,
-                                    UserJpaRepository userJpaRepository,
+                                    ManagerJpaRepository managerJpaRepository,
                                     IObjectMapper objectMapper) {
         this.theaterJpaRepository = theaterJpaRepository;
-        this.userJpaRepository = userJpaRepository;
+        this.managerJpaRepository = managerJpaRepository;
         this.objectMapper = objectMapper;
     }
 
@@ -45,7 +43,7 @@ public class TheaterRepositoryAdapter implements ITheaterRepository {
             List<Long> managerIds = theater.getManagers().stream()
                     .map(User::getId)
                     .toList();
-            List<UserEntity> managedManagers = new ArrayList<>(userJpaRepository.findAllById(managerIds));
+            List<ManagerEntity> managedManagers = new ArrayList<>(managerJpaRepository.findAllById(managerIds));
             theaterEntity.setManagers(managedManagers);
         }
 
