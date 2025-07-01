@@ -10,16 +10,14 @@ public class User {
     private String email;
     private String password;
     private Role role;
-    private Theater theater;
 
     public User() {
     }
 
-    public User(String name, String email, String password, Theater theater, Role role) {
+    public User(String name, String email, String password, Role role) {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.theater = theater;
         this.role = role;
     }
 
@@ -55,14 +53,6 @@ public class User {
         this.password = password;
     }
 
-    public Theater getTheater() {
-        return theater;
-    }
-
-    public void setTheater(Theater theater) {
-        this.theater = theater;
-    }
-
     public Role getRole() {
         return role;
     }
@@ -73,15 +63,14 @@ public class User {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(getId(), user.getId()) && Objects.equals(getName(), user.getName()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getTheater(), user.getTheater()) && Objects.equals(getRole(), user.getRole());
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && role == user.role;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getEmail(), getPassword(), getTheater(), getRole());
+        return Objects.hash(id, name, email, password, role);
     }
 
     @Override
@@ -92,7 +81,6 @@ public class User {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +
-                ", theater=" + theater +
                 '}';
     }
 }

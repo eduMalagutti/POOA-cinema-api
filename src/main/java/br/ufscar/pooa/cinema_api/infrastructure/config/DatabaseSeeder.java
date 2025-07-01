@@ -59,7 +59,7 @@ public class DatabaseSeeder implements CommandLineRunner {
         Theater savedTheater = theaterRepository.save(theater);
 
         // 2. Client
-        Client client = new Client("Cliente de Teste", "cliente@teste.com", passwordEncoder.encode("123456"), savedTheater, "123.456.789-00", Gender.MALE, LocalDateTime.now().minusYears(25), new ArrayList<>(), Role.CLIENT);
+        Client client = new Client("Cliente de Teste", "cliente@teste.com", passwordEncoder.encode("123456"), "123.456.789-00", Gender.MALE, LocalDateTime.now().minusYears(25), new ArrayList<>(), Role.CLIENT);
         Client savedClient = clientRepository.save(client);
 
         // 3. Room
