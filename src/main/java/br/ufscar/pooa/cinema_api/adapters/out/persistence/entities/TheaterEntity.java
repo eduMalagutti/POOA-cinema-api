@@ -1,5 +1,6 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
+import br.ufscar.pooa.cinema_api.domain.Manager;
 import jakarta.persistence.*;
 
 
@@ -28,7 +29,7 @@ public class TheaterEntity {
     private List<RoomEntity> rooms = new ArrayList<>();
 
     @OneToMany(mappedBy = "theater")
-    private List<UserEntity> managers = new ArrayList<>();
+    private List<ManagerEntity> managers = new ArrayList<>();
 
     @OneToMany(mappedBy = "theater")
     private List<MovieEntity> movies = new ArrayList<>();
@@ -73,11 +74,11 @@ public class TheaterEntity {
         this.rooms = rooms;
     }
 
-    public List<UserEntity> getManagers() {
+    public List<ManagerEntity> getManagers() {
         return managers;
     }
 
-    public void setManagers(List<UserEntity> managers) {
+    public void setManagers(List<ManagerEntity> managers) {
         this.managers = managers;
     }
 

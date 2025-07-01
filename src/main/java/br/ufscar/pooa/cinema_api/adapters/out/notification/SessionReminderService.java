@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class SessionReminderService {
@@ -22,14 +23,21 @@ public class SessionReminderService {
         this.notificationManager = notificationManager;
     }
 
-    @Scheduled(fixedRate = 300000) // Executa a cada 5 minutos
+    @Scheduled(fixedRate = 1, timeUnit = TimeUnit.MINUTES)
     public void checkUpcomingSessions() {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime oneHourLater = now.plusHours(1);
 
-        // Busca sessões que começam em aproximadamente 1 hora
         List<Session> upcomingSessions = sessionRepository
-                .findSessionsStartingBetween(now.plusMinutes(55), oneHourLater.plusMinutes(5));
+                .findSessionsStartingBetween(oneHourLater, oneHourLater.plusMinutes(1));
+
+        if (upcomingSessions.isEmpty()) {
+            System.out.println("Sem lembretes para enviar.");
+            System.out.println();
+        }
+
+        System.out.println("Enviando lembretes... para " + upcomingSessions.size() + " sessões.");
+            System.out.println();
 
         for (Session session : upcomingSessions) {
             sendSessionReminders(session);

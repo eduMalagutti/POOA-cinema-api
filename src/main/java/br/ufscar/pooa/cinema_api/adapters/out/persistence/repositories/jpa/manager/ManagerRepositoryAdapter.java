@@ -1,10 +1,10 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jpa.manager;
 
+import br.ufscar.pooa.cinema_api.adapters.out.mapper.ObjectMapper;
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.ManagerEntity;
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.IManagerRepository;
 import br.ufscar.pooa.cinema_api.domain.Manager;
-import br.ufscar.pooa.cinema_api.infrastructure.mapper.ObjectMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

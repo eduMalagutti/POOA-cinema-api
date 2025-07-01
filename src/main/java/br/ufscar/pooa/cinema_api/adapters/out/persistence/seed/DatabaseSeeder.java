@@ -86,7 +86,7 @@ public class DatabaseSeeder implements CommandLineRunner {
         Movie savedMovie = movieRepository.save(movie);
 
         // 8. Session
-        Session session = new Session(Format.TWO_D, LocalDateTime.now(ZoneId.of("America/Sao_Paulo")).plusHours(1).plusMinutes(1), Subtitle.DUBBED, 3500, savedRoom, savedMovie, new ArrayList<>());
+        Session session = new Session(Format.TWO_D, LocalDateTime.now(ZoneId.of("America/Sao_Paulo")).plusHours(1).plusMinutes(2), Subtitle.DUBBED, 3500, savedRoom, savedMovie, new ArrayList<>());
         Session savedSession = sessionRepository.save(session);
 
         System.out.println("\n------------------------------------------------------------");

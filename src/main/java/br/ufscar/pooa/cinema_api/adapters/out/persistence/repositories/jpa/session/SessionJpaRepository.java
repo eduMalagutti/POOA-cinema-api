@@ -17,5 +17,6 @@ public interface SessionJpaRepository extends JpaRepository<SessionEntity, Long>
     Optional<SessionEntity> findById(@NonNull Long id);
 
     @Query("SELECT s FROM SessionEntity s WHERE s.date >= :start AND s.date <= :end")
-    List<Session> findSessionsStartingBetween(LocalDateTime start, LocalDateTime end);
+    @EntityGraph(attributePaths = {"movie", "room","tickets"})
+    List<SessionEntity> findSessionsStartingBetween(LocalDateTime start, LocalDateTime end);
 }
