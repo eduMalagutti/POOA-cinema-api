@@ -1,6 +1,6 @@
 package br.ufscar.pooa.cinema_api.application.usecases.ticket;
 
-import br.ufscar.pooa.cinema_api.adapters.out.payment.PaymentStrategyFactory;
+import br.ufscar.pooa.cinema_api.application.ports.out.payment.PaymentStrategyFactory;
 import br.ufscar.pooa.cinema_api.application.dtos.ticket.RegisterTicketRequestDTO;
 import br.ufscar.pooa.cinema_api.application.dtos.ticket.TicketResponseDTO;
 import br.ufscar.pooa.cinema_api.application.exceptions.BadRequestException;

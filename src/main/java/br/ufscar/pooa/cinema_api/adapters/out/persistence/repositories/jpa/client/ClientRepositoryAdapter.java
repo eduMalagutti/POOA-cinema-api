@@ -4,11 +4,12 @@ import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.ClientEntity;
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.IClientRepository;
 import br.ufscar.pooa.cinema_api.domain.Client;
-import br.ufscar.pooa.cinema_api.infrastructure.mapper.ObjectMapper;
-import com.fasterxml.jackson.core.ObjectCodec;
+import br.ufscar.pooa.cinema_api.adapters.out.mapper.ObjectMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Repository
 public class ClientRepositoryAdapter implements IClientRepository {
@@ -49,5 +50,12 @@ public class ClientRepositoryAdapter implements IClientRepository {
     public Optional<Client> findByCpf(String cpf) {
         return clientJpaRepository.findByCpf(cpf)
                 .map(entity -> objectMapper.parseObject(entity, Client.class));
+    }
+
+    @Override
+    public List<Client> findAll() {
+        return clientJpaRepository.findAll().stream()
+                .map(entity -> objectMapper.parseObject(entity, Client.class))
+                .collect(Collectors.toList());
     }
 }

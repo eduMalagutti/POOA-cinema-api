@@ -25,7 +25,7 @@ public class SeatEntity {
     @JoinColumn(name = "row_id", nullable = false)
     private RowEntity row;
 
-    @OneToMany(mappedBy = "seat", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "seat")
     private List<TicketEntity> tickets = new ArrayList<>();
 
     public Long getId() {

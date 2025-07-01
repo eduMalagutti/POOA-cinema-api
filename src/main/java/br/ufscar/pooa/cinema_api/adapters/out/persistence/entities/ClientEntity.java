@@ -21,7 +21,7 @@ public class ClientEntity extends UserEntity {
     @Column
     private LocalDate birthDate;
 
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "client")
     private List<TicketEntity> tickets;
 
     public ClientEntity() {
