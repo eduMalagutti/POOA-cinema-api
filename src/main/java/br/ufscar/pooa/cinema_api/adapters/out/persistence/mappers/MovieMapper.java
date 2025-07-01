@@ -7,8 +7,7 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface MovieMapper {
-    
-    @Mapping(target = "theater", ignore = true)
+
     @Mapping(target = "sessions", ignore = true)
     @Mapping(target = "genres", ignore = true)
     Movie toDomain(MovieEntity entity);

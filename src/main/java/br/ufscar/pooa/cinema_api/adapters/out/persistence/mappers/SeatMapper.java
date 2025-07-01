@@ -7,7 +7,7 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface SeatMapper {
-    
+
     @Mapping(target = "row", ignore = true)
     @Mapping(target = "tickets", ignore = true)
     Seat toDomain(SeatEntity entity);
