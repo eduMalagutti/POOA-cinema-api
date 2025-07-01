@@ -1,15 +1,16 @@
 package br.ufscar.pooa.cinema_api.adapters.out.notification;
 
+import br.ufscar.pooa.cinema_api.adapters.out.notification.entities.NotificationEvent;
+import br.ufscar.pooa.cinema_api.adapters.out.notification.entities.NotificationType;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.ISessionRepository;
 import br.ufscar.pooa.cinema_api.domain.Session;
 import br.ufscar.pooa.cinema_api.domain.Ticket;
-import br.ufscar.pooa.cinema_api.adapters.out.notification.entities.NotificationEvent;
-import br.ufscar.pooa.cinema_api.adapters.out.notification.entities.NotificationType;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class SessionReminderService {
@@ -22,14 +23,22 @@ public class SessionReminderService {
         this.notificationManager = notificationManager;
     }
 
-    @Scheduled(fixedRate = 300000) // Executa a cada 5 minutos
+    @Scheduled(fixedRate = 1, timeUnit = TimeUnit.MINUTES)
     public void checkUpcomingSessions() {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime oneHourLater = now.plusHours(1);
 
-        // Busca sessões que começam em aproximadamente 1 hora
         List<Session> upcomingSessions = sessionRepository
-                .findSessionsStartingBetween(now.plusMinutes(55), oneHourLater.plusMinutes(5));
+                .findSessionsStartingBetween(oneHourLater, oneHourLater.plusMinutes(1));
+
+        if (upcomingSessions.isEmpty()) {
+            System.out.println("Sem lembretes para enviar.");
+            System.out.println();
+            return;
+        }
+
+        upcomingSessions.forEach(session -> System.out.println(createReminderMessage(session)));
+        System.out.println();
 
         for (Session session : upcomingSessions) {
             sendSessionReminders(session);

@@ -1,6 +1,7 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jpa.session;
 
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.SessionEntity;
+import br.ufscar.pooa.cinema_api.adapters.out.persistence.mappers.SessionMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.ISessionRepository;
 import br.ufscar.pooa.cinema_api.domain.Session;
@@ -14,10 +15,12 @@ import java.util.Optional;
 public class SessionRepositoryAdapter implements ISessionRepository {
     private final SessionJpaRepository sessionJpaRepository;
     private final IObjectMapper objectMapper;
+    private final SessionMapper sessionMapper;
 
-    public SessionRepositoryAdapter(SessionJpaRepository sessionJpaRepository, IObjectMapper objectMapper) {
+    public SessionRepositoryAdapter(SessionJpaRepository sessionJpaRepository, IObjectMapper objectMapper, SessionMapper sessionMapper) {
         this.sessionJpaRepository = sessionJpaRepository;
         this.objectMapper = objectMapper;
+        this.sessionMapper = sessionMapper;
     }
 
     @Override
@@ -32,19 +35,22 @@ public class SessionRepositoryAdapter implements ISessionRepository {
         SessionEntity sessionEntity = objectMapper.parseObject(session, SessionEntity.class);
         SessionEntity savedEntity = sessionJpaRepository.save(sessionEntity);
 
-        return objectMapper.parseObject(savedEntity, Session.class);
+        return sessionMapper.toDomain(savedEntity);
     }
 
     @Override
     public Optional<Session> findById(Long id) {
         Optional<SessionEntity> entityOptional = sessionJpaRepository.findById(id);
 
-        return entityOptional.map(sessionEntity -> objectMapper.parseObject(sessionEntity, Session.class));
+        return entityOptional.map(sessionMapper::toDomain);
     }
 
     @Override
     public List<Session> findSessionsStartingBetween(LocalDateTime start, LocalDateTime end) {
-        return sessionJpaRepository.findSessionsStartingBetween(start,end);
+        List<SessionEntity> sessionEntities = sessionJpaRepository.findSessionsStartingBetween(start, end);
+        return sessionEntities.stream()
+                .map(sessionMapper::toDomain)
+                .toList();
     }
 
     @Override
