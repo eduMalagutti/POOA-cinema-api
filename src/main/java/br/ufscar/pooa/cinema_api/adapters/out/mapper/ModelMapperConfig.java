@@ -74,8 +74,7 @@ public class ModelMapperConfig {
                 .addMappings(mapper -> mapper.skip(RowEntity::setSeats));
         modelMapper.createTypeMap(Session.class, SessionEntity.class)
                 .addMappings(mapper -> mapper.skip(SessionEntity::setTickets));
-        modelMapper.createTypeMap(Theater.class, TheaterEntity.class)
-                .addMappings(mapper -> mapper.skip(TheaterEntity::setMovies));
+        modelMapper.createTypeMap(Theater.class, TheaterEntity.class);
 
         // No collections to skip on these
         modelMapper.createTypeMap(Seat.class, SeatEntity.class);

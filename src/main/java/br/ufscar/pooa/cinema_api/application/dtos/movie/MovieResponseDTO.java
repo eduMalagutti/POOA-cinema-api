@@ -15,13 +15,12 @@ public class MovieResponseDTO {
     private String trailerUrl;
     private Integer durationInSeconds;
     private AgeRating ageRating;
-    private String theaterName;
     private List<String> sessionTimes;
     private Set<String> genreNames;
 
     public MovieResponseDTO() { }
 
-    public MovieResponseDTO(Long id, String title, String synopsis, String coverUrl, String trailerUrl, Integer durationInSeconds, AgeRating ageRating, String theaterName, List<String> sessionTimes, Set<String> genreNames) {
+    public MovieResponseDTO(Long id, String title, String synopsis, String coverUrl, String trailerUrl, Integer durationInSeconds, AgeRating ageRating, List<String> sessionTimes, Set<String> genreNames) {
         this.id = id;
         this.title = title;
         this.synopsis = synopsis;
@@ -29,7 +28,6 @@ public class MovieResponseDTO {
         this.trailerUrl = trailerUrl;
         this.durationInSeconds = durationInSeconds;
         this.ageRating = ageRating;
-        this.theaterName = theaterName;
         this.sessionTimes = sessionTimes;
         this.genreNames = genreNames;
     }
@@ -92,13 +90,6 @@ public class MovieResponseDTO {
         this.ageRating = ageRating;
     }
 
-    public String getTheaterName() {
-        return theaterName;
-    }
-
-    public void setTheaterName(String theaterName) {
-        this.theaterName = theaterName;
-    }
 
     public List<String> getSessionTimes() {
         return sessionTimes;
@@ -126,7 +117,6 @@ public class MovieResponseDTO {
                 ", trailerUrl='" + trailerUrl + '\'' +
                 ", durationInSeconds=" + durationInSeconds +
                 ", ageRating=" + ageRating +
-                ", theaterName='" + theaterName + '\'' +
                 ", sessionTimes=" + sessionTimes +
                 ", genreNames=" + genreNames +
                 '}';
@@ -144,13 +134,12 @@ public class MovieResponseDTO {
                 Objects.equals(trailerUrl, that.trailerUrl) &&
                 Objects.equals(durationInSeconds, that.durationInSeconds) &&
                 ageRating == that.ageRating &&
-                Objects.equals(theaterName, that.theaterName) &&
                 Objects.equals(sessionTimes, that.sessionTimes) &&
                 Objects.equals(genreNames, that.genreNames);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, synopsis, coverUrl, trailerUrl, durationInSeconds, ageRating, theaterName, sessionTimes, genreNames);
+        return Objects.hash(id, title, synopsis, coverUrl, trailerUrl, durationInSeconds, ageRating, sessionTimes, genreNames);
     }
 }

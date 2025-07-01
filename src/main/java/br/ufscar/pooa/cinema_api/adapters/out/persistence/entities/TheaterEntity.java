@@ -31,9 +31,6 @@ public class TheaterEntity {
     @OneToMany(mappedBy = "theater")
     private List<ManagerEntity> managers = new ArrayList<>();
 
-    @OneToMany(mappedBy = "theater")
-    private List<MovieEntity> movies = new ArrayList<>();
-
     public Long getId() {
         return id;
     }
@@ -82,13 +79,6 @@ public class TheaterEntity {
         this.managers = managers;
     }
 
-    public List<MovieEntity> getMovies() {
-        return movies;
-    }
-
-    public void setMovies(List<MovieEntity> movies) {
-        this.movies = movies;
-    }
 
     @Override
     public boolean equals(Object o) {

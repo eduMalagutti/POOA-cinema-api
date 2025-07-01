@@ -3,7 +3,6 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jpa.thea
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.ManagerEntity;
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.TheaterEntity;
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jpa.manager.ManagerJpaRepository;
-import br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jpa.user.UserJpaRepository;
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.ITheaterRepository;
 import br.ufscar.pooa.cinema_api.domain.Theater;

@@ -33,9 +33,6 @@ public class MovieEntity {
     @Column
     private AgeRating ageRating;
 
-    @ManyToOne
-    private TheaterEntity theater;
-
     @OneToMany(mappedBy = "movie")
     private List<SessionEntity> sessions = new ArrayList<>();
 
@@ -106,13 +103,6 @@ public class MovieEntity {
         this.ageRating = ageRating;
     }
 
-    public TheaterEntity getTheater() {
-        return theater;
-    }
-
-    public void setTheater(TheaterEntity theater) {
-        this.theater = theater;
-    }
 
     public List<SessionEntity> getSessions() {
         return sessions;
