@@ -6,6 +6,8 @@ import br.ufscar.pooa.cinema_api.application.ports.out.repository.ISessionReposi
 import br.ufscar.pooa.cinema_api.domain.Session;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -38,6 +40,11 @@ public class SessionRepositoryAdapter implements ISessionRepository {
         Optional<SessionEntity> entityOptional = sessionJpaRepository.findById(id);
 
         return entityOptional.map(sessionEntity -> objectMapper.parseObject(sessionEntity, Session.class));
+    }
+
+    @Override
+    public List<Session> findSessionsStartingBetween(LocalDateTime start, LocalDateTime end) {
+        return sessionJpaRepository.findSessionsStartingBetween(start,end);
     }
 
     @Override

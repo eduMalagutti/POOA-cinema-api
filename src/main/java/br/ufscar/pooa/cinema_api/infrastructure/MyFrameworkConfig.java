@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class MyFrameworkFactory {
+public class MyFrameworkConfig {
     @Value( "${spring.datasource.url}")
     private String dbUrl;
 
