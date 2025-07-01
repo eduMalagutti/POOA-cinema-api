@@ -28,7 +28,7 @@ public class RoomEntity {
     @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private List<RowEntity> rows = new ArrayList<>();
 
-    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "room")
     private List<SessionEntity> sessions = new ArrayList<>();
 
     public RoomEntity() {

@@ -27,10 +27,10 @@ public class TheaterEntity {
     @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
     private List<RoomEntity> rooms = new ArrayList<>();
 
-    @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "theater")
     private List<UserEntity> managers = new ArrayList<>();
 
-    @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "theater")
     private List<MovieEntity> movies = new ArrayList<>();
 
     public Long getId() {

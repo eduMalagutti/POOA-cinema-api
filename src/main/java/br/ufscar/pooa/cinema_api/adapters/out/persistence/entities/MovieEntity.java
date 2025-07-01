@@ -36,7 +36,7 @@ public class MovieEntity {
     @ManyToOne
     private TheaterEntity theater;
 
-    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "movie")
     private List<SessionEntity> sessions = new ArrayList<>();
 
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })

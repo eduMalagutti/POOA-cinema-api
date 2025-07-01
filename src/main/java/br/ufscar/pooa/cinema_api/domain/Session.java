@@ -3,6 +3,8 @@ package br.ufscar.pooa.cinema_api.domain;
 import br.ufscar.pooa.cinema_api.domain.enums.Format;
 import br.ufscar.pooa.cinema_api.domain.enums.Subtitle;
 
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -10,7 +12,7 @@ import java.util.Objects;
 public class Session {
     private Long id;
     private Format format;
-    private Integer date;
+    private LocalDateTime date;
     private Subtitle subtitle;
     private Integer priceInCents;
     private Room room;
@@ -36,7 +38,7 @@ public class Session {
     public Session() {
     }
 
-    public Session(Format format, Integer date, Subtitle subtitle, Integer priceInCents, Room room, Movie movie, List<Ticket> tickets) {
+    public Session(Format format, LocalDateTime date, Subtitle subtitle, Integer priceInCents, Room room, Movie movie, List<Ticket> tickets) {
         this.format = format;
         this.date = date;
         this.subtitle = subtitle;
@@ -62,11 +64,11 @@ public class Session {
         this.format = format;
     }
 
-    public Integer getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Integer date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
