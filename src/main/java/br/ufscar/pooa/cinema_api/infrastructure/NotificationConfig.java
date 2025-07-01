@@ -1,8 +1,8 @@
 package br.ufscar.pooa.cinema_api.infrastructure;
 
 import br.ufscar.pooa.cinema_api.application.services.notification.SessionNotificationManager;
-import br.ufscar.pooa.cinema_api.application.services.notification.observers.EmailNotificationObserver;
-import br.ufscar.pooa.cinema_api.application.services.notification.observers.SMSNotificationObserver;
+import br.ufscar.pooa.cinema_api.application.services.notification.observers.EmailNotificationService;
+import br.ufscar.pooa.cinema_api.application.services.notification.observers.SMSNotificationService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -13,8 +13,8 @@ public class NotificationConfig {
 
     @Bean
     public SessionNotificationManager sessionNotificationManager(
-            EmailNotificationObserver emailObserver,
-            SMSNotificationObserver smsObserver) {
+            EmailNotificationService emailObserver,
+            SMSNotificationService smsObserver) {
 
         SessionNotificationManager manager = new SessionNotificationManager();
         manager.subscribe(emailObserver);

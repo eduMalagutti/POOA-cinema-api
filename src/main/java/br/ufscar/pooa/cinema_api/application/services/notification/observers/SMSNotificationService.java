@@ -7,8 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Component
-public class SMSNotificationObserver implements Observer {
-    private static final Logger logger = LoggerFactory.getLogger(SMSNotificationObserver.class);
+public class SMSNotificationService implements Observer {
+    private static final Logger logger = LoggerFactory.getLogger(SMSNotificationService.class);
 
     @Override
     public void update(NotificationEvent event) {
