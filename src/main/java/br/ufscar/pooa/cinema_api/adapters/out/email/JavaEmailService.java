@@ -31,9 +31,6 @@ public class JavaEmailService implements IEmailService {
     @Value("${spring.mail.sender}")
     private String sender;
 
-    @Value("${backend.url}")
-    private String backendUrl;
-
     private static final Logger logger = LoggerFactory.getLogger(JavaEmailService.class);
 
     @Async
@@ -43,7 +40,6 @@ public class JavaEmailService implements IEmailService {
         try {
             Context context = new Context();
             context.setVariables(variables);
-            context.setVariable("backendUrl", backendUrl);
 
             String htmlContent = templateEngine.process(templateName, context);
             MimeMessage mimeMessage = mailSender.createMimeMessage();
