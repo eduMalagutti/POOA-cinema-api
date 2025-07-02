@@ -46,8 +46,8 @@ public class SessionRepositoryAdapter implements ISessionRepository {
     }
 
     @Override
-    public List<Session> findSessionsStartingBetween(LocalDateTime start, LocalDateTime end) {
-        List<SessionEntity> sessionEntities = sessionJpaRepository.findSessionsStartingBetween(start, end);
+    public List<Session> findAllByDateBetween(LocalDateTime start, LocalDateTime end) {
+        List<SessionEntity> sessionEntities = sessionJpaRepository.findAllByDateBetween(start, end);
         return sessionEntities.stream()
                 .map(sessionMapper::toDomain)
                 .toList();

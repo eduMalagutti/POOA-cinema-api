@@ -3,9 +3,7 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 import br.ufscar.pooa.cinema_api.domain.enums.RoomType;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Table(name = "rooms")
@@ -26,7 +24,7 @@ public class RoomEntity {
     private TheaterEntity theater;
 
     @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    private List<RowEntity> rows = new ArrayList<>();
+    private Set<RowEntity> rows = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "room")
     private List<SessionEntity> sessions = new ArrayList<>();
@@ -66,11 +64,11 @@ public class RoomEntity {
         this.theater = theater;
     }
 
-    public List<RowEntity> getRows() {
+    public Set<RowEntity> getRows() {
         return rows;
     }
 
-    public void setRows(List<RowEntity> rows) {
+    public void setRows(Set<RowEntity> rows) {
         this.rows = rows;
     }
 

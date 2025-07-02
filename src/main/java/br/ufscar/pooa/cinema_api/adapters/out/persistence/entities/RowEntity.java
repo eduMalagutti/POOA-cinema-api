@@ -2,9 +2,7 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Table(name = "rows")
@@ -21,7 +19,7 @@ public class RowEntity {
     private RoomEntity room;
 
     @OneToMany(mappedBy = "row", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    private List<SeatEntity> seats = new ArrayList<>();
+    private Set<SeatEntity> seats = new LinkedHashSet<>();
 
     public RowEntity() {
     }
@@ -50,11 +48,11 @@ public class RowEntity {
         this.room = room;
     }
 
-    public List<SeatEntity> getSeats() {
+    public Set<SeatEntity> getSeats() {
         return seats;
     }
 
-    public void setSeats(List<SeatEntity> seats) {
+    public void setSeats(Set<SeatEntity> seats) {
         this.seats = seats;
     }
 

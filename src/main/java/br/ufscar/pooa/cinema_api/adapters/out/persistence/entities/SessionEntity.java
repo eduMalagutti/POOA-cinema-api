@@ -28,7 +28,7 @@ public class SessionEntity {
     @Column
     private Subtitle subtitle;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "room_id", nullable = false)
     private RoomEntity room;
 

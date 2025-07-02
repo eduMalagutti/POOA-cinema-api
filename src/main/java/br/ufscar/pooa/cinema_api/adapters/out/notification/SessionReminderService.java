@@ -29,7 +29,7 @@ public class SessionReminderService {
         LocalDateTime oneHourLater = now.plusHours(1);
 
         List<Session> upcomingSessions = sessionRepository
-                .findSessionsStartingBetween(oneHourLater, oneHourLater.plusMinutes(1));
+                .findAllByDateBetween(oneHourLater, oneHourLater.plusMinutes(1));
 
         if (upcomingSessions.isEmpty()) {
             System.out.println("Sem lembretes para enviar.");

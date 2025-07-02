@@ -11,7 +11,7 @@ public interface ISessionRepository {
 
     Optional<Session> findById(Long id);
 
-    List<Session> findSessionsStartingBetween(LocalDateTime start, LocalDateTime end);
+    List<Session> findAllByDateBetween(LocalDateTime start, LocalDateTime end);
 
     void delete(Long id);
 }

@@ -21,7 +21,7 @@ public class SeatEntity {
     @Enumerated(EnumType.STRING)
     private SeatType seatType;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "row_id", nullable = false)
     private RowEntity row;
 
