@@ -1,28 +1,23 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
 import br.ufscar.pooa.cinema_api.domain.enums.Gender;
-import framework.Inherited;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
-@framework.Entity(tableName = "clients")
-@Inherited
+
 @Entity
 @Table(name = "clients")
 public class ClientEntity extends UserEntity {
 
-    @framework.Column
     @Column
     private String cpf;
 
-    @framework.Column
     @Column
     private String name;
 
-    @framework.Column(name = "phone_number")
     @Column
     private String phoneNumber;
 
