@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.adapters.out.persistence.mappers;
+package br.ufscar.pooa.cinema_api.adapters.out.mapper.mapstruct;
 
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.GenreEntity;
 import br.ufscar.pooa.cinema_api.domain.Genre;
