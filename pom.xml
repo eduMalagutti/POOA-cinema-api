@@ -95,7 +95,7 @@
 			<version>${modelmapper.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.grupo1-framework</groupId>
+			<groupId>com.grupo4-framework</groupId>
 			<artifactId>framework-persistencia</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<scope>system</scope>

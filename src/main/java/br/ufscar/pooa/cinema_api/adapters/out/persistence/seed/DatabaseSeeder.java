@@ -21,6 +21,7 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     private final ITheaterRepository theaterRepository;
     private final IClientRepository clientRepository;
+    private final IManagerRepository managerRepository;
     private final IGenreRepository genreRepository;
     private final IMovieRepository movieRepository;
     private final IRoomRepository roomRepository;
@@ -30,12 +31,14 @@ public class DatabaseSeeder implements CommandLineRunner {
     private final PasswordEncoder passwordEncoder;
 
     public DatabaseSeeder(ITheaterRepository theaterRepository, IClientRepository clientRepository,
+                          IManagerRepository managerRepository,
                           IGenreRepository genreRepository, IMovieRepository movieRepository,
                           IRoomRepository roomRepository, IRowRepository rowRepository,
                           ISeatRepository seatRepository, ISessionRepository sessionRepository,
                           PasswordEncoder passwordEncoder) {
         this.theaterRepository = theaterRepository;
         this.clientRepository = clientRepository;
+        this.managerRepository = managerRepository;
         this.genreRepository = genreRepository;
         this.movieRepository = movieRepository;
         this.roomRepository = roomRepository;
@@ -63,6 +66,14 @@ public class DatabaseSeeder implements CommandLineRunner {
         // 2. Client
         Client client = new Client("cliente@teste.com", passwordEncoder.encode("123456"), "123.456.789-00", "Cliente de Teste", "(11) 99999-9999", Gender.MALE, LocalDate.now().minusYears(25), new ArrayList<>(), Role.CLIENT);
         Client savedClient = clientRepository.save(client);
+
+        Manager manager = new Manager();
+        manager.setEmail("manager@teste.com");
+        manager.setRole(Role.MANAGER);
+        manager.setPassword(passwordEncoder.encode("123456"));
+        manager.setCpf("123.456.789-00");
+        manager.setBirthDate(LocalDate.now().minusYears(25));
+        Manager savedManager = managerRepository.save(manager);
 
         // 3. Room
         Room room = new Room(null, "Sala Teste 1", RoomType.STANDARD, savedTheater, new ArrayList<>(), new ArrayList<>());
@@ -94,6 +105,7 @@ public class DatabaseSeeder implements CommandLineRunner {
         System.out.println("Seeding Mínimo Finalizado!");
         System.out.println("Use os seguintes IDs para criar um Ticket no Insomnia:");
         System.out.println(">>> clientId: " + savedClient.getId());
+        System.out.println(">>> managerId: " + savedManager.getId());
         System.out.println(">>> sessionId: " + savedSession.getId());
         System.out.println(">>> seatId: " + savedSeat.getId());
         System.out.println("------------------------------------------------------------\n");
