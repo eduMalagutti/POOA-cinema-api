@@ -2,26 +2,23 @@ package br.ufscar.pooa.cinema_api.application.dtos.manager;
 
 import br.ufscar.pooa.cinema_api.application.dtos.user.UserResponseDTO;
 import br.ufscar.pooa.cinema_api.domain.Theater;
-import br.ufscar.pooa.cinema_api.domain.enums.Gender;
 import br.ufscar.pooa.cinema_api.domain.enums.Role;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class ManagerResponseDTO extends UserResponseDTO {
 
     private String cpf;
-    private Gender gender;
-    private LocalDateTime birthDate;
+    private LocalDate birthDate;
     private Theater theater;
 
     public ManagerResponseDTO() {
         super();
     }
 
-    public ManagerResponseDTO(Long id, String name, String email, String password, Role role, String cpf, Gender gender, LocalDateTime birthDate, Theater theater) {
-        super(id, name, email, password, role);
+    public ManagerResponseDTO(Long id, String email, String password, Role role, String cpf, LocalDate birthDate, Theater theater) {
+        super(id, email, password, role);
         this.cpf = cpf;
-        this.gender = gender;
         this.birthDate = birthDate;
         this.theater = theater;
     }
@@ -34,19 +31,11 @@ public class ManagerResponseDTO extends UserResponseDTO {
         this.cpf = cpf;
     }
 
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public LocalDateTime getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDateTime birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 

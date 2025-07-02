@@ -4,6 +4,7 @@ import br.ufscar.pooa.cinema_api.application.dtos.manager.ManagerResponseDTO;
 import br.ufscar.pooa.cinema_api.application.dtos.manager.RegisterManagerRequestDTO;
 import br.ufscar.pooa.cinema_api.application.ports.in.IRegisterManagerUseCase;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,7 @@ public class ManagerController {
         this.registerManagerUseCase = registerManagerUseCase;
     }
 
+    @PostMapping
     public ResponseEntity<ManagerResponseDTO> register(@RequestBody RegisterManagerRequestDTO registerRequestBody) {
         var responseDTO = registerManagerUseCase.execute(registerRequestBody);
 

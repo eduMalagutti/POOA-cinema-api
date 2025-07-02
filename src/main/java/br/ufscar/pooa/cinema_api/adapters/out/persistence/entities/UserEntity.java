@@ -18,10 +18,6 @@ public class UserEntity {
     private Long id;
 
     @framework.Column
-    @Column(nullable = false)
-    private String name;
-
-    @framework.Column
     @Column(nullable = false, unique = true)
     private String email;
 
@@ -45,14 +41,6 @@ public class UserEntity {
         return this;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public UserEntity setName(String nome) {
-        this.name = nome;
-        return this;
-    }
 
     public String getEmail() {
         return email;
@@ -85,19 +73,18 @@ public class UserEntity {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         UserEntity that = (UserEntity) o;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && Objects.equals(getEmail(), that.getEmail()) && Objects.equals(getPassword(), that.getPassword()) && getRole() == that.getRole();
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getEmail(), that.getEmail()) && Objects.equals(getPassword(), that.getPassword()) && getRole() == that.getRole();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getEmail(), getPassword(), getRole());
+        return Objects.hash(getId(), getEmail(), getPassword(), getRole());
     }
 
     @Override
     public String toString() {
         return "UserEntity{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +

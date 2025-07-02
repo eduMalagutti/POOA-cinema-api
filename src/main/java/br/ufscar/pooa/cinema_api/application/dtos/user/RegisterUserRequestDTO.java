@@ -7,9 +7,6 @@ import jakarta.validation.constraints.NotNull;
 public class RegisterUserRequestDTO {
 
         @NotNull
-        private String name;
-
-        @NotNull
         private String email;
 
         @NotNull
@@ -22,20 +19,12 @@ public class RegisterUserRequestDTO {
         public RegisterUserRequestDTO() {
         }
 
-        public RegisterUserRequestDTO(String name, String email, String password, Role role) {
-                this.name = name;
+        public RegisterUserRequestDTO(String email, String password, Role role) {
                 this.email = email;
                 this.password = password;
                 this.role = role;
         }
 
-        public String getName() {
-                return name;
-        }
-
-        public void setName(String name) {
-                this.name = name;
-        }
 
         public String getEmail() {
                 return email;

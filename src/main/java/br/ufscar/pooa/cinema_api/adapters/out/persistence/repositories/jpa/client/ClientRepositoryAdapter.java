@@ -5,12 +5,14 @@ import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.IClientRepository;
 import br.ufscar.pooa.cinema_api.domain.Client;
 import br.ufscar.pooa.cinema_api.adapters.out.mapper.modelmapper.ObjectMapper;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Profile("jpa")
 @Repository
 public class ClientRepositoryAdapter implements IClientRepository {
     private final ClientJpaRepository clientJpaRepository;

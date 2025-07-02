@@ -39,7 +39,7 @@ public class RegisterClientUseCase implements IRegisterClientUseCase {
         }
 
         Client newClient = objectMapper.parseObject(requestDTO, Client.class);
-        User savedUser = userRepository.save(newClient);
+        Client savedUser = clientRepository.save(newClient);
 
         return objectMapper.parseObject(savedUser, ClientResponseDTO.class);
     }
