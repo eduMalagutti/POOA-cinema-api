@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.adapters.out.mapper;
+package br.ufscar.pooa.cinema_api.adapters.out.mapper.modelmapper;
 
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import org.modelmapper.ModelMapper;
