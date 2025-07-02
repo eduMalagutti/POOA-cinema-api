@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring",
         uses = {MovieMapper.class,
                 RoomMapper.class,
-                AddressMapper.class})
+                TicketMapper.class})
 public interface SessionMapper {
 
     Session toDomain(SessionEntity entity);
