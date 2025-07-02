@@ -5,23 +5,28 @@ import br.ufscar.pooa.cinema_api.application.dtos.user.UserResponseDTO;
 import br.ufscar.pooa.cinema_api.domain.enums.Gender;
 import br.ufscar.pooa.cinema_api.domain.enums.Role;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class ClientResponseDTO extends UserResponseDTO {
 
     private String cpf;
+    private String name;
+    private String phoneNumber;
     private Gender gender;
-    private LocalDateTime birthDate;
+    private LocalDate birthDate;
     private List<TicketResponseDTO> tickets;
 
     public ClientResponseDTO() {
         super();
     }
 
-    public ClientResponseDTO(Long id, String name, String email, String password, Role role, String cpf, Gender gender, LocalDateTime birthDate, List<TicketResponseDTO> tickets) {
-        super(id, name, email, password, role);
+    public ClientResponseDTO(Long id, String name, String phoneNumber, String email, String password, Role role, String cpf, Gender gender, LocalDate birthDate, List<TicketResponseDTO> tickets) {
+        super(id, email, password, role);
         this.cpf = cpf;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
         this.gender = gender;
         this.birthDate = birthDate;
         this.tickets = tickets;
@@ -35,6 +40,22 @@ public class ClientResponseDTO extends UserResponseDTO {
         this.cpf = cpf;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public Gender getGender() {
         return gender;
     }
@@ -43,11 +64,11 @@ public class ClientResponseDTO extends UserResponseDTO {
         this.gender = gender;
     }
 
-    public LocalDateTime getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDateTime birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 

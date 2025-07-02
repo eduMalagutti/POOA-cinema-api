@@ -1,23 +1,36 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
 import br.ufscar.pooa.cinema_api.domain.enums.Gender;
+import framework.Inherited;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
+@framework.Entity(tableName = "clients")
+@Inherited
 @Entity
 @Table(name = "clients")
 public class ClientEntity extends UserEntity {
 
+    @framework.Column
     @Column
     private String cpf;
+
+    @framework.Column
+    @Column
+    private String name;
+
+    @framework.Column(name = "phone_number")
+    @Column
+    private String phoneNumber;
 
     @Column
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @framework.Column
     @Column
     private LocalDate birthDate;
 
@@ -33,6 +46,22 @@ public class ClientEntity extends UserEntity {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public Gender getGender() {
@@ -61,15 +90,14 @@ public class ClientEntity extends UserEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         ClientEntity that = (ClientEntity) o;
-        return Objects.equals(getCpf(), that.getCpf()) && getGender() == that.getGender() && Objects.equals(getBirthDate(), that.getBirthDate());
+        return Objects.equals(getCpf(), that.getCpf()) && Objects.equals(getName(), that.getName()) && Objects.equals(getPhoneNumber(), that.getPhoneNumber()) && getGender() == that.getGender() && Objects.equals(getBirthDate(), that.getBirthDate());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getCpf(), getGender(), getBirthDate());
+        return Objects.hash(super.hashCode(), getCpf(), getName(), getPhoneNumber(), getGender(), getBirthDate());
     }
 }

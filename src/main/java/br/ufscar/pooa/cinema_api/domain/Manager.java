@@ -1,33 +1,29 @@
 package br.ufscar.pooa.cinema_api.domain;
 
-import br.ufscar.pooa.cinema_api.domain.enums.Gender;
 import br.ufscar.pooa.cinema_api.domain.enums.Role;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Manager extends User{
+public class Manager extends User {
     private String cpf;
-    private Gender gender;
-    private LocalDateTime birthDate;
+    private LocalDate birthDate;
     private Theater theater;
 
-    public Manager(String name,
-                   String email,
+    public Manager(String email,
                    String password,
                    String cpf,
-                   Gender gender,
-                   LocalDateTime birthDate,
+                   LocalDate birthDate,
                    Theater theater,
                    Role role) {
-        super(name, email, password, role);
+        super(email, password, role);
         this.cpf = cpf;
-        this.gender = gender;
         this.birthDate = birthDate;
         this.theater = theater;
     }
 
-    public Manager(){
+    public Manager() {
     }
 
     public String getCpf() {
@@ -38,19 +34,12 @@ public class Manager extends User{
         this.cpf = cpf;
     }
 
-    public Gender getGender() {
-        return gender;
-    }
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public LocalDateTime getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDateTime birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -67,11 +56,11 @@ public class Manager extends User{
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Manager manager = (Manager) o;
-        return Objects.equals(cpf, manager.cpf) && gender == manager.gender && Objects.equals(birthDate, manager.birthDate) && Objects.equals(theater, manager.theater);
+        return Objects.equals(cpf, manager.cpf) && Objects.equals(birthDate, manager.birthDate) && Objects.equals(theater, manager.theater);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), cpf, gender, birthDate, theater);
+        return Objects.hash(super.hashCode(), cpf, birthDate, theater);
     }
 }

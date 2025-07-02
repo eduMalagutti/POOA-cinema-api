@@ -38,7 +38,8 @@ public class UserMyFrameworkRepository implements IUserRepository {
 
     @Override
     public Optional<User> findById(Long id) {
-        UserEntity entitySearched = new UserEntity().setId(id);
+        UserEntity entitySearched = new UserEntity();
+        entitySearched.setId(id);
         boolean found = frameworkClass.findById(entitySearched);
 
         if (!found) {

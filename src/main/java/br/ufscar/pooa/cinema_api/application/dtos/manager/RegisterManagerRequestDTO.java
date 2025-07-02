@@ -5,7 +5,7 @@ import br.ufscar.pooa.cinema_api.domain.enums.Gender;
 import br.ufscar.pooa.cinema_api.domain.enums.Role;
 import jakarta.validation.constraints.NotNull;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class RegisterManagerRequestDTO extends RegisterUserRequestDTO {
 
@@ -13,20 +13,16 @@ public class RegisterManagerRequestDTO extends RegisterUserRequestDTO {
     private String cpf;
 
     @NotNull
-    private Gender gender;
-
-    @NotNull
-    private LocalDateTime birthDate;
+    private LocalDate birthDate;
 
     @NotNull
     private Long theaterId;
 
     public RegisterManagerRequestDTO() { super(); }
 
-    public RegisterManagerRequestDTO(String name, String email, String password, Role role, String cpf, Gender gender, LocalDateTime birthDate, Long theaterId) {
-        super(name, email, password, role);
+    public RegisterManagerRequestDTO(String email, String password, Role role, String cpf, LocalDate birthDate, Long theaterId) {
+        super(email, password, role);
         this.cpf = cpf;
-        this.gender = gender;
         this.birthDate = birthDate;
         this.theaterId = theaterId;
     }
@@ -39,19 +35,12 @@ public class RegisterManagerRequestDTO extends RegisterUserRequestDTO {
         this.cpf = cpf;
     }
 
-    public Gender getGender() {
-        return gender;
-    }
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public LocalDateTime getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDateTime birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 

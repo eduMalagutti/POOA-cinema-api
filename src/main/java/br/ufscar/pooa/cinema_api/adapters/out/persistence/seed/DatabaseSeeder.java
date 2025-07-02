@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -60,7 +61,7 @@ public class DatabaseSeeder implements CommandLineRunner {
         Theater savedTheater = theaterRepository.save(theater);
 
         // 2. Client
-        Client client = new Client("Cliente de Teste", "cliente@teste.com", passwordEncoder.encode("123456"), "123.456.789-00", Gender.MALE, LocalDateTime.now().minusYears(25), new ArrayList<>(), Role.CLIENT);
+        Client client = new Client("cliente@teste.com", passwordEncoder.encode("123456"), "123.456.789-00", "Cliente de Teste", "(11) 99999-9999", Gender.MALE, LocalDate.now().minusYears(25), new ArrayList<>(), Role.CLIENT);
         Client savedClient = clientRepository.save(client);
 
         // 3. Room

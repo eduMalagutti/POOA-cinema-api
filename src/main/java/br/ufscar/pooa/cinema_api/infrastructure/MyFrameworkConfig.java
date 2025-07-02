@@ -4,7 +4,9 @@ import framework.FrameworkClass;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
+@Profile("myFramework")
 @Configuration
 public class MyFrameworkConfig {
     @Value( "${spring.datasource.url}")

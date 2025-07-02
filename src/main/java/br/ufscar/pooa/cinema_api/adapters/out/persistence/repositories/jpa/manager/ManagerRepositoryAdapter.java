@@ -5,10 +5,12 @@ import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.ManagerEntity
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.IManagerRepository;
 import br.ufscar.pooa.cinema_api.domain.Manager;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+@Profile("jpa")
 @Repository
 public class ManagerRepositoryAdapter implements IManagerRepository {
     private final ManagerJpaRepository managerJpaRepository;

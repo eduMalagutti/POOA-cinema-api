@@ -39,7 +39,7 @@ public class RegisterManagerUseCase implements IRegisterManagerUseCase {
         }
 
         Manager newManager = objectMapper.parseObject(requestDTO, Manager.class);
-        User savedUser = userRepository.save(newManager);
+        Manager savedUser = managerRepository.save(newManager);
 
         return objectMapper.parseObject(savedUser, ManagerResponseDTO.class);
     }
