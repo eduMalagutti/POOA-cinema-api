@@ -1,8 +1,8 @@
 package br.ufscar.pooa.cinema_api.application.dtos.manager;
 
 import br.ufscar.pooa.cinema_api.application.dtos.user.UserResponseDTO;
-import br.ufscar.pooa.cinema_api.domain.Theater;
-import br.ufscar.pooa.cinema_api.domain.enums.Role;
+import br.ufscar.pooa.cinema_api.application.domain.Theater;
+import br.ufscar.pooa.cinema_api.application.domain.enums.Role;
 
 import java.time.LocalDate;
 

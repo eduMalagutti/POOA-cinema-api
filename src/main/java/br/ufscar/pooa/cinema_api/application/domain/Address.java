@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.domain;
+package br.ufscar.pooa.cinema_api.application.domain;
 
 import java.util.Objects;
 

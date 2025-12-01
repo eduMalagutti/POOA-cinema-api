@@ -1,8 +1,7 @@
 package br.ufscar.pooa.cinema_api.application.dtos.manager;
 
 import br.ufscar.pooa.cinema_api.application.dtos.user.RegisterUserRequestDTO;
-import br.ufscar.pooa.cinema_api.domain.enums.Gender;
-import br.ufscar.pooa.cinema_api.domain.enums.Role;
+import br.ufscar.pooa.cinema_api.application.domain.enums.Role;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;

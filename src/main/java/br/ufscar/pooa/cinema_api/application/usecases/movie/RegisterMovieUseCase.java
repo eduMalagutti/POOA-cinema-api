@@ -6,7 +6,7 @@ import br.ufscar.pooa.cinema_api.application.exceptions.ResourceAlreadyExistsExc
 import br.ufscar.pooa.cinema_api.application.ports.in.IRegisterMovieUseCase;
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.IMovieRepository;
-import br.ufscar.pooa.cinema_api.domain.Movie;
+import br.ufscar.pooa.cinema_api.application.domain.Movie;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

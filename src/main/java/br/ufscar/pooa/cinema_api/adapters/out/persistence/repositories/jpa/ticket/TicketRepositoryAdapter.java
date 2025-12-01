@@ -3,7 +3,7 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jpa.tick
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.TicketEntity;
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.ITicketRepository;
-import br.ufscar.pooa.cinema_api.domain.Ticket;
+import br.ufscar.pooa.cinema_api.application.domain.Ticket;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

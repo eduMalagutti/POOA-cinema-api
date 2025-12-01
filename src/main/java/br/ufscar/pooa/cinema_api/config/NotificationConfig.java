@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.infrastructure;
+package br.ufscar.pooa.cinema_api.config;
 
 import br.ufscar.pooa.cinema_api.adapters.out.notification.SessionNotificationManager;
 import br.ufscar.pooa.cinema_api.adapters.out.notification.observers.EmailNotificationService;

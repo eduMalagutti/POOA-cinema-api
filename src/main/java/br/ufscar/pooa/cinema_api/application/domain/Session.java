@@ -1,10 +1,9 @@
-package br.ufscar.pooa.cinema_api.domain;
+package br.ufscar.pooa.cinema_api.application.domain;
 
-import br.ufscar.pooa.cinema_api.domain.enums.Format;
-import br.ufscar.pooa.cinema_api.domain.enums.Subtitle;
+import br.ufscar.pooa.cinema_api.application.domain.enums.Format;
+import br.ufscar.pooa.cinema_api.application.domain.enums.Subtitle;
 
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

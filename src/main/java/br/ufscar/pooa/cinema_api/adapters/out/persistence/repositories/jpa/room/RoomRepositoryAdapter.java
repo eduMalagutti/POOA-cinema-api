@@ -3,7 +3,7 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jpa.room
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.RoomEntity;
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.IRoomRepository;
-import br.ufscar.pooa.cinema_api.domain.Room;
+import br.ufscar.pooa.cinema_api.application.domain.Room;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

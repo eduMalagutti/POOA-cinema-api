@@ -1,10 +1,9 @@
-package br.ufscar.pooa.cinema_api.domain;
+package br.ufscar.pooa.cinema_api.application.domain;
 
-import br.ufscar.pooa.cinema_api.domain.enums.PaymentMethod;
+import br.ufscar.pooa.cinema_api.application.domain.enums.PaymentMethod;
 
 import java.time.Instant;
 import java.util.Objects;
-import java.util.Set;
 
 public class Ticket {
 	private Long id;

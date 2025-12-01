@@ -1,6 +1,6 @@
 package br.ufscar.pooa.cinema_api.application.ports.out.repository;
 
-import br.ufscar.pooa.cinema_api.domain.Row;
+import br.ufscar.pooa.cinema_api.application.domain.Row;
 
 import java.util.Optional;
 

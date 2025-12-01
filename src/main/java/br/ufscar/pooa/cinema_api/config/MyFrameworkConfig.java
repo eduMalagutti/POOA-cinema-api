@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.infrastructure;
+package br.ufscar.pooa.cinema_api.config;
 
 import framework.FrameworkClass;
 import org.springframework.beans.factory.annotation.Value;

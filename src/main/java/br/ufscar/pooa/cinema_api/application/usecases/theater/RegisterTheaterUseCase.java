@@ -9,8 +9,8 @@ import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.IAddressRepository;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.ITheaterRepository;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.IUserRepository;
-import br.ufscar.pooa.cinema_api.domain.Theater;
-import br.ufscar.pooa.cinema_api.domain.User;
+import br.ufscar.pooa.cinema_api.application.domain.Theater;
+import br.ufscar.pooa.cinema_api.application.domain.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -7,8 +7,8 @@ import br.ufscar.pooa.cinema_api.application.ports.in.IRegisterManagerUseCase;
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.IManagerRepository;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.IUserRepository;
-import br.ufscar.pooa.cinema_api.domain.Manager;
-import br.ufscar.pooa.cinema_api.domain.User;
+import br.ufscar.pooa.cinema_api.application.domain.Manager;
+import br.ufscar.pooa.cinema_api.application.domain.User;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

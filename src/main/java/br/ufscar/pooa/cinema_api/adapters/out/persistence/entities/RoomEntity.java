@@ -1,6 +1,6 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
-import br.ufscar.pooa.cinema_api.domain.enums.RoomType;
+import br.ufscar.pooa.cinema_api.application.domain.enums.RoomType;
 import jakarta.persistence.*;
 
 import java.util.*;

@@ -1,7 +1,7 @@
 package br.ufscar.pooa.cinema_api.adapters.out.mapper.mapstruct;
 
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.RowEntity;
-import br.ufscar.pooa.cinema_api.domain.Row;
+import br.ufscar.pooa.cinema_api.application.domain.Row;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

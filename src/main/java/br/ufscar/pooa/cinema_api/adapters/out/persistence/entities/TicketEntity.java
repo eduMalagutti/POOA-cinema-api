@@ -1,6 +1,6 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
-import br.ufscar.pooa.cinema_api.domain.enums.PaymentMethod;
+import br.ufscar.pooa.cinema_api.application.domain.enums.PaymentMethod;
 import jakarta.persistence.*;
 
 import java.time.Instant;

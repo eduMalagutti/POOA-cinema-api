@@ -3,7 +3,7 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jpa.row;
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.RowEntity;
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.IRowRepository;
-import br.ufscar.pooa.cinema_api.domain.Row;
+import br.ufscar.pooa.cinema_api.application.domain.Row;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

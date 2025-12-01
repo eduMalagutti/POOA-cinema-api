@@ -1,6 +1,5 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
-import br.ufscar.pooa.cinema_api.domain.Manager;
 import jakarta.persistence.*;
 
 

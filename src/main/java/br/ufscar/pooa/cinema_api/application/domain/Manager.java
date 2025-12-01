@@ -1,9 +1,8 @@
-package br.ufscar.pooa.cinema_api.domain;
+package br.ufscar.pooa.cinema_api.application.domain;
 
-import br.ufscar.pooa.cinema_api.domain.enums.Role;
+import br.ufscar.pooa.cinema_api.application.domain.enums.Role;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Manager extends User {

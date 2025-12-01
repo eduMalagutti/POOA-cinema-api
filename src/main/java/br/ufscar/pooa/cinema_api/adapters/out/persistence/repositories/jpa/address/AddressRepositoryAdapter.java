@@ -3,7 +3,7 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jpa.addr
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.AddressEntity;
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.IAddressRepository;
-import br.ufscar.pooa.cinema_api.domain.Address;
+import br.ufscar.pooa.cinema_api.application.domain.Address;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

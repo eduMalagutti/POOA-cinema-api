@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.domain.enums;
+package br.ufscar.pooa.cinema_api.application.domain.enums;
 
 public enum SeatType {
 	STANDARD,

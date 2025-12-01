@@ -3,7 +3,7 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jpa.seat
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.SeatEntity;
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper; // 1. Usar a interface do Mapper
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.ISeatRepository;
-import br.ufscar.pooa.cinema_api.domain.Seat;
+import br.ufscar.pooa.cinema_api.application.domain.Seat;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

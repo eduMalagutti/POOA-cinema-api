@@ -1,6 +1,6 @@
 package br.ufscar.pooa.cinema_api.application.dtos.seat;
 
-import br.ufscar.pooa.cinema_api.domain.enums.SeatType;
+import br.ufscar.pooa.cinema_api.application.domain.enums.SeatType;
 
 public class SeatDTO {
     private Character number;

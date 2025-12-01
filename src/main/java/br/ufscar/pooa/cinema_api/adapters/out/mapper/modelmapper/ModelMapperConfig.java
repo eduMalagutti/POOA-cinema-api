@@ -1,7 +1,16 @@
 package br.ufscar.pooa.cinema_api.adapters.out.mapper.modelmapper;
 
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.*;
-import br.ufscar.pooa.cinema_api.domain.*;
+import br.ufscar.pooa.cinema_api.application.domain.Address;
+import br.ufscar.pooa.cinema_api.application.domain.Client;
+import br.ufscar.pooa.cinema_api.application.domain.Genre;
+import br.ufscar.pooa.cinema_api.application.domain.Movie;
+import br.ufscar.pooa.cinema_api.application.domain.Room;
+import br.ufscar.pooa.cinema_api.application.domain.Row;
+import br.ufscar.pooa.cinema_api.application.domain.Seat;
+import br.ufscar.pooa.cinema_api.application.domain.Session;
+import br.ufscar.pooa.cinema_api.application.domain.Theater;
+import br.ufscar.pooa.cinema_api.application.domain.Ticket;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 import org.modelmapper.convention.MatchingStrategies;

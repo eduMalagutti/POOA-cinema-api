@@ -1,8 +1,23 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.seed;
 
+import br.ufscar.pooa.cinema_api.application.domain.Address;
+import br.ufscar.pooa.cinema_api.application.domain.Client;
+import br.ufscar.pooa.cinema_api.application.domain.Genre;
+import br.ufscar.pooa.cinema_api.application.domain.Manager;
+import br.ufscar.pooa.cinema_api.application.domain.Movie;
+import br.ufscar.pooa.cinema_api.application.domain.Room;
+import br.ufscar.pooa.cinema_api.application.domain.Row;
+import br.ufscar.pooa.cinema_api.application.domain.Seat;
+import br.ufscar.pooa.cinema_api.application.domain.Session;
+import br.ufscar.pooa.cinema_api.application.domain.Theater;
+import br.ufscar.pooa.cinema_api.application.domain.enums.AgeRating;
+import br.ufscar.pooa.cinema_api.application.domain.enums.Format;
+import br.ufscar.pooa.cinema_api.application.domain.enums.Gender;
+import br.ufscar.pooa.cinema_api.application.domain.enums.Role;
+import br.ufscar.pooa.cinema_api.application.domain.enums.RoomType;
+import br.ufscar.pooa.cinema_api.application.domain.enums.SeatType;
+import br.ufscar.pooa.cinema_api.application.domain.enums.Subtitle;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.*;
-import br.ufscar.pooa.cinema_api.domain.*;
-import br.ufscar.pooa.cinema_api.domain.enums.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -98,7 +113,8 @@ public class DatabaseSeeder implements CommandLineRunner {
         Movie savedMovie = movieRepository.save(movie);
 
         // 8. Session
-        Session session = new Session(Format.TWO_D, LocalDateTime.now(ZoneId.of("America/Sao_Paulo")).plusHours(1).plusMinutes(1), Subtitle.DUBBED, 3500, savedRoom, savedMovie, new ArrayList<>());
+        Session session = new Session(
+            Format.TWO_D, LocalDateTime.now(ZoneId.of("America/Sao_Paulo")).plusHours(1).plusMinutes(1), Subtitle.DUBBED, 3500, savedRoom, savedMovie, new ArrayList<>());
         Session savedSession = sessionRepository.save(session);
 
         System.out.println("\n------------------------------------------------------------");

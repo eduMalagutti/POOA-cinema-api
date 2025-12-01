@@ -1,7 +1,7 @@
 package br.ufscar.pooa.cinema_api.application.dtos.session;
 
-import br.ufscar.pooa.cinema_api.domain.enums.Format;
-import br.ufscar.pooa.cinema_api.domain.enums.Subtitle;
+import br.ufscar.pooa.cinema_api.application.domain.enums.Format;
+import br.ufscar.pooa.cinema_api.application.domain.enums.Subtitle;
 
 import java.time.LocalDateTime;
 

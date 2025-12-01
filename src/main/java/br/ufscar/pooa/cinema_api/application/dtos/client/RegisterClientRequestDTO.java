@@ -1,13 +1,11 @@
 package br.ufscar.pooa.cinema_api.application.dtos.client;
 
 import br.ufscar.pooa.cinema_api.application.dtos.user.RegisterUserRequestDTO;
-import br.ufscar.pooa.cinema_api.domain.enums.Gender;
-import br.ufscar.pooa.cinema_api.domain.enums.Role;
+import br.ufscar.pooa.cinema_api.application.domain.enums.Gender;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class RegisterClientRequestDTO extends RegisterUserRequestDTO {
 

@@ -1,7 +1,6 @@
 package br.ufscar.pooa.cinema_api.application.ports.out.repository;
 
-import br.ufscar.pooa.cinema_api.domain.Genre;
-import br.ufscar.pooa.cinema_api.domain.enums.Gender;
+import br.ufscar.pooa.cinema_api.application.domain.Genre;
 
 import java.util.Optional;
 

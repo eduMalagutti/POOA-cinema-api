@@ -5,7 +5,7 @@ import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.MovieEntity;
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jpa.genre.GenreJpaRepository;
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.IMovieRepository;
-import br.ufscar.pooa.cinema_api.domain.Movie;
+import br.ufscar.pooa.cinema_api.application.domain.Movie;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Repository;
 

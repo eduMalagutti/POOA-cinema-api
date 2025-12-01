@@ -3,7 +3,7 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.myFramew
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.UserEntity;
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.IUserRepository;
-import br.ufscar.pooa.cinema_api.domain.User;
+import br.ufscar.pooa.cinema_api.application.domain.User;
 import framework.FrameworkClass;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;

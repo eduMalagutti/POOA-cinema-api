@@ -4,7 +4,7 @@ import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.SessionEntity
 import br.ufscar.pooa.cinema_api.adapters.out.mapper.mapstruct.SessionMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.ISessionRepository;
-import br.ufscar.pooa.cinema_api.domain.Session;
+import br.ufscar.pooa.cinema_api.application.domain.Session;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;

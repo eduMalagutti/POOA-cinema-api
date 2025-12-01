@@ -1,6 +1,6 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
-import br.ufscar.pooa.cinema_api.domain.enums.Role;
+import br.ufscar.pooa.cinema_api.application.domain.enums.Role;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.*;
 

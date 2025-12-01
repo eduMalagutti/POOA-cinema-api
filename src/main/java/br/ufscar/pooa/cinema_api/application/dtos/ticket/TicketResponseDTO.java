@@ -1,5 +1,5 @@
 package br.ufscar.pooa.cinema_api.application.dtos.ticket;
-import br.ufscar.pooa.cinema_api.domain.enums.PaymentMethod;
+import br.ufscar.pooa.cinema_api.application.domain.enums.PaymentMethod;
 
 import java.time.Instant;
 import java.util.Objects;
