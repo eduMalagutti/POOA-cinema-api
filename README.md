@@ -63,7 +63,7 @@ API REST para gerenciamento de compra de ingressos em cinemas, desenvolvida com 
 │   ├── main/
 │   │   ├── java/
 │   │   │   └── com/
-│   │   │       └── seu_pacote/
+│   │   │       └── br.ufscar.pooa.cinema_api/
 │   │   │           ├── adapters/
 │   │   │           ├── application/
 │   │   │           ├── domain/
