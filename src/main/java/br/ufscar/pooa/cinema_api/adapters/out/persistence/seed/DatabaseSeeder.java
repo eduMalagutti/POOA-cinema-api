@@ -40,16 +40,13 @@ public class DatabaseSeeder implements CommandLineRunner {
     private final IGenreRepository genreRepository;
     private final IMovieRepository movieRepository;
     private final IRoomRepository roomRepository;
-    private final IRowRepository rowRepository;
-    private final ISeatRepository seatRepository;
     private final ISessionRepository sessionRepository;
     private final PasswordEncoder passwordEncoder;
 
     public DatabaseSeeder(ITheaterRepository theaterRepository, IClientRepository clientRepository,
                           IManagerRepository managerRepository,
                           IGenreRepository genreRepository, IMovieRepository movieRepository,
-                          IRoomRepository roomRepository, IRowRepository rowRepository,
-                          ISeatRepository seatRepository, ISessionRepository sessionRepository,
+                          IRoomRepository roomRepository, ISessionRepository sessionRepository,
                           PasswordEncoder passwordEncoder) {
         this.theaterRepository = theaterRepository;
         this.clientRepository = clientRepository;
@@ -57,8 +54,6 @@ public class DatabaseSeeder implements CommandLineRunner {
         this.genreRepository = genreRepository;
         this.movieRepository = movieRepository;
         this.roomRepository = roomRepository;
-        this.rowRepository = rowRepository;
-        this.seatRepository = seatRepository;
         this.sessionRepository = sessionRepository;
         this.passwordEncoder = passwordEncoder;
     }
@@ -90,32 +85,41 @@ public class DatabaseSeeder implements CommandLineRunner {
         manager.setBirthDate(LocalDate.now().minusYears(25));
         Manager savedManager = managerRepository.save(manager);
 
-        // 3. Room
+        // 3. Room + Row + Seat (created together, persisted by cascade)
         Room room = new Room(null, "Sala Teste 1", RoomType.STANDARD, savedTheater, new ArrayList<>(), new ArrayList<>());
-        Room savedRoom = roomRepository.save(room);
+        Row row = new Row('A', room, new ArrayList<>());
+        Seat seat = new Seat('1', row, new ArrayList<>(), SeatType.STANDARD);
 
-        // 4. Row
-        Row row = new Row('A', savedRoom, new ArrayList<>());
-        Row savedRow = rowRepository.save(row);
+        // attach
+        List<Row> rows = new ArrayList<>();
+        rows.add(row);
+        room.setRows(rows);
 
-        // 5. Seat
-        Seat seat = new Seat('1', savedRow, new ArrayList<>(), SeatType.STANDARD);
-        Seat savedSeat = seatRepository.save(seat);
+        List<Seat> seats = new ArrayList<>();
+        seats.add(seat);
+        row.setSeats(seats);
 
-        // 6. Genre
+        Room savedRoom = roomRepository.save(room); // cascades rows and seats
+
+        // 4. Genre
         Genre genre = new Genre(null, "Ação", new ArrayList<>());
         Genre savedGenre = genreRepository.save(genre);
 
-        // 7. Movie
+        // 5. Movie
         List<Genre> genres = new ArrayList<>();
         genres.add(savedGenre);
         Movie movie = new Movie(AgeRating.FOURTEEN_YEARS, genres, new ArrayList<>(), 7500, "http://trailer.url/trailer.mp4", "http://cover.url/cover.jpg", "Um filme de teste para uma API incrível.", "Filme de Teste");
         Movie savedMovie = movieRepository.save(movie);
 
-        // 8. Session
+        // 6. Session
         Session session = new Session(
             Format.TWO_D, LocalDateTime.now(ZoneId.of("America/Sao_Paulo")).plusHours(1).plusMinutes(1), Subtitle.DUBBED, 3500, savedRoom, savedMovie, new ArrayList<>());
         Session savedSession = sessionRepository.save(session);
+
+        Long savedSeatId = null;
+        if (savedRoom.getRows() != null && !savedRoom.getRows().isEmpty() && savedRoom.getRows().get(0).getSeats() != null && !savedRoom.getRows().get(0).getSeats().isEmpty()) {
+            savedSeatId = savedRoom.getRows().get(0).getSeats().get(0).getId();
+        }
 
         System.out.println("\n------------------------------------------------------------");
         System.out.println("Seeding Mínimo Finalizado!");
@@ -123,7 +127,7 @@ public class DatabaseSeeder implements CommandLineRunner {
         System.out.println(">>> clientId: " + savedClient.getId());
         System.out.println(">>> managerId: " + savedManager.getId());
         System.out.println(">>> sessionId: " + savedSession.getId());
-        System.out.println(">>> seatId: " + savedSeat.getId());
+        System.out.println(">>> seatId: " + savedSeatId);
         System.out.println("------------------------------------------------------------\n");
     }
 }
