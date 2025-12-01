@@ -112,7 +112,12 @@
 			<version>${mapstruct.version}</version>
 			<scope>provided</scope>
 		</dependency>
-	</dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-docker-compose</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
 
 	<build>
 		<plugins>
