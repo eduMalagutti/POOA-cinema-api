@@ -62,14 +62,25 @@ API REST para gerenciamento de compra de ingressos em cinemas, desenvolvida com 
 ├── src/
 │   ├── main/
 │   │   ├── java/
-│   │   │   └── com/
-│   │   │       └── br.ufscar.pooa.cinema_api/
+│   │   │   └── br/ufscar/pooa/cinema_api/
 │   │   │           ├── adapters/
+│   │   │           │   ├── in/
+│   │   │           │   └── out/
 │   │   │           ├── application/
-│   │   │           ├── domain/
-│   │   │           └── infrastructure/
+│   │   │           │   ├── domain/
+│   │   │           │   │   └── enums/
+│   │   │           │   ├── dtos/
+│   │   │           │   ├── exceptions/
+│   │   │           │   ├── ports/
+│   │   │           │   │   └── in/
+│   │   │           │   ├── usecases/
+│   │   │           │   └── validation/
+│   │   │           └── config/
 │   │   └── resources/
-│   │       └── application.properties
+│   │       ├── application.properties
+│   │       └── templates/
+├── docs/
+│   └── architecture.dsl
 ├── docker-compose.yml
 ├── pom.xml
 └── README.md
