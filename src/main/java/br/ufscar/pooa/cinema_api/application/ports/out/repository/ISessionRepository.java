@@ -1,6 +1,6 @@
 package br.ufscar.pooa.cinema_api.application.ports.out.repository;
 
-import br.ufscar.pooa.cinema_api.application.domain.Session;
+import br.ufscar.pooa.cinema_api.domain.Session;
 
 import java.time.LocalDateTime;
 import java.util.List;

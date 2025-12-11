@@ -12,10 +12,10 @@ import br.ufscar.pooa.cinema_api.application.ports.out.repository.IClientReposit
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.ISeatRepository;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.ISessionRepository;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.ITicketRepository;
-import br.ufscar.pooa.cinema_api.application.domain.Client;
-import br.ufscar.pooa.cinema_api.application.domain.Seat;
-import br.ufscar.pooa.cinema_api.application.domain.Session;
-import br.ufscar.pooa.cinema_api.application.domain.Ticket;
+import br.ufscar.pooa.cinema_api.domain.Client;
+import br.ufscar.pooa.cinema_api.domain.Seat;
+import br.ufscar.pooa.cinema_api.domain.Session;
+import br.ufscar.pooa.cinema_api.domain.Ticket;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;

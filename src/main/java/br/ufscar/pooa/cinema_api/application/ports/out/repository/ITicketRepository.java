@@ -1,6 +1,6 @@
 package br.ufscar.pooa.cinema_api.application.ports.out.repository;
 
-import br.ufscar.pooa.cinema_api.application.domain.Ticket;
+import br.ufscar.pooa.cinema_api.domain.Ticket;
 
 import java.util.Optional;
 

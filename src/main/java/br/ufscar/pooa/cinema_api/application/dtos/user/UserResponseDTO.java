@@ -1,6 +1,6 @@
 package br.ufscar.pooa.cinema_api.application.dtos.user;
 
-import br.ufscar.pooa.cinema_api.application.domain.enums.Role;
+import br.ufscar.pooa.cinema_api.domain.enums.Role;
 
 public class UserResponseDTO {
 

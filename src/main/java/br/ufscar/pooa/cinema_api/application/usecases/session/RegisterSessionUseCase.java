@@ -7,9 +7,9 @@ import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.IMovieRepository;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.IRoomRepository;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.ISessionRepository;
-import br.ufscar.pooa.cinema_api.application.domain.Movie;
-import br.ufscar.pooa.cinema_api.application.domain.Room;
-import br.ufscar.pooa.cinema_api.application.domain.Session;
+import br.ufscar.pooa.cinema_api.domain.Movie;
+import br.ufscar.pooa.cinema_api.domain.Room;
+import br.ufscar.pooa.cinema_api.domain.Session;
 import org.springframework.stereotype.Service;
 
 @Service

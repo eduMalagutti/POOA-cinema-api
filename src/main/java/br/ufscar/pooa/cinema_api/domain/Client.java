@@ -1,7 +1,7 @@
-package br.ufscar.pooa.cinema_api.application.domain;
+package br.ufscar.pooa.cinema_api.domain;
 
-import br.ufscar.pooa.cinema_api.application.domain.enums.Gender;
-import br.ufscar.pooa.cinema_api.application.domain.enums.Role;
+import br.ufscar.pooa.cinema_api.domain.enums.Gender;
+import br.ufscar.pooa.cinema_api.domain.enums.Role;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

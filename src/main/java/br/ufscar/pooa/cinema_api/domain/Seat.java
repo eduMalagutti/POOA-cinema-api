@@ -1,6 +1,6 @@
-package br.ufscar.pooa.cinema_api.application.domain;
+package br.ufscar.pooa.cinema_api.domain;
 
-import br.ufscar.pooa.cinema_api.application.domain.enums.SeatType;
+import br.ufscar.pooa.cinema_api.domain.enums.SeatType;
 
 import java.util.ArrayList;
 import java.util.List;

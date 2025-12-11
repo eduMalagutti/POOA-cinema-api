@@ -1,4 +1,4 @@
-package br.ufscar.pooa.cinema_api.application.domain;
+package br.ufscar.pooa.cinema_api.domain;
 
 import java.util.ArrayList;
 import java.util.List;

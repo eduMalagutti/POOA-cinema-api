@@ -2,8 +2,8 @@ package br.ufscar.pooa.cinema_api.application.dtos.client;
 
 import br.ufscar.pooa.cinema_api.application.dtos.ticket.TicketResponseDTO;
 import br.ufscar.pooa.cinema_api.application.dtos.user.UserResponseDTO;
-import br.ufscar.pooa.cinema_api.application.domain.enums.Gender;
-import br.ufscar.pooa.cinema_api.application.domain.enums.Role;
+import br.ufscar.pooa.cinema_api.domain.enums.Gender;
+import br.ufscar.pooa.cinema_api.domain.enums.Role;
 
 import java.time.LocalDate;
 import java.util.List;

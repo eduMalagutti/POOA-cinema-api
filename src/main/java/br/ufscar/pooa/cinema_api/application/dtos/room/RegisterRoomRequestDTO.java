@@ -1,7 +1,7 @@
 package br.ufscar.pooa.cinema_api.application.dtos.room;
 
 import br.ufscar.pooa.cinema_api.application.dtos.row.RowDTO;
-import br.ufscar.pooa.cinema_api.application.domain.enums.RoomType;
+import br.ufscar.pooa.cinema_api.domain.enums.RoomType;
 
 import java.util.List;
 

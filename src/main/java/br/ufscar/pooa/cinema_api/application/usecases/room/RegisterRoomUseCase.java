@@ -6,10 +6,10 @@ import br.ufscar.pooa.cinema_api.application.ports.in.IRegisterRoomUseCase;
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.IRoomRepository;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.ITheaterRepository;
-import br.ufscar.pooa.cinema_api.application.domain.Room;
-import br.ufscar.pooa.cinema_api.application.domain.Row;
-import br.ufscar.pooa.cinema_api.application.domain.Seat;
-import br.ufscar.pooa.cinema_api.application.domain.Theater;
+import br.ufscar.pooa.cinema_api.domain.Room;
+import br.ufscar.pooa.cinema_api.domain.Row;
+import br.ufscar.pooa.cinema_api.domain.Seat;
+import br.ufscar.pooa.cinema_api.domain.Theater;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,6 +1,6 @@
-package br.ufscar.pooa.cinema_api.application.domain;
+package br.ufscar.pooa.cinema_api.domain;
 
-import br.ufscar.pooa.cinema_api.application.domain.enums.PaymentMethod;
+import br.ufscar.pooa.cinema_api.domain.enums.PaymentMethod;
 
 import java.time.Instant;
 import java.util.Objects;

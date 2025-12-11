@@ -1,7 +1,7 @@
 package br.ufscar.pooa.cinema_api.adapters.out.mapper.mapstruct;
 
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.SessionEntity;
-import br.ufscar.pooa.cinema_api.application.domain.Session;
+import br.ufscar.pooa.cinema_api.domain.Session;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring",

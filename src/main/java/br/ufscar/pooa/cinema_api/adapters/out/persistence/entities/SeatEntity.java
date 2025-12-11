@@ -1,6 +1,6 @@
 package br.ufscar.pooa.cinema_api.adapters.out.persistence.entities;
 
-import br.ufscar.pooa.cinema_api.application.domain.enums.SeatType;
+import br.ufscar.pooa.cinema_api.domain.enums.SeatType;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;

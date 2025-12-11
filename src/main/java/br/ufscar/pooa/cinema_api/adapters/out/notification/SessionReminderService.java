@@ -3,8 +3,8 @@ package br.ufscar.pooa.cinema_api.adapters.out.notification;
 import br.ufscar.pooa.cinema_api.adapters.out.notification.entities.NotificationEvent;
 import br.ufscar.pooa.cinema_api.adapters.out.notification.entities.NotificationType;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.ISessionRepository;
-import br.ufscar.pooa.cinema_api.application.domain.Session;
-import br.ufscar.pooa.cinema_api.application.domain.Ticket;
+import br.ufscar.pooa.cinema_api.domain.Session;
+import br.ufscar.pooa.cinema_api.domain.Ticket;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 

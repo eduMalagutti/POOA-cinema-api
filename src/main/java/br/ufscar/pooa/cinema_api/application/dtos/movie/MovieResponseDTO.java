@@ -1,6 +1,6 @@
 package br.ufscar.pooa.cinema_api.application.dtos.movie;
 
-import br.ufscar.pooa.cinema_api.application.domain.enums.AgeRating;
+import br.ufscar.pooa.cinema_api.domain.enums.AgeRating;
 import java.util.List;
 import java.util.Set;
 import java.util.Objects;

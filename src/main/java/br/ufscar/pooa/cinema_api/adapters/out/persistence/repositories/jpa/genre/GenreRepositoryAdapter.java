@@ -3,7 +3,7 @@ package br.ufscar.pooa.cinema_api.adapters.out.persistence.repositories.jpa.genr
 import br.ufscar.pooa.cinema_api.adapters.out.persistence.entities.GenreEntity;
 import br.ufscar.pooa.cinema_api.application.ports.out.mapper.IObjectMapper;
 import br.ufscar.pooa.cinema_api.application.ports.out.repository.IGenreRepository;
-import br.ufscar.pooa.cinema_api.application.domain.Genre;
+import br.ufscar.pooa.cinema_api.domain.Genre;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

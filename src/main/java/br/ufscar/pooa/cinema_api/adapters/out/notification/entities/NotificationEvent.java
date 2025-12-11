@@ -1,7 +1,7 @@
 package br.ufscar.pooa.cinema_api.adapters.out.notification.entities;
 
-import br.ufscar.pooa.cinema_api.application.domain.Session;
-import br.ufscar.pooa.cinema_api.application.domain.Client;
+import br.ufscar.pooa.cinema_api.domain.Session;
+import br.ufscar.pooa.cinema_api.domain.Client;
 import java.time.LocalDateTime;
 
 public class NotificationEvent {
