@@ -48,7 +48,27 @@ API REST para gerenciamento de compra de ingressos em cinemas, desenvolvida com 
    mvn spring-boot:run
    ```
 
-4. Acesse a API em:
+4. Configure as variáveis de ambiente para email:
+
+   Copie o arquivo `env-example.properties` para `env-dev.properties` e configure as seguintes variáveis com suas credenciais de email:
+
+   ```properties
+   EMAIL_HOST=smtp.gmail.com
+   EMAIL_PORT=587
+   EMAIL_SENDER="MiranhaCar" <your-email>
+   EMAIL_USERNAME=your-email
+   EMAIL_PASSWORD=your-password
+   ```
+
+   **Nota:** O sistema utiliza essas configurações para envio de notificações por email. 
+   
+   **⚠️ Para Gmail:** O `EMAIL_PASSWORD` deve ser uma **App Password** (Senha de App), não sua senha normal do Gmail. Para gerar uma App Password:
+   1. Acesse sua conta Google em [myaccount.google.com](https://myaccount.google.com)
+   2. Vá em **Segurança** → **Verificação em duas etapas** (ative se necessário)
+   3. Vá em **Senhas de app** e gere uma nova senha para a aplicação
+   4. Use essa senha gerada no campo `EMAIL_PASSWORD`
+
+5. Acesse a API em:
 
    ```
    http://localhost:8080
